@@ -1,14 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
+import Header from "./components/Header"
+import RegisterUser from "./components/RegisterUser";
 
 function App() {
   return (
     <div className="App">
-      <div className="header">
-        <h1>Roddi</h1>
-        <Login/>
-      </div>
+        <Header />
+        <RegisterUser />
     </div>
   );
 }
