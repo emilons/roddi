@@ -10,17 +10,19 @@ class Login extends React.Component {
     
     render() {
         return(
-        <div className="login"> 
+        <div className="form">
             <form>
-                <label>
-                Username:
-                    <input type="text"/>
-                </label>
-                <label>
-                Password:
-                    <input type="password"/>
-                </label>
-                <button onClick={handleLogin}/>
+                <div className="form-group text-left">
+                    <label htmlFor="exampleUserName">Brukernavn</label>
+                    <input type="text" className="form-control" placeholder="Skriv inn ditt brukernavn"/>
+                </div> 
+                <div className="form-group text-left">
+                    <label htmlFor="exampleUserName">Passord</label>
+                    <input type="password" className="form-control" placeholder="Skriv inn ditt passord"/>
+                </div>
+                <div>
+                    <button type="submit" className="btn-secondary">Logg inn</button>
+                </div>
             </form>
         </div>
     );

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { NavLink } from 'react-router-dom';
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -64,7 +65,7 @@ function RegisterUser(props) {
                     >
                     Registrer deg
                 </button>
-                <button type="submit" className="btn-light">Allerede bruker? Logg inn her.</button>
+                <button type="submit" className="btn-light"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
             </form>
         </div>
     )
