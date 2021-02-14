@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Estate
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'email')
+        fields = '__all__'
+
+
+class EstateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Estate
+        fields = '__all__'
