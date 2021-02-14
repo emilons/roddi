@@ -28,8 +28,9 @@ Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i pros
 - `cd frontend/roddi`
 - `npm install`
 
-### For å starte Nettsiden
+### For å starte nettsiden
 - `npm start`
+- Nettsiden kjører nå på http://localhost:3000
 
 (Går det ikke kjør `npm install` først, kanskje vi har lagt til noe nytt som må installeres)
 
@@ -38,4 +39,5 @@ Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i pros
 - `source venv/bin/activate`
 - `cd backend/roddi`
 - `python3 manage.py runserver`
+- API kjører nå på http://localhost:8000/login/api
 
