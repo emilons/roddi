@@ -16,6 +16,10 @@ function RegisterUser(props) {
         }))
     }
 
+    /* Funksjonen som sender dette til databasen: 
+        - Kjører et kall hvor man sjekker om verdier er tatt av andre brukere fra før.
+    */
+
     return(
         <div className="form">
             <form>

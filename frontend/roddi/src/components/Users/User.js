@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Estate from '../Estate'
 
 
 class User extends React.Component {
@@ -8,11 +9,8 @@ class User extends React.Component {
             name: "",
             email: "",
             password: "",
+            // Estate eller motsatt med user-array i Estate entiteten
         }
-
-        /* Funksjonen som sender dette til databasen: 
-        - Kjører et kall hvor man sjekker om verdier er tatt av andre brukere fra før.
-        */
 
     }
 
