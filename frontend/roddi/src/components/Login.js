@@ -4,12 +4,12 @@ import API from '../api'
 
 
 function handleLogin() {
-    API.get("/user", {
+    API.get("/user-list/", {
         params: {
             email: "",
             password: ""
         }
-    })
+    }).then(function (response) {console.log(response);}) 
 }
 
 function Login(props)  {
