@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function RegisterUser(props) {
     const [state , setState] = useState({
-        username : "",
+        name : "",
         email : "",
         password : "",
         confirmPassword: "",
@@ -16,6 +16,10 @@ function RegisterUser(props) {
         }))
     }
 
+    /* Funksjonen som sender dette til databasen: 
+        - Kjører et kall hvor man sjekker om verdier er tatt av andre brukere fra før.
+    */
+
     return(
         <div className="form">
             <form>
@@ -23,9 +27,9 @@ function RegisterUser(props) {
                 <label htmlFor="exampleUserName">Fullt Navn</label>
                 <input type="text" 
                     className="form-control" 
-                    id="username" 
+                    id="name" 
                     placeholder="Skriv inn ditt fulle navn" 
-                    value={state.username} 
+                    value={state.name} 
                     onChange={handleChange}
                 />
                 </div>
