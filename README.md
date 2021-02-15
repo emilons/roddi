@@ -9,9 +9,7 @@ Naviger deg fram til riktig directory (hoveddirectory, det øverste nivået som 
 - `source venv/bin/activate`
 
 Nå skal det stå (venv) foran det du skriver i terminalen, da vet du at virituelt environment er aktivert
-- `pip install django`
-- `pip install django-rest-framework`
-- `pip install django-cors-headers`
+- `pip install -r requirements.txt`
 - `cd backend/roddi`
 - `python3 manage.py migrate`
 
