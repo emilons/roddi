@@ -5,9 +5,9 @@ class DbConnector:
 
     # Specify local DB instance info here!!! 
     def __init__(self, 
-                 HOST="127.0.0.1", # Same as localhost
-                 DATABASE="",
-                 USER="",
+                 HOST="127.0.0.1", # localhost
+                 DATABASE="heihei", # Your local DB 
+                 USER="root",
                  PASSWORD=""):
         # Connect to the database
         try:
