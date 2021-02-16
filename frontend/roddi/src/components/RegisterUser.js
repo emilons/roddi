@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
+import API from '../api';
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -19,15 +21,30 @@ function RegisterUser(props) {
 
 
     const validateSubmit = (e) => {
-        if (document.getElementById('password').value == document.getElementById('confirmPassword').value) {
-            document.getElementById('confirmPasswordHelp').innerHTML = '';
-            console.log("handleRegistration()");
+        if (
+            document.getElementById('password').value == document.getElementById('confirmPassword').value &&
+            document.getElementById('email').value != '' && 
+            document.getElementById('email').value.includes('@') &&
+            document.getElementById('password').value != '' &&
+            document.getElementById('name').value != '') {
+                handleRegisterUser();
         } else {
             document.getElementById('confirmPasswordHelp').innerHTML = 'Passordene må være like!';
             document.getElementById('confirmPasswordHelp').style.color = 'red';
         }
-        
     }
+
+    const handleRegisterUser = () => {
+        API.post("/user-create/", {
+                id: 7,
+                username: document.getElementById('name').value,
+                password: document.getElementById('password').value,
+                email: document.getElementById('email').value,
+                estates: [],
+            }
+        ).then(function (response) {console.log(response);}); 
+    }
+    
  
 
     /* Funksjonen som sender dette til databasen: 
