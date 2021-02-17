@@ -17,6 +17,9 @@ function Header() {
                 <button className="btn-secondary">
                     <NavLink to="/Login">Logg Inn</NavLink>
                 </button>
+                <button className="btn-secondary">
+                    <NavLink to="/AdminHome">Admin</NavLink>
+                </button>
             </div>
         </nav>
     )
