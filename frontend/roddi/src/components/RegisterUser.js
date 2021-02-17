@@ -26,13 +26,17 @@ function RegisterUser(props) {
             document.getElementById('email').value != '' && 
             document.getElementById('email').value.includes('@') &&
             document.getElementById('password').value != '' &&
-            document.getElementById('name').value != '') {
+            document.getElementById('name').value != '')
+            {
                 handleRegisterUser();
-        } else {
+            } 
+                
+        else {
             document.getElementById('confirmPasswordHelp').innerHTML = 'Passordene må være like!';
             document.getElementById('confirmPasswordHelp').style.color = 'red';
-        }
+            }
     }
+
 
     const handleRegisterUser = () => {
         API.post("/user-create/", {
