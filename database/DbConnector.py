@@ -3,10 +3,12 @@ import mysql.connector as mysql
 class DbConnector:
 
 
-    # Specify local DB instance info here!!! 
+    #Specify local DB instance info here!!!
+    #USER, PASSWORD are potentially different on your own MySQL setup
+    #Database "roddi" must be created in MySQL prior to any and all function calls
     def __init__(self, 
                  HOST="127.0.0.1", # localhost
-                 DATABASE="heihei", # Your local DB 
+                 DATABASE="roddi", # Your local DB 
                  USER="root",
                  PASSWORD=""):
         # Connect to the database
