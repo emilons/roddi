@@ -17,24 +17,6 @@ function logOut() {
 
 function App() {
 
-/*  const [state , setState] = useState({
-    isAdmin: false,
-    currentUser: undefined
-  })
-
-  useEffect(() => {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      this.setState({
-        isAdmin: user.isAdmin,
-        currentUser: user
-      })
-    };
-  })
-*/
-
-
   return (
     <HashRouter>
       <div className="Header">
