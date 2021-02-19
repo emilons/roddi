@@ -1,5 +1,5 @@
 import React from 'react';
-import Estate from '../Estate'
+import Estate from './Estate'
 
 
 class User extends React.Component {
@@ -13,5 +13,13 @@ class User extends React.Component {
         }
 
     }
+    render() {
+        return (
+            <div className="User">
+                <p>{this.state.name}</p>
+            </div>
+        );
+    }
 
 }
+export default User;
