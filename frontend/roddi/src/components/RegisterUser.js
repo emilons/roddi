@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
-import API from '../api';
+import API from '../services/api';
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -9,6 +9,7 @@ function RegisterUser(props) {
         email : "",
         password : "",
         confirmPassword: "",
+        isAdmin: false
     })
 
     const handleChange = (e) => {
