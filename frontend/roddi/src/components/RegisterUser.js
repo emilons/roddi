@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import API from '../services/api';
+import AuthService from '../services/auth.service'
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -9,7 +10,8 @@ function RegisterUser(props) {
         email : "",
         password : "",
         confirmPassword: "",
-        isAdmin: false
+        isAdmin: false,
+        estates: []
     })
 
     const handleChange = (e) => {
@@ -29,29 +31,14 @@ function RegisterUser(props) {
             document.getElementById('password').value != '' &&
             document.getElementById('name').value != '')
             {
-                handleRegisterUser();
+                AuthService.register(state.name, state.email, state.password, state.estates);
             } 
                 
         else {
             document.getElementById('confirmPasswordHelp').innerHTML = 'Passordene må være like!';
             document.getElementById('confirmPasswordHelp').style.color = 'red';
             }
-    }
-
-
-    const handleRegisterUser = () => {
-        API.post("/user-create/", {
-                id: 7,
-                username: document.getElementById('name').value,
-                password: document.getElementById('password').value,
-                email: document.getElementById('email').value,
-                estates: [],
-            }
-        ).then(function (response) {console.log(response);}); 
-    }
-    
- 
-
+    } 
     /* Funksjonen som sender dette til databasen: 
         - Kjører et kall hvor man sjekker om verdier er tatt av andre brukere fra før.
     */
