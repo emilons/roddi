@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Item from './Item';
 import User from './User'
 
@@ -16,17 +16,9 @@ class Estate extends React.Component {
         }
     }
     
-   
-
-    render() {
-        return (
-            <div className="Estate">
-                <h1>Familien {this.state.name}</h1>
-                <div>
-                </div>
-            </div>
-        );
-    }
+    /* handleNameChange = event => {
+        this.props.setEstateName(this.state.name);
+    } */
 }
 
 export default Estate;
