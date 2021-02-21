@@ -1,16 +1,25 @@
 import React, {Component, useState} from 'react';
-import API from '../api'
-
+import API from '../services/api';
+import AuthService from '../services/auth.service';
 
 
 function handleLogin() {
-    API.get("/user-list/", {
-        params: {
-            email: "",
-            password: ""
-        }
-    }).then(function (response) {console.log(response);}) 
-}
+
+    AuthService.login(this.state.email, this.state.password, this.state.isAdmin).then(
+        () => {
+            if (this.state.isAdmin) {
+                this.props.history.push("/estates");
+                window.location.reload();
+            } 
+            else {
+                this.props.history.push("/my-estate");
+                window.location.reload();
+            }
+        },
+        error => {
+          console.log("Noe gikk feil.");
+        });
+    }
 
 function Login(props)  {
     const [state , setState] = useState({

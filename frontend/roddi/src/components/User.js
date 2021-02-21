@@ -1,5 +1,5 @@
-import React from 'react';
 import Estate from './Estate'
+import React from 'react';
 
 
 class User extends React.Component {
@@ -9,17 +9,12 @@ class User extends React.Component {
             name: "",
             email: "",
             password: "",
+            estate: null
             // Estate eller motsatt med user-array i Estate entiteten
         }
 
     }
-    render() {
-        return (
-            <div className="User">
-                <p>{this.state.name}</p>
-            </div>
-        );
-    }
 
 }
+
 export default User;

@@ -7,8 +7,16 @@ import Login from './components/Login';
 import Header from "./components/Header"
 import RegisterUser from "./components/RegisterUser";
 import AdminEstates from "./components/AdminEstates";
+import myEstate from './components/myEstate';
+import AuthService from "./services/auth.service";
+import { useEffect } from 'react';
+
+function logOut() {
+  AuthService.logout();
+}
 
 function App() {
+
   return (
     <HashRouter>
       <div className="Header">
@@ -18,7 +26,8 @@ function App() {
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
           <Route path="/AdminEstates" component={AdminEstates}/>
-          <Route exact path="/" component=""/>  
+          <Route path="/my-estate" component={myEstate}/>
+          <Route exact path="/" component=""/> 
       </div>
     </HashRouter>
   );
