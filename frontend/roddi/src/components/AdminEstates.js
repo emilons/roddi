@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Estate from './Estate';
 import tempImage from '../images/-wide.jpg'
-import authService from '../services/auth.service';
 
 // gets Estate JSON objects from DB and sets initial Estate List
 function getEstatesFromDB() {
@@ -30,7 +29,6 @@ function AdminEstates() {
         let est = new Estate();
         est.state.name=nameInput;
         let newEstates = estates.concat([est]);
-        authService.addEstate(est.state.name, true);
         setEstates(newEstates);
     }
 
