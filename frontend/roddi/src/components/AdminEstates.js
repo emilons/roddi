@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import Estate from './Estate';
-import CreateEstate from './CreateEstate';
-//import EditEstate from './EditEstate';
 import tempImage from '../images/-wide.jpg'
 
 // gets Estate JSON objects from DB and sets initial Estate List
@@ -17,7 +15,7 @@ function getEstatesFromDB() {
 }
 
 
-function AdminHome() {
+function AdminEstates() {
     const [nameInput, setNameInput] = useState("");
     
     // get list of Estates from database and put in this array
@@ -86,4 +84,4 @@ function AdminHome() {
 
     )
 }
-export default AdminHome;
+export default AdminEstates;
