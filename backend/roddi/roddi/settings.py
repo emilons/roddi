@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login.apps.LoginConfig',
     'api.apps.ApiConfig',
     'rest_framework',
     'corsheaders',
@@ -82,7 +81,7 @@ WSGI_APPLICATION = 'roddi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heihei',
+        'NAME': 'roddi',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
