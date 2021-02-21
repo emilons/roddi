@@ -29,14 +29,6 @@ class AuthService {
     console.log(response);
   }
 
-  async addEstate(name, open) {
-    const response = await axios.post(API_URL + "estate-create/", {
-      name,
-      open
-    });
-    console.log(response);
-  }
-
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));
   }
