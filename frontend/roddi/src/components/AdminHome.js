@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Estate from './Estate';
 import CreateEstate from './CreateEstate';
 //import EditEstate from './EditEstate';
+import tempImage from '../images/-wide.jpg'
 
 // gets Estate JSON objects from DB and sets initial Estate List
 function getEstatesFromDB() {
@@ -14,6 +15,7 @@ function getEstatesFromDB() {
     // return Objects
     return [x,y];
 }
+
 
 function AdminHome() {
     const [nameInput, setNameInput] = useState("");
@@ -74,7 +76,8 @@ function AdminHome() {
                     {estates.map((item, index) => (
                         <div key={"estate"+index} id={"e"+index}>
                             <h1>Dødsbo {item.state.name}</h1>
-                            <img src="../images/-wide.jpg" alt="temporary pic"/>
+                            <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
+                            {/* img med src=item.state.image */}
                         </div>
                     ))}
                 </ul>
