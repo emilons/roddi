@@ -48,7 +48,7 @@ function Header() {
                     <NavLink to="/Login">Logg Inn</NavLink>
                 </button>)}
                 <button className="btn-secondary">
-                    <NavLink to="/AdminHome">Admin</NavLink>
+                    <NavLink to="/AdminEstates">Admin</NavLink>
                 </button>
                 {state.currentUser && (
                     <button>
