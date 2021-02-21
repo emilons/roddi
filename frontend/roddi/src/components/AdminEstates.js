@@ -1,14 +1,27 @@
 import React, {useState} from 'react';
 import Estate from './Estate';
-import CreateEstate from './CreateEstate';
-//import EditEstate from './EditEstate';
+import tempImage from '../images/-wide.jpg'
+import authService from '../services/auth.service';
 
-
-function AdminHome() {
-    const [nameInput, setNameInput] = useState("");
-    const [estates, setEstates] = useState([]);
+// gets Estate JSON objects from DB and sets initial Estate List
+function getEstatesFromDB() {
     
+    // temporary example objects
+    let x = new Estate();
+    x.state.name="Andersen";
+    let y = new Estate();
+    y.state.name="Solvang";
+    // return Objects
+    return [x,y];
+}
 
+
+function AdminEstates() {
+    const [nameInput, setNameInput] = useState("");
+    
+    // get list of Estates from database and put in this array
+    const [estates, setEstates] = useState(getEstatesFromDB());
+    
     const handleChange = (e) => {
        setNameInput(e.target.value);
     }
@@ -16,25 +29,24 @@ function AdminHome() {
     function addToEstateList() {
         let est = new Estate();
         est.state.name=nameInput;
-        const newEstatesList = estates.concat({est});
-        console.log(est)
-        setEstates(newEstatesList);
-        // updateRender()
+        let newEstates = estates.concat([est]);
+        authService.addEstate(est.state.name, true);
+        setEstates(newEstates);
     }
 
     function submitEstate() {
-       /*  document.getElementById('confirmName').innerHTML = '';
-        if (document.getElementById('estateInputName').value != '') {
-           
+        document.getElementById('confirmName').innerHTML = '';
+        if (document.getElementById('nameInput').value != '') {
+            addToEstateList();
+            setNameInput("");
         }
         else {
             document.getElementById('confirmName').innerHTML = 'Vennligst fyll inn et navn på dødsboet!';
             document.getElementById('confirmName').style.color = 'red';
-        }   */
-        addToEstateList();
+        }
     }
-
-
+    
+    
     return(
         <div>
             <div className="createEstate">
@@ -62,7 +74,11 @@ function AdminHome() {
             <div className="estates">
                 <ul className="estateList">
                     {estates.map((item, index) => (
-                        <li key={"estate"+index}><Estate name={item.name} /></li>
+                        <div key={"estate"+index} id={"e"+index}>
+                            <h1>Dødsbo {item.state.name}</h1>
+                            <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
+                            {/* img med src=item.state.image */}
+                        </div>
                     ))}
                 </ul>
             </div>
@@ -70,4 +86,4 @@ function AdminHome() {
 
     )
 }
-export default AdminHome;
+export default AdminEstates;
