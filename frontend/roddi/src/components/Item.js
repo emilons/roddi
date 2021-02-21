@@ -1,5 +1,5 @@
-import React from 'React'
-import User from "./Users/User"
+import React from 'react'
+import User from "./User"
 
 class Item extends React.Component {
     constructor(props) {
@@ -9,9 +9,21 @@ class Item extends React.Component {
             picture: Blob, // Not sure about the blob-type, but we will check it out.
             description: "",
             wanted: false,
-            wantedBy: [...User],
+            wantedBy: [],
             dispose: false,
             donate: false            
         }
     }
+    
+    
+
+    render() {
+        return (
+            <div className="Item">
+                <p>{this.state.name}</p>
+            </div>
+        );
+    }
 }
+
+export default Item;

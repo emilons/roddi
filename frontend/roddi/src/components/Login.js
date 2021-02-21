@@ -28,7 +28,13 @@ function Login(props)  {
     
     const handleSubmit = () => {
         console.log(state);
-        handleLogin();
+        if (document.getElementById('email').value == '' || 
+            (!document.getElementById('email').value.includes('@')) ||
+            document.getElementById('password').value == '')
+            return;
+        else {
+            handleLogin();
+        }
     }
 
 
@@ -39,9 +45,10 @@ function Login(props)  {
             <form>
                 <div className="form-group text-left">
                     <label htmlFor="exampleUserName">E-mail</label>
-                    <input type="text" 
+                    <input type="email" 
                         className="form-control"
                         id="email" 
+                        required
                         placeholder="Skriv inn din E-mail" 
                         value={state.email} 
                         onChange={handleChange}/>
@@ -51,6 +58,7 @@ function Login(props)  {
                     <input type="password" 
                         className="form-control" 
                         id="password"
+                        required
                         placeholder="Skriv inn ditt passord"
                         value={state.password} 
                         onChange={handleChange}/>

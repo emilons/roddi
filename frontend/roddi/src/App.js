@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   Route,
@@ -7,6 +6,7 @@ import {
 import Login from './components/Login';
 import Header from "./components/Header"
 import RegisterUser from "./components/RegisterUser";
+import AdminEstates from "./components/AdminEstates";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
       <div className="App">
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
+          <Route path="/AdminEstates" component={AdminEstates}/>
           <Route exact path="/" component=""/>  
       </div>
     </HashRouter>

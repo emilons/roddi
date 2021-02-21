@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
+import API from '../api';
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -8,6 +10,7 @@ function RegisterUser(props) {
         password : "",
         confirmPassword: "",
     })
+
     const handleChange = (e) => {
         const {id , value} = e.target   
         setState(prevState => ({
@@ -15,6 +18,38 @@ function RegisterUser(props) {
             [id] : value
         }))
     }
+
+
+    const validateSubmit = (e) => {
+        if (
+            document.getElementById('password').value == document.getElementById('confirmPassword').value &&
+            document.getElementById('email').value != '' && 
+            document.getElementById('email').value.includes('@') &&
+            document.getElementById('password').value != '' &&
+            document.getElementById('name').value != '')
+            {
+                handleRegisterUser();
+            } 
+                
+        else {
+            document.getElementById('confirmPasswordHelp').innerHTML = 'Passordene må være like!';
+            document.getElementById('confirmPasswordHelp').style.color = 'red';
+            }
+    }
+
+
+    const handleRegisterUser = () => {
+        API.post("/user-create/", {
+                id: 7,
+                username: document.getElementById('name').value,
+                password: document.getElementById('password').value,
+                email: document.getElementById('email').value,
+                estates: [],
+            }
+        ).then(function (response) {console.log(response);}); 
+    }
+    
+ 
 
     /* Funksjonen som sender dette til databasen: 
         - Kjører et kall hvor man sjekker om verdier er tatt av andre brukere fra før.
@@ -28,6 +63,7 @@ function RegisterUser(props) {
                 <input type="text" 
                     className="form-control" 
                     id="name" 
+                    required
                     placeholder="Skriv inn ditt fulle navn" 
                     value={state.name} 
                     onChange={handleChange}
@@ -37,7 +73,8 @@ function RegisterUser(props) {
                 <label htmlFor="exampleInputEmail1">Email-Adresse</label>
                 <input type="email" 
                        className="form-control" 
-                       id="email" 
+                       id="email"
+                       required 
                        placeholder="Skriv inn din Email" 
                        value={state.email}
                        onChange={handleChange}
@@ -47,25 +84,38 @@ function RegisterUser(props) {
                     <label htmlFor="exampleInputPassword1">Passord</label>
                     <input type="password" 
                         className="form-control" 
-                        id="password" 
+                        id="password"
+                        required 
                         placeholder="Velg et passord"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
                         value={state.password}
                         onChange={handleChange} 
                     />
+                    <small id="passwordHelp" 
+                        className="form-text text-muted">
+                            Passordet må inneholde minst én stor og én liten bokstav, 
+                            og minst ett tall. Minimum lengde er 6 tegn. 
+                    </small>
                 </div>
                 <div className="form-group text-left">
                     <label htmlFor="exampleInputPassword1">Bekreft Passord</label>
                     <input type="password" 
                         className="form-control" 
-                        id="confirmPassword" 
+                        id="confirmPassword"
+                        required 
                         placeholder="Bekreft passordet"
                         value={state.confirmPassword}
                         onChange={handleChange} 
                     />
+                    <small id="confirmPasswordHelp" 
+                        className="form-text"> 
+                    </small>
+
                 </div>
                 <button 
                     type="submit" 
                     className="btn btn-secondary"
+                    onClick={validateSubmit}
                     >
                     Registrer deg
                 </button>
