@@ -44,9 +44,9 @@ function Header() {
                 </button>
                 )}
                 {(!state.loggedIn) && (
-                    <button className="btn-secondary">
+                <button className="btn-secondary">
                     <NavLink to="/Login">Logg Inn</NavLink>
-                </button>
+                </button>)}
                 <button className="btn-secondary">
                     <NavLink to="/AdminHome">Admin</NavLink>
                 </button>
