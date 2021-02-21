@@ -6,7 +6,7 @@ import {
 import Login from './components/Login';
 import Header from "./components/Header"
 import RegisterUser from "./components/RegisterUser";
-import AdminHome from "./components/AdminHome";
+import AdminEstates from "./components/AdminEstates";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <div className="App">
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
-          <Route path="/AdminHome" component={AdminHome}/>
+          <Route path="/AdminEstates" component={AdminEstates}/>
           <Route exact path="/" component=""/>  
       </div>
     </HashRouter>
