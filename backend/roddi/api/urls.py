@@ -4,11 +4,14 @@ from . import views
 
 urlpatterns = [
     path('', views.api_overview, name="api-overview"),
-    path('user-list/', views.user_list, name="user-overview"),
+    #path('user-list/', views.user_list, name="user-overview"),
     path('user-detail/<str:pk>/', views.user_detail, name= "user-detail"),
     path('user-create/', views.user_create, name="user-create"),
     path('user-update/<str:pk>/', views.user_update, name="user-update"),
     path('user-delete/<str:pk>/', views.user_delete, name="user-delete"),
+
+    path('current_user/', views.current_user),
+    path('users/', views.UserList.as_view()),
 
     path('estate-list/', views.estate_list, name="estate-overview"),
     path('estate-detail/<str:pk>/', views.estate_detail, name= "estate-detail"),
