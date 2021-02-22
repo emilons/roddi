@@ -1,36 +1,48 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Estate from './Estate';
 import tempImage from '../images/-wide.jpg'
 import authService from '../services/auth.service';
 
-// gets Estate JSON objects from DB and sets initial Estate List
-function getEstatesFromDB() {
-    
-    // temporary example objects
-    let x = new Estate();
-    x.state.name="Andersen";
-    let y = new Estate();
-    y.state.name="Solvang";
-    // return Objects
-    return [x,y];
-}
+
+
 
 
 function AdminEstates() {
     const [nameInput, setNameInput] = useState("");
+    const [estates, setEstates] = useState([]);
+
+    // get Estates from Backend and initialize list of estates with these
+    useEffect(() => {
+        authService.getEstates().then(res => {
+            let initEstates = []
+            for (let i = 0; i < res.length; i++){
+                let tempEstate = new Estate();
+                tempEstate.state = {
+                    id: res[i].id,
+                    name: res[i].name,
+                    status: res[i].status
+                }
+                initEstates.push(tempEstate);
     
-    // get list of Estates from database and put in this array
-    const [estates, setEstates] = useState(getEstatesFromDB());
+            }
+            let newEstates = estates.concat(initEstates);
+            setEstates(newEstates);
+            //console.log(initEstates);
+        });
+    }, [])
     
     const handleChange = (e) => {
        setNameInput(e.target.value);
     }
 
     function addToEstateList() {
-        let est = new Estate();
-        est.state.name=nameInput;
-        let newEstates = estates.concat([est]);
-        authService.addEstate(est.state.name, true);
+        const x = new Estate()
+        x.state = {
+            name: nameInput,
+            status: true
+        }
+        let newEstates = estates.concat([x]);
+        authService.addEstate(x.state.name, true);
         setEstates(newEstates);
     }
 
