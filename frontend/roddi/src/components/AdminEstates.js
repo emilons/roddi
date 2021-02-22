@@ -30,7 +30,7 @@ function AdminEstates() {
         let est = new Estate();
         est.state.name=nameInput;
         let newEstates = estates.concat([est]);
-        authService.addEstate(est.state.name, true);
+        authService.addEstate(est.state.name, est.state.status);
         setEstates(newEstates);
     }
 
