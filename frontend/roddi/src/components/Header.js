@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {
     NavLink,
+    useHistory
   } from "react-router-dom";
 import "../App.css"
 
@@ -8,6 +9,13 @@ import User from './User';
 import AuthService from '../services/auth.service'
 
 function Header() {
+
+    const history = useHistory();
+    const routeChange = () => {
+        let path = '/Login';
+        history.push(path);
+    }
+
 
     const [state , setState] = useState({
     isAdmin: false,
@@ -29,6 +37,7 @@ function Header() {
 
   function logOut() {
       AuthService.logout();
+      routeChange();
   }
 
     return (
@@ -38,26 +47,27 @@ function Header() {
                 <span className = "Overskrift"><NavLink to="/">Røddi - Nettsiden som bla bla bla</NavLink></span>
             </div>
             <div className="buttons">
-                {(!state.loggedIn) && (
+                {(!localStorage.getItem("token")) && (
                 <button className="btn-secondary">
                     <NavLink to="/Registrer">Registrer deg</NavLink>
                 </button>
                 )}
-                {(!state.loggedIn) && (
+                {(!localStorage.getItem("token")) && (
                 <button className="btn-secondary">
                     <NavLink to="/Login">Logg Inn</NavLink>
                 </button>)}
+                {(localStorage.getItem("token")) && (
                 <button className="btn-secondary">
                     <NavLink to="/AdminEstates">Admin</NavLink>
-                </button>
-                {state.currentUser && (
+                </button>)}
+                {(localStorage.getItem("token")) && (
                     <button>
-                        myEstate
+                        <NavLink to="/myEstates">myEstates</NavLink>
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}
-                {state.loggedIn && (
-                    <button>
-                        Logg Ut
+                {localStorage.getItem("token") && (
+                    <button onClick={logOut}>
+                        <NavLink to="/Login">Logg Ut</NavLink>
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}
             </div>

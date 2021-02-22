@@ -1,10 +1,15 @@
-import axios from 'axios';
 import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
-import API from '../services/api';
+import { NavLink, useHistory } from 'react-router-dom';
 import AuthService from '../services/auth.service'
 
 function RegisterUser(props) {
+
+    const history = useHistory();
+    const routeChange = () => {
+        let path = '/';
+        history.push(path);
+    }
+
     const [state , setState] = useState({
         name : "",
         email : "",
@@ -17,7 +22,7 @@ function RegisterUser(props) {
         const {id , value} = e.target   
         setState(prevState => ({
             ...prevState,
-            [id] : value
+            [id] : value,
         }))
     }
 
@@ -30,7 +35,9 @@ function RegisterUser(props) {
             document.getElementById('password').value != '' &&
             document.getElementById('name').value != '')
             {
-                AuthService.register(state.name, state.password, state.email);
+                if(AuthService.register(state.name, state.password, state.email)) {
+                    routeChange();
+                }
             } 
                 
         else {
