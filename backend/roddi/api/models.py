@@ -15,7 +15,8 @@ class User(models.Model):
     email = models.EmailField(max_length=100, unique=True)
 
 
-    estates = models.ManyToManyField(Estate)
+    estates = models.ManyToManyField(Estate, blank=True)
+
 
 
 class Item(models.Model):
@@ -28,7 +29,7 @@ class Item(models.Model):
     wanted_level = models.IntegerField(null=True, blank=True)
 
    
-    voters = models.ManyToManyField(User)
+    voters = models.ManyToManyField(User, blank=True)
 
     class Meta:
         unique_together = (('name', 'estate'),)
