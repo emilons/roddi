@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from.serializers import UserSerializer, EstateSerializer, ItemSerializer
-from .models import User, Estate, Item
+from.serializers import UserSerializer, EstateSerializer, ItemSerializer, User_ItemSerializer
+from .models import User, Estate, Item, User_Item
 
 
 
@@ -24,11 +24,16 @@ def api_overview(request):
         'Estate Create': '/estate-create/',
         'Estate Update': '/estate-update/<str:pk>',
         'Estate Delete': '/estate-delete/<str:pk>',
-        'Item List': '/estate-list/',
-        'Item Detail View': '/estate-detail/<str:pk>',
-        'Item Create': '/estate-create/',
-        'Item Update': '/estate-update/<str:pk>',
-        'Item Delete': '/estate-delete/<str:pk>',
+        'Item List': '/item-list/',
+        'Item Detail View': '/item-detail/<str:pk>',
+        'Item Create': '/item-create/',
+        'Item Update': '/item-update/<str:pk>',
+        'Item Delete': '/item-delete/<str:pk>',
+        'User_Item List': '/user_item-list/',
+        'User_Item Detail View': '/user_item-detail/<str:pk>',
+        'User_Item Create': '/user_item-create/',
+        'User_Item Update': '/user_item-update/<str:pk>',
+        'User_Item Delete': '/user_item-delete/<str:pk>',
     }
     return Response(api_urls)
 
@@ -60,7 +65,7 @@ def user_create(request):
 
 
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def user_update(request, pk):
     user = User.objects.get(id=pk)
     serializer = UserSerializer(instance=user, data=request.data)
@@ -107,7 +112,7 @@ def estate_create(request):
 
 
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def estate_update(request, pk):
     estate = Estate.objects.get(id=pk)
     serializer = EstateSerializer(instance=estate, data=request.data)
@@ -138,9 +143,8 @@ def item_list(request):
 @api_view(['GET'])
 def item_detail(request, pk):
     items = Item.objects.get(id=pk)
-    serializer = ItemSerializer(estates, many=False)
+    serializer = ItemSerializer(items, many=False)
     return Response(serializer.data)
-
 
 
 @api_view(['POST'])
@@ -152,11 +156,10 @@ def item_create(request):
     return Response(serializer.data)
 
 
-
-@api_view(['POST'])
+@api_view(['PUT'])
 def item_update(request, pk):
     item = Item.objects.get(id=pk)
-    serializer = ItemSerializer(instance=estate, data=request.data)
+    serializer = ItemSerializer(instance=item, data=request.data)
 
     if serializer.is_valid():
         serializer.save()
@@ -170,3 +173,50 @@ def item_delete(request, pk):
     item.delete()
 
     return Response("Item successfully deleted!")
+
+
+
+#API UserItem
+@api_view(['GET'])
+def user_item_list(request):
+    user_items = User_Item.objects.all()
+    serializer = User_ItemSerializer(user_items, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def user_item_detail(request, pk):
+    user_item = Item.objects.get(id=pk)
+    serializer = User_ItemSerializer(user_items, many=False)
+    return Response(serializer.data)
+
+
+
+@api_view(['POST'])
+def user_item_create(request):
+    serializer = User_ItemSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+
+
+@api_view(['PUT'])
+def user_item_update(request, pk):
+    user_item = User_Item.objects.get(id=pk)
+    serializer = User_ItemSerializer(instance=estate, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def user_item_delete(request, pk):
+    user_item = User_Item.objects.get(id=pk)
+    user_item.delete()
+
+    return Response("Item successfully deleted!")
+
