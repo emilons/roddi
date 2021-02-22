@@ -27,7 +27,7 @@ function AdminEstates() {
             }
             let newEstates = estates.concat(initEstates);
             setEstates(newEstates);
-            //console.log(initEstates);
+            console.log(initEstates);
         });
     }, [])
     
@@ -82,17 +82,18 @@ function AdminEstates() {
                     Opprett Dødsbo
                 </button>
             </div>
-
-            <div className="estates">
-                <ul className="estateList">
+            
+            <div className="estates" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', height: '100%', position: 'relative'}}>
+                <div className="estateList" style={{marginLeft: 100, marginRight: 100, width: 800}}>
                     {estates.map((item, index) => (
-                        <div key={"estate"+index} id={"e"+index}>
+                        <div key={"estate"+index} id={"e"+index} style={{border: '1px solid'}}>
                             <h1>Dødsbo {item.state.name}</h1>
                             <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
                         </div>
                     ))}
-                </ul>
+                </div>
+                {/*<ul className="estateList" style={{margin: '50 50 50 50'}}></ul>*/}
             </div>
         </div>
 
