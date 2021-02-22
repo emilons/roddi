@@ -11,7 +11,6 @@ function RegisterUser(props) {
         password : "",
         confirmPassword: "",
         isAdmin: false,
-        estates: []
     })
 
     const handleChange = (e) => {
@@ -31,7 +30,7 @@ function RegisterUser(props) {
             document.getElementById('password').value != '' &&
             document.getElementById('name').value != '')
             {
-                AuthService.register(state.name, state.email, state.password, state.estates);
+                AuthService.register(state.name, state.password, state.email);
             } 
                 
         else {
@@ -75,7 +74,7 @@ function RegisterUser(props) {
                         id="password"
                         required 
                         placeholder="Velg et passord"
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,55}"
                         value={state.password}
                         onChange={handleChange} 
                     />

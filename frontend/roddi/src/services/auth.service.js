@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/login/api/";
+const API_URL = "http://localhost:8000/api/";
 
 class AuthService {
   async login(email, password) {
@@ -19,12 +19,11 @@ class AuthService {
     localStorage.removeItem("user");
   }
 
-  async register(username, email, password, estates) {
+  async register(name, password, email) {
     const response = await axios.post(API_URL + "user-create/", {
-      username,
-      email,
+      name,
       password,
-      estates,
+      email,
     });
     console.log(response);
   }
