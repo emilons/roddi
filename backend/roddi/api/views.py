@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from.serializers import UserSerializer, EstateSerializer, ItemSerializer, User_ItemSerializer
-from .models import User, Estate, Item, User_Item
+from.serializers import UserSerializer, EstateSerializer, ItemSerializer, User_ItemSerializer, User_In_EstateSerializer
+from .models import User, Estate, Item, User_Item, User_In_Estate
 
 
 
@@ -220,3 +220,20 @@ def user_item_delete(request, pk):
 
     return Response("Item successfully deleted!")
 
+
+
+@api_view(['POST'])
+def user_in_estate_create(request):
+    serializer = User_In_EstateSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+
+#API UserItem
+@api_view(['GET'])
+def user_in_estate_list(request):
+    user_estates = User_In_Estate.objects.all()
+    serializer = User_In_EstateSerializer(user_estates, many=True)
+    return Response(serializer.data)

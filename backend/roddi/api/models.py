@@ -12,7 +12,7 @@ class User(models.Model):
 class Estate(models.Model):
     name = models.CharField(max_length=50, unique=True)
     status = models.BooleanField()
-    users = models.ManyToManyField(User, blank=True)
+    users = models.ManyToManyField(User, blank=True, through="User_In_Estate")
 
 
 class Item(models.Model):
@@ -25,6 +25,13 @@ class Item(models.Model):
         unique_together = (('name', 'estate'),)
 
 
+
+class User_In_Estate(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    estate = models.ForeignKey(Estate, on_delete=models.CASCADE)
+    
+
+
 class User_Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
@@ -33,4 +40,3 @@ class User_Item(models.Model):
     discard = models.BooleanField(default=False)
     wanted = models.BooleanField(default=False)
     wanted_level = models.IntegerField(default=0)
-
