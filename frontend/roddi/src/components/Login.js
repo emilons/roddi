@@ -1,24 +1,25 @@
 import React, {Component, useState} from 'react';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
-
+import { useHistory } from 'react-router-dom';
+import Header from './Header';
 
 function handleLogin() {
-
-    AuthService.login(this.state.email, this.state.password, this.state.isAdmin).then(
+    localStorage.setItem('token', 'admin')
+    /*   AuthService.login(this.state.email, this.state.password, this.state.isAdmin).then(
         () => {
             if (this.state.isAdmin) {
                 this.props.history.push("/estates");
-                window.location.reload();
+                window.location.reload(false);
             } 
             else {
                 this.props.history.push("/my-estate");
-                window.location.reload();
-            }
+                window.location.reload(false);
+            } 
         },
         error => {
           console.log("Noe gikk feil.");
-        });
+        });*/
     }
 
 function Login(props)  {
@@ -26,6 +27,12 @@ function Login(props)  {
         email : "",
         password : "",
     })
+
+    const history = useHistory();
+    const routeChange = () => {
+        let path = '/AdminEstates';
+        history.push(path);
+    }
 
     const handleChange = (e) => {
         const {id , value} = e.target   
@@ -43,10 +50,12 @@ function Login(props)  {
             return;
         else {
             handleLogin();
+            routeChange();
+            window.location.reload(false);
         }
     }
 
-
+    
     
     
     return(

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useState, useHistory} from 'react';
 import { NavLink } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service'
@@ -12,8 +12,9 @@ function RegisterUser(props) {
         confirmPassword: "",
         isAdmin: false,
         estates: []
-    })
+    });
 
+    
     const handleChange = (e) => {
         const {id , value} = e.target   
         setState(prevState => ({
@@ -21,8 +22,6 @@ function RegisterUser(props) {
             [id] : value
         }))
     }
-
-
     const validateSubmit = (e) => {
         if (
             document.getElementById('password').value == document.getElementById('confirmPassword').value &&

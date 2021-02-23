@@ -5,28 +5,30 @@ const API_URL = "http://localhost:8000/api/";
 
 class AuthService {
   async login(email, password) {
-    const response = await axios
-      .post(API_URL + "signin", {
-        email,
-        password
-      });
-    if (response.data.accessToken) {
-      localStorage.setItem("user", JSON.stringify(response.data));
-    }
-    return response.data;
-  }
-
-  logout() {
-    localStorage.removeItem("user");
-  }
-
-  async register(username, email, password, estates) {
+    /*    const response = await axios
+          .post(API_URL + "signin", {
+            email,
+            password
+          });
+        if (response.data.accessToken) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+        return response.data; */
+      } 
+    
+      logout() {
+        localStorage.removeItem('token');    
+      }
+      
+  async register(name, email, password, estates) {
     const response = await axios.post(API_URL + "user-create/", {
-      username,
+      name,
       email,
       password,
       estates,
     });
+    localStorage.setItem('token', 'admin');
+    window.location.reload(false);
     console.log(response);
   }
 
