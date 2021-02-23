@@ -8,7 +8,7 @@ class Estate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: undefined,
+            id: null,
             name: "",
             items: [],
             members: [],

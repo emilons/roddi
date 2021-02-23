@@ -50,9 +50,12 @@ function Header() {
                 <button className="btn-secondary">
                     <NavLink to="/AdminEstates">Admin</NavLink>
                 </button>
+                <button className="btn-secondary">
+                    <NavLink to="/AdminEstatePage">AdminEstate</NavLink>
+                </button>
                 {state.currentUser && (
                     <button>
-                        myEstate
+                        MyEstate
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}
                 {state.loggedIn && (

@@ -60,11 +60,11 @@ function AdminEstates() {
     
     
     return(
-        <div>
+        <div className="AdminEstates">
             <div className="createEstate">
                 <form className="form">
                     <div className ="form-group text-left" >
-                    <label htmlFor="exampleUserName">Opprett Dødsbo</label>
+                    <label htmlFor="estateNameInput">Opprett Dødsbo</label>
                     <input type="text" 
                         className="form-control" 
                         id="nameInput" 

@@ -41,13 +41,45 @@ class AuthService {
 
   // GET List of Estates from DB
   async getEstates() {
-    let returnList = []
+    let returnList = [];
     const response = await axios.get(API_URL + "estate-list/")
       .then(
       response => response.data.map((item) => (
       returnList.push(item)
       )));
     //console.log(returnList);
+    return returnList;
+  }
+
+  // GET specific estate from DB
+  async getEstateFromID(id) {
+    let returnList = [];
+    const response = await axios.get(API_URL + "estate-detail/" + id);
+    return response;
+    /* .then(
+      response => response.data.map((item) => (
+      returnList.push(item)
+      )));
+    //console.log(returnList);
+    return returnList; */
+  }
+
+  // GET items from DB by estate ID
+  async getItemsByEstateID(estateId) {
+    // Kinda bad solution at the moment, have to get all items first then sort by correct id
+    // Pulling all items like this is not good but has to work for now
+    let returnList = [];
+    let itemList = [];
+    const response = await axios.get(API_URL + "item-list")
+    .then(
+      response => response.data.map((item) => (
+        itemList.push(item)
+      )));
+    itemList.forEach(element => {
+      if (element.estate == estateId) {
+        returnList.push(element);
+      }
+    })
     return returnList;
   }
 
