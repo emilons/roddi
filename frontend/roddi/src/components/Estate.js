@@ -12,7 +12,7 @@ class Estate extends React.Component {
             name: "",
             items: [],
             members: [],
-            status: 1 // Boolean for if the estate is finished.
+            status: true // Boolean for if the estate is finished.
         }
     }
     
