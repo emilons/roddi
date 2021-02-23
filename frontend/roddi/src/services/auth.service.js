@@ -44,10 +44,11 @@ class AuthService extends Component {
 
 
 
-  async register(username, password) {
+  async register(username, password/*, email*/) {
     const response = await axios.post(API_URL + "users/", {
       username,
       password,
+//      email
     }).then(json => {
       localStorage.setItem('token', json.token)
       /*this.setState({
@@ -64,11 +65,16 @@ class AuthService extends Component {
 }
 
   async addEstate(name, open) {
+    console.log(`token ${localStorage.getItem('token')}`);
     const response = await axios.post(API_URL + "estate-create/", {
       name,
       open
-    });
-    console.log(response);
+      },
+          { headers: {
+            Authorization: `JWT ${localStorage.getItem('token')}`,
+            }
+          });
+      console.log(`token ${localStorage.getItem('token')}`);
   }
 
   getCurrentUser() {

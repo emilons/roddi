@@ -45,12 +45,12 @@ function Login(props)  {
         <div className="form">
             <form>
                 <div className="form-group text-left">
-                    <label htmlFor="exampleUserName">E-mail</label>
-                    <input type="email" 
+                    <label htmlFor="exampleUserName">Navn</label>
+                    <input type="text" 
                         className="form-control"
                         id="username" 
                         required
-                        placeholder="Skriv inn din E-mail" 
+                        placeholder="Skriv inn ditt navn" 
                         value={state.email} 
                         onChange={handleChange}/>
                 </div> 
