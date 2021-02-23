@@ -91,9 +91,6 @@ function AdminEstatePage(props) {
             }
             let newIds = membersInEstate.concat(userInEstateList);
             setMembersInEstate(newIds);
-            console.log(newIds);
-            // set users in estate id eller noe
-            // authservice.get(user_in_estate(estateID))
         })
 
         authService.getItemsByEstateID(estateID).then(res => {
