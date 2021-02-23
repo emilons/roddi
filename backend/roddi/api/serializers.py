@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Estate, Item
+from .models import User, Estate, Item, User_Item
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,5 +20,8 @@ class ItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
+class User_ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User_Item
+        fields = '__all__'
 
