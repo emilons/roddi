@@ -7,9 +7,10 @@ import Login from './components/Login';
 import Header from "./components/Header"
 import RegisterUser from "./components/RegisterUser";
 import AdminEstates from "./components/AdminEstates";
-import myEstate from './components/myEstate';
+import AdminEstatePage from './components/AdminEstatePage';
+import MyEstate from './components/MyEstate';
 import AuthService from "./services/auth.service";
-import { useEffect } from 'react';
+
 
 function logOut() {
   AuthService.logout();
@@ -26,7 +27,8 @@ function App() {
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
           <Route path="/AdminEstates" component={AdminEstates}/>
-          <Route path="/my-estate" component={myEstate}/>
+          <Route path="/AdminEstatePage" component={AdminEstatePage}/>
+          <Route path="/MyEstate" component={MyEstate}/>
           <Route exact path="/" component=""/> 
       </div>
     </HashRouter>
