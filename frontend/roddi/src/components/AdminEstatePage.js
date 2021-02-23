@@ -28,6 +28,7 @@ function AdminEstatePage(props) {
     const [estateName, setEstateName] = useState("");
     const [items, setItems] = useState([]);
     const [members, setMembers] = useState([]);
+    const [membersInEstate, setMembersInEstate] = useState([]);
     const [itemModalIsOpen, setItemModalIsOpen] = useState(false);
     const [memberModalIsOpen, setMemberModalIsOpen] = useState(false);
     
@@ -78,11 +79,23 @@ function AdminEstatePage(props) {
                 }
                 initMembers.push(tempUser);
             }
-            
             let newMembers = members.concat(initMembers);
             setMembers(newMembers);
             setEstateName(res.data.name);
         });
+        authService.getUserInEstateId(estateID).then(res => {
+            let userInEstateList = [];
+            for (let i = 0; i < res.length; i++) {
+                let tempIdList = [res[i].id, res[i].user];
+                userInEstateList.push(tempIdList);
+            }
+            let newIds = membersInEstate.concat(userInEstateList);
+            setMembersInEstate(newIds);
+            console.log(newIds);
+            // set users in estate id eller noe
+            // authservice.get(user_in_estate(estateID))
+        })
+
         authService.getItemsByEstateID(estateID).then(res => {
             let initItems = [];
             let itemsLength = res.length;
@@ -124,7 +137,6 @@ function AdminEstatePage(props) {
             description: addNewItem.itemDescription,
             estate: estateID
         }
-        console.log("Item is: " + x)
         let newItems = items.concat([x]);
         console.log(newItems)
         authService.addItem(x.state.name, x.state.description, x.state.estate);
@@ -161,22 +173,35 @@ function AdminEstatePage(props) {
         authService.getUserIdByEmail(addNewMember.memberEmail)
         .then(res => {
             let x = new User();
-            x.state = {
-                id: res[0].id,
-                name: res[0].name,
-                email: res[0].email
+            if (res[0] != undefined) {
+                x.state = {
+                    id: res[0].id,
+                    name: res[0].name,
+                    email: res[0].email
+                }
+                let newMembers = members.concat([x]);
+                authService.addMember(estateID, x.state.id);
+                setMembers(newMembers);
+                closeMemberModal();
             }
-            let newMembers = members.concat([x]);
-            authService.addMember(estateID, x.state.id);
-            setMembers(newMembers);
+            else {
+                // log that email doesnt exist
+                document.getElementById('confirmEmail').innerHTML = 'Vennligst fyll inn en eksisterende email!';
+                document.getElementById('confirmEmail').style.color = 'red';
+            }
         });
-        closeMemberModal();
     }
     
-    function deleteMember(guiId, memberId) {
+    function deleteMember(guiId, userId) {
         let GUIMember = document.getElementById(guiId);
+        let userInEstateId;
         GUIMember.remove();
-        authService.deleteMember(memberId);
+        membersInEstate.forEach(element => {
+            if (element[1] == userId) {
+                userInEstateId = element[0];
+            }
+        })
+        authService.deleteMember(userInEstateId);
      }
 
     
@@ -193,7 +218,7 @@ function AdminEstatePage(props) {
                     {members.map((element, index) => (
                         <div key={"member"+index} id={"m"+index} style={{border: '1px solid'}}>
                             <h4>{element.state.name}</h4>
-                            <button type="button" className="btn-danger" onClick={() => deleteMember("m"+index,element.state.id)}>Slett</button>
+                            <button type="button" className="btn-danger" onClick={() => deleteMember("m"+index, element.state.id)}>Slett</button>
                         </div>
                     ))}
                     <div className="addMember">
@@ -213,6 +238,9 @@ function AdminEstatePage(props) {
                                         value={addNewMember.memberEmail} 
                                         onChange={handleMemberChange}/>
                                 </div> 
+                                <small id="confirmEmail" 
+                                    className="form-text"> 
+                                </small>
                             </form>
                             <button onClick={submitMember}>Legg til medlem</button>
                         </Modal>

@@ -130,6 +130,22 @@ class AuthService {
     return returnList;
   }
 
+  // GET user_in_estate ID
+  async getUserInEstateId(estateId) {
+    let returnList = [];
+    let userInEstateList = [];
+    await axios.get(API_URL + "user_in_estate-list/")
+    .then(response => response.data.map((element) => (
+      userInEstateList.push(element)
+    )));
+    userInEstateList.forEach(element => {
+      if (element.estate == estateId) {
+        returnList.push(element);
+      }
+    })
+    return returnList;
+  }
+
   // DELETE User from Estate
   async deleteMember(userId) {
     const response = await axios.delete(API_URL + "user_in_estate-delete/" + userId);

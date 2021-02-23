@@ -9,14 +9,14 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class EstateSerializer(serializers.ModelSerializer):
-    users = UserSerializer(many=True)
+    users = UserSerializer(many=True, read_only=True)
     class Meta:
         model = Estate
         fields = '__all__'
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    #voters = UserSerializer(many=True)
+    voters = UserSerializer(many=True, read_only=True)
     class Meta:
         model = Item
         fields = '__all__'
