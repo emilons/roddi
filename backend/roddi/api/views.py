@@ -222,6 +222,9 @@ def user_item_delete(request, pk):
 
 
 
+
+##User_In_Estate APIs
+
 @api_view(['POST'])
 def user_in_estate_create(request):
     serializer = User_In_EstateSerializer(data=request.data)
@@ -231,9 +234,17 @@ def user_in_estate_create(request):
     return Response(serializer.data)
 
 
-#API UserItem
+
 @api_view(['GET'])
 def user_in_estate_list(request):
     user_estates = User_In_Estate.objects.all()
     serializer = User_In_EstateSerializer(user_estates, many=True)
     return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def user_in_estate_delete(request, pk):
+    user_in_estate = User_In_Estate.objects.get(id=pk)
+    user_in_estate.delete()
+
+    return Response("Item successfully deleted!")

@@ -29,7 +29,8 @@ urlpatterns = [
     path('user_item-delete/<str:pk>/', views.user_item_delete, name="user_item-delete"),
 
     path('user_in_estate-create/', views.user_in_estate_create, name="user_in_estate-create"),
-    path('user_in_estate-list/', views.user_in_estate_list, name="user_in_estate-overview")
+    path('user_in_estate-list/', views.user_in_estate_list, name="user_in_estate-overview"),
+    path('user_in_estate-delete/<str:pk>/', views.user_in_estate_delete, name="user_in_estate-delete")
 
 
 ]
