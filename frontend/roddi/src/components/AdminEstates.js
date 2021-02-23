@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Estate from './Estate';
-import tempImage from '../images/-wide.jpg'
+import tempImage from '../images/WIP.jpg'
 import authService from '../services/auth.service';
 
 

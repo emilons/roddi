@@ -102,6 +102,37 @@ class AuthService {
     console.log(response);
   }
 
+  // ADD User to Estate
+  async addMember(estateId, userId) {
+    const response = await axios.post(API_URL + "user_in_estate-create/", {
+      user: userId,
+      estate: estateId
+    });
+    console.log(response);
+  }
+
+  // GET User by email
+  async getUserIdByEmail(userEmail) {
+    let returnList = []
+    let userList = [];
+    await axios.get(API_URL + "user-list/")
+    .then(response => response.data.map((user) => (
+      userList.push(user)
+    )));
+    userList.forEach(element => {
+      if (element.email == userEmail) {
+        returnList.push(element);
+      }
+    })
+    return returnList;
+  }
+
+  // DELETE User from Estate
+  async deleteMember(userId) {
+    const response = await axios.delete(API_URL + "user_in_estate-delete/" + userId);
+    console.log(response);
+  }
+
   // GET logged in user
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));

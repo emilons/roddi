@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Estate from './Estate';
 import User from './User';
 import Item from './Item';
-import tempImage from '../images/-wide.jpg';
+import tempImage from '../images/WIP.jpg';
 import authService from '../services/auth.service';
 import Modal from 'react-modal';
 
@@ -28,17 +28,35 @@ function AdminEstatePage(props) {
     const [estateName, setEstateName] = useState("");
     const [items, setItems] = useState([]);
     const [members, setMembers] = useState([]);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [itemModalIsOpen, setItemModalIsOpen] = useState(false);
+    const [memberModalIsOpen, setMemberModalIsOpen] = useState(false);
     
     // State for add Item Modal
     const [addNewItem, setAddNewItem] = useState({
         itemName: "",
-        itemDescription: ""
+        itemDescription: "" 
+        // state for item picture
     });
-    // state for item picture
-    
-    
+    const handleItemChange = (e) => {
+        const {id , value} = e.target   
+        setAddNewItem(prevState => ({
+            ...prevState,
+            [id] : value
+        }))
+    }
+    const [addNewMember, setAddNewMember] = useState({
+        memberEmail: ""
+    })
 
+    // State for add Member Modal
+    const handleMemberChange = (e) => {
+        const {id , value} = e.target   
+        setAddNewMember(prevState => ({
+            ...prevState,
+            [id] : value
+        }))
+    }
+    
      // get Estates from Backend and initialize list of estates with these
      useEffect(() => {
         // setEstateID bbased on URL
@@ -64,7 +82,6 @@ function AdminEstatePage(props) {
             let newMembers = members.concat(initMembers);
             setMembers(newMembers);
             setEstateName(res.data.name);
-            console.log("initMembers: " + initMembers);
         });
         authService.getItemsByEstateID(estateID).then(res => {
             console.log(res);
@@ -83,18 +100,22 @@ function AdminEstatePage(props) {
             }
             let newItems = items.concat(initItems);
             setItems(newItems);
-            console.log("initItems: " + initItems);
         });
     }, [])
 
 
-    function addMember() {
-
+    // Item functions
+    // Modal functions
+    function openItemModal() {
+        setItemModalIsOpen(true);
     }
 
-    // Item functions
+    function closeItemModal() {
+        setItemModalIsOpen(false);
+    }
+
     function addItem() {
-        openModal();
+        openItemModal();
     }
 
     function submitItem() {
@@ -105,9 +126,9 @@ function AdminEstatePage(props) {
             estate: estateID
         }
         let newItems = items.concat([x]);
-        authService.addItem(x.state.name, x.state.description, x.state.estate)
+        authService.addItem(x.state.name, x.state.description, x.state.estate);
         setItems(newItems);
-        closeModal()
+        closeItemModal()
     }
 
     function editItem() {
@@ -117,26 +138,46 @@ function AdminEstatePage(props) {
     function deleteItem(guiId, itemId) {
        let GUIItem = document.getElementById(guiId);
        GUIItem.remove();
-       console.log(itemId)
        authService.deleteItem(itemId);
     }
 
-    const handleChange = (e) => {
-        const {id , value} = e.target   
-        setAddNewItem(prevState => ({
-            ...prevState,
-            [id] : value
-        }))
+    // Member functions
+    function openMemberModal() {
+        setMemberModalIsOpen(true);
     }
 
-    // Modal functions
-    function openModal() {
-        setModalIsOpen(true);
+    function closeMemberModal() {
+        setMemberModalIsOpen(false);
     }
 
-    function closeModal() {
-        setModalIsOpen(false);
+    function addMember() {
+        openMemberModal();
     }
+
+    function submitMember() {
+        //validering av input og om input allerede eksisterer i estate og om input i det hele tatt eksisterer
+        authService.getUserIdByEmail(addNewMember.memberEmail)
+        .then(res => {
+            let x = new User();
+            x.state = {
+                id: res[0].id,
+                name: res[0].name,
+                email: res[0].email
+            }
+            let newMembers = members.concat([x]);
+            authService.addMember(estateID, x.state.id);
+            setMembers(newMembers);
+        });
+        closeMemberModal();
+    }
+    
+    function deleteMember(guiId, memberId) {
+        let GUIItem = document.getElementById(guiId);
+        GUIItem.remove();
+        authService.deleteMember(memberId);
+     }
+
+    
 
     return(
         <div className="AdminEstatePage" style={{display: 'flex', justifyContent: 'center', height: '100%', position: 'relative'}}>
@@ -150,10 +191,29 @@ function AdminEstatePage(props) {
                     {members.map((element, index) => (
                         <div key={"member"+index} id={"m"+index} style={{border: '1px solid'}}>
                             <h4>{element.state.name}</h4>
+                            <button type="button" className="btn-danger" onClick={() => deleteMember("m"+index,element.state.id)}>Slett</button>
                         </div>
                     ))}
                     <div className="addMember">
                         <button type="submit" className="btn btn-secondary" onClick={addMember}>Legg til medlem</button>
+                        <Modal
+                            isOpen={memberModalIsOpen}
+                            onRequestClose={closeMemberModal}
+                            contentLabel="Example Modal">
+                            <h2>Brukere</h2>
+                            <form>
+                                <div className="form-group text-left">
+                                    <label htmlFor="memberEmail">Fyll inn bruker email</label>
+                                    <input type="name" 
+                                        className="form-control"
+                                        id="memberEmail" 
+                                        required
+                                        value={addNewMember.memberEmail} 
+                                        onChange={handleMemberChange}/>
+                                </div> 
+                            </form>
+                            <button onClick={submitMember}>Legg til medlem</button>
+                        </Modal>
                     </div>
                 </div>
             </div>
@@ -163,7 +223,7 @@ function AdminEstatePage(props) {
                     <div className="itemRow">
                         {items.map((element, index) => (
                             <div key={"item"+index} id={"i"+index} style={{border: '1px solid', flexDirection: 'column'}}>
-                                <img style={{height: "100px", width: "260px"}} src={tempImage} alt="temporary pic"/>
+                                <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
                                 <h4>{element.state.name}</h4>
                                 <button type="button" className="btn-primary" onClick={editItem}>Rediger</button>
                                 <button type="button" className="btn-danger" onClick={() => deleteItem("i"+index,element.state.id)}>Slett</button>
@@ -173,8 +233,8 @@ function AdminEstatePage(props) {
                     <div className="addItem">
                         <button type="submit" className="btn btn-secondary" onClick={addItem}>Legg til eiendel</button>
                         <Modal
-                            isOpen={modalIsOpen}
-                            onRequestClose={closeModal}
+                            isOpen={itemModalIsOpen}
+                            onRequestClose={closeItemModal}
                             contentLabel="Example Modal">
                             <h2>Oppgjør: {estateName}</h2>
                             <form>
@@ -186,7 +246,7 @@ function AdminEstatePage(props) {
                                         required
                                         placeholder="Navn på eiendel" 
                                         value={addNewItem.itemName} 
-                                        onChange={handleChange}/>
+                                        onChange={handleItemChange}/>
                                 </div> 
                                 <div className="form-group text-left">
                                     <label htmlFor="itemDescription">Legg til en beskrivelse</label>
@@ -196,7 +256,7 @@ function AdminEstatePage(props) {
                                         required
                                         placeholder="..."
                                         value={addNewItem.itemDescription}
-                                        onChange={handleChange}/>
+                                        onChange={handleItemChange}/>
                                 </div>
                             </form>
                             <button onClick={submitItem}>Legg til eiendel</button>
