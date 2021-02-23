@@ -64,6 +64,9 @@ class AuthService {
     return returnList; */
   }
 
+  // GET EstateID from url or something... ########for next sprint#########
+  
+
   // GET items from DB by estate ID
   async getItemsByEstateID(estateId) {
     // Kinda bad solution at the moment, have to get all items first then sort by correct id
@@ -83,6 +86,23 @@ class AuthService {
     return returnList;
   }
 
+  // POST item to DB
+  async addItem(name, description, estate) {
+    const response = await axios.post(API_URL + "item-create/", {
+      name,
+      description,
+      estate
+    });
+    console.log(response);
+  }
+
+  // DELETE item from DB
+  async deleteItem(itemId) {
+    const response = await axios.delete(API_URL + "item-delete/" + itemId);
+    console.log(response);
+  }
+
+  // GET logged in user
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));
   }

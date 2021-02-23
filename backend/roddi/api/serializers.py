@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class EstateSerializer(serializers.ModelSerializer):
+    users = UserSerializer(many=True)
     class Meta:
         model = Estate
         fields = '__all__'
