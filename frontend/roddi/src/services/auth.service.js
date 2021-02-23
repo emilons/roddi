@@ -90,6 +90,7 @@ class AuthService {
 
   // POST item to DB
   async addItem(name, description, estate) {
+    //let voters = []; // temp solution
     const response = await axios.post(API_URL + "item-create/", {
       name,
       description,

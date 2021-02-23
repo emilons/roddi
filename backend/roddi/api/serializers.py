@@ -16,7 +16,7 @@ class EstateSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    voters = UserSerializer(many=True)
+    #voters = UserSerializer(many=True)
     class Meta:
         model = Item
         fields = '__all__'

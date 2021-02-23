@@ -84,7 +84,6 @@ function AdminEstatePage(props) {
             setEstateName(res.data.name);
         });
         authService.getItemsByEstateID(estateID).then(res => {
-            console.log(res);
             let initItems = [];
             let itemsLength = res.length;
             if (itemsLength != 0) {
@@ -125,9 +124,12 @@ function AdminEstatePage(props) {
             description: addNewItem.itemDescription,
             estate: estateID
         }
+        console.log("Item is: " + x)
         let newItems = items.concat([x]);
+        console.log(newItems)
         authService.addItem(x.state.name, x.state.description, x.state.estate);
         setItems(newItems);
+        setAddNewItem({itemName: "", itemDescription: ""});
         closeItemModal()
     }
 
@@ -172,8 +174,8 @@ function AdminEstatePage(props) {
     }
     
     function deleteMember(guiId, memberId) {
-        let GUIItem = document.getElementById(guiId);
-        GUIItem.remove();
+        let GUIMember = document.getElementById(guiId);
+        GUIMember.remove();
         authService.deleteMember(memberId);
      }
 
