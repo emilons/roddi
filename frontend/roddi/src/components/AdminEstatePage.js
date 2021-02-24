@@ -252,7 +252,7 @@ function AdminEstatePage(props) {
                             <div key={"item"+index} id={"i"+index} style={{border: '1px solid', flexDirection: 'column'}}>
                                 <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
                                 <h4>{element.state.name}</h4>
-                                <button type="button" className="btn-primary" onClick={editItem}>Rediger</button>
+                                {/*<button type="button" className="btn-primary" onClick={editItem}>Rediger</button>*/}
                                 <button type="button" className="btn-danger" onClick={() => deleteItem("i"+index,element.state.id)}>Slett</button>
                             </div>
                         ))}
