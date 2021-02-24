@@ -5,6 +5,7 @@ import Item from './Item';
 import tempImage from '../images/WIP.jpg';
 import authService from '../services/auth.service';
 import Modal from 'react-modal';
+import '../App.css';
 
 Modal.setAppElement('#root')
 
@@ -204,22 +205,21 @@ function AdminEstatePage(props) {
     
 
     return(
-        <div className="AdminEstatePage" style={{display: 'flex', justifyContent: 'center', height: '100%', position: 'relative'}}>
-            
+        <div className="AdminEstatePage">
             <div className="nameAndMembers">
                 <div className="estateName">
                     <h1>{estateName}</h1>
                 </div>
-                <div className="memebersList">
+                <div className="membersList">
                     <h2>Deltakere</h2>
                     {members.map((element, index) => (
                         <div key={"member"+index} id={"m"+index} style={{border: '1px solid'}}>
                             <h4>{element.state.name}</h4>
-                            <button type="button" className="btn-danger" onClick={() => deleteMember("m"+index, element.state.id)}>Slett</button>
+                            <button type="button" className="btn btn-outline-warning" onClick={() => deleteMember("m"+index, element.state.id)}>Slett</button>
                         </div>
                     ))}
                     <div className="addMember">
-                        <button type="submit" className="btn btn-secondary" onClick={addMember}>Legg til medlem</button>
+                        <button type="submit" className="btn btn-outline-danger" onClick={addMember}>Legg til medlem</button>
                         <Modal
                             isOpen={memberModalIsOpen}
                             onRequestClose={closeMemberModal}
@@ -239,7 +239,7 @@ function AdminEstatePage(props) {
                                     className="form-text"> 
                                 </small>
                             </form>
-                            <button onClick={submitMember}>Legg til medlem</button>
+                            <button className="btn btn-outline-danger" onClick={submitMember}>Legg til medlem</button>
                         </Modal>
                     </div>
                 </div>
@@ -249,16 +249,16 @@ function AdminEstatePage(props) {
                 <div className="itemsList">
                     <div className="itemRow">
                         {items.map((element, index) => (
-                            <div key={"item"+index} id={"i"+index} style={{border: '1px solid', flexDirection: 'column'}}>
+                            <div key={"item"+index} id={"i"+index} style={{border: '1px solid'}}>
                                 <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
                                 <h4>{element.state.name}</h4>
-                                <button type="button" className="btn-primary" onClick={editItem}>Rediger</button>
-                                <button type="button" className="btn-danger" onClick={() => deleteItem("i"+index,element.state.id)}>Slett</button>
+                                <button type="button" className="btn btn-outline-primary" onClick={editItem}>Rediger</button>
+                                <button type="button" className="btn btn-outline-warning" onClick={() => deleteItem("i"+index,element.state.id)}>Slett</button>
                             </div>
                         ))}
                     </div>
                     <div className="addItem">
-                        <button type="submit" className="btn btn-secondary" onClick={addItem}>Legg til eiendel</button>
+                        <button type="submit" className="btn btn-outline-danger" onClick={addItem}>Legg til eiendel</button>
                         <Modal
                             isOpen={itemModalIsOpen}
                             onRequestClose={closeItemModal}
@@ -286,7 +286,7 @@ function AdminEstatePage(props) {
                                         onChange={handleItemChange}/>
                                 </div>
                             </form>
-                            <button onClick={submitItem}>Legg til eiendel</button>
+                            <button className="btn btn-outline-danger" onClick={submitItem}>Legg til eiendel</button>
                         </Modal>
                     </div>
                 </div>

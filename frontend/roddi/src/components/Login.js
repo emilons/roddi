@@ -82,7 +82,7 @@ function Login(props)  {
                         onChange={handleChange}/>
                 </div>
                 <div>
-                    <button type="submit" className="btn-secondary" onClick={handleSubmit}>Logg inn</button>
+                    <button type="submit" className="btn btn-outline-danger" onClick={handleSubmit} id="Login">Logg inn</button>
                 </div>
             </form>
         </div>
