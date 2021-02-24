@@ -29,6 +29,10 @@ class Item(models.Model):
 class User_In_Estate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     estate = models.ForeignKey(Estate, on_delete=models.CASCADE)
+
+
+    class Meta:
+        unique_together=(('user', 'estate'),)
     
 
 
