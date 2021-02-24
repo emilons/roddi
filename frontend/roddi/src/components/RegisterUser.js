@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, {useState, useHistory} from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState} from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service'
+import Login from './Login';
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -13,8 +14,15 @@ function RegisterUser(props) {
         isAdmin: false,
         estates: []
     });
-
     
+
+    const history = useHistory();
+    function routeChange() {
+        let path = '/AdminEstates';
+        history.push(path);
+    }
+
+
     const handleChange = (e) => {
         const {id , value} = e.target   
         setState(prevState => ({
@@ -22,6 +30,7 @@ function RegisterUser(props) {
             [id] : value
         }))
     }
+
     const validateSubmit = (e) => {
         if (
             document.getElementById('password').value == document.getElementById('confirmPassword').value &&
@@ -31,6 +40,7 @@ function RegisterUser(props) {
             document.getElementById('name').value != '')
             {
                 AuthService.register(state.name, state.email, state.password, state.estates);
+                routeChange();
             } 
                 
         else {
