@@ -78,7 +78,7 @@ function AdminEstates() {
                         className="form-text"> 
                     </small>
                 </form>
-                <button type="submit" className="btn btn-secondary" onClick={submitEstate}>
+                <button type="submit" className="btn btn-outline-danger" onClick={submitEstate}>
                     Opprett Dødsbo
                 </button>
             </div>
@@ -87,7 +87,7 @@ function AdminEstates() {
                 <div className="estateList" style={{marginLeft: 100, marginRight: 100, width: 800}}>
                     {estates.map((item, index) => (
                         <div key={"estate"+index} id={"e"+index} style={{border: '1px solid'}}>
-                            <h1>Dødsbo {item.state.name}</h1>
+                            <h1 style={{margin:'20px 0 20px 300px'}}>Dødsbo {item.state.name}</h1>
                             <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
                         </div>

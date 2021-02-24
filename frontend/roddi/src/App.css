@@ -1,5 +1,5 @@
-.App {
-  text-align: center;
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .form {
@@ -11,9 +11,91 @@ a, a:hover {
   text-decoration: none;
 }
 
-
-.btn-light {
+#loginDiriger {
   margin-left: 2px;
   font-size: 10px;
   padding: 0px 20px 0px 20px;
+}
+
+form:last-child {
+  margin-left: 2px;
+  font-size: 10px;
+  padding: 0px 20px 0px 20px;
+}
+.AdminEstatePage {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0 0 0;
+}
+
+.membersList div {
+  margin-bottom: 20px;
+}
+
+.membersList h2 {
+  margin-bottom: 20px;;
+}
+
+.btn-danger {
+  position: relative;
+  margin: 10px 0 10px 30%;
+}
+
+.membersList div > h4 {
+  margin: 5px 0 0 35px;
+}
+
+.itemRow div > h4 {
+  margin: -10px 0 10px 80px;
+}
+
+.itemRow > div button.btn-primary {
+  margin: 0px 5px 10px 17px;
+}
+
+.itemRow > div button.btn-danger {
+  margin: 10px 0 0 40px;
+}
+
+.itemRow {
+  margin-bottom: 20px;
+}
+
+.addItem > button {
+  margin-left: 35px;
+}
+
+.estateList > h1 {
+  margin-left: 40px;
+}
+
+.createEstate > button {
+  margin-left: 100px;
+}
+
+.items {
+  margin-top: 5px;
+}
+
+.items > h2 {
+  margin-left: 36px;
+}
+
+.Header .buttons {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.Overskrift {
+  color: #CC0000;
+}
+
+.buttons > button, #Login {
+  color: #CC0000;
+}
+
+.navbar-dark {
+  background-color: white;
 }

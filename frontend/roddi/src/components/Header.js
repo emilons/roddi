@@ -53,27 +53,27 @@ function Header() {
 */
     return (
         User.name, 
-        <nav className = "navbar navbar-dark bg-dark">
-            <div className ="row col-12 d-flex justify-content-center text-white">
-                <span className = "Overskrift"><NavLink to="/">Røddi - Nettsiden som bla bla bla</NavLink></span>
+        <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
+            <div className ="row col-12 d-flex justify-content-center text-white" style={{fontSize:"50px", fontFamily:"Comic Sans MS"}}>
+                <span className = "Overskrift"><NavLink to="/">Røddi</NavLink></span>
             </div>
             <div className="buttons">
                 {(!localStorage.getItem('token')) && (
-                <button className="btn-secondary">
+                <button className="btn btn-outline-danger">
                     <NavLink to="/Registrer">Registrer deg</NavLink>
                 </button>
                 )}
                 {(!localStorage.getItem('token')) && (
-                <button className="btn-secondary">
+                <button className="btn btn-outline-danger">
                     <NavLink to="/Login">Logg Inn</NavLink>
                 </button>)}
                 {localStorage.getItem('token') && (
-                    <button className="btn-secondary">
+                    <button className="btn btn-outline-danger">
                     <NavLink to="/AdminEstates">Admin</NavLink>
                 </button>
                 )}
                 {localStorage.getItem('token') && (
-                <button className="btn-secondary">
+                <button className="btn btn-outline-danger">
                 <NavLink to="/AdminEstatePage">AdminEstate</NavLink>
             </button>)}
                 {state.currentUser && (
@@ -82,7 +82,7 @@ function Header() {
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}
                 {localStorage.getItem('token') && (
-                    <button onClick={logOut}>
+                    <button className="btn btn-outline-danger" onClick={logOut}>
                         Logg Ut
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}

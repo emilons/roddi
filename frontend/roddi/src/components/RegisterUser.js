@@ -101,12 +101,12 @@ function RegisterUser(props) {
                 </div>
                 <button 
                     type="submit" 
-                    className="btn btn-secondary"
+                    className="btn btn-outline-danger"
                     onClick={validateSubmit}
                     >
                     Registrer deg
                 </button>
-                <button type="submit" className="btn-light"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
+                <button type="submit" className="btn btn-outline-danger" id="loginDiriger"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
             </form>
         </div>
     )
