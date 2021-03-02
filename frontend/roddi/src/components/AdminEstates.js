@@ -1,34 +1,48 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Estate from './Estate';
-import tempImage from '../images/-wide.jpg'
+import tempImage from '../images/WIP.jpg'
+import authService from '../services/auth.service';
 
-// gets Estate JSON objects from DB and sets initial Estate List
-function getEstatesFromDB() {
-    
-    // temporary example objects
-    let x = new Estate();
-    x.state.name="Andersen";
-    let y = new Estate();
-    y.state.name="Solvang";
-    // return Objects
-    return [x,y];
-}
+
+
 
 
 function AdminEstates() {
     const [nameInput, setNameInput] = useState("");
+    const [estates, setEstates] = useState([]);
+
+    // get Estates from Backend and initialize list of estates with these
+    useEffect(() => {
+        authService.getEstates().then(res => {
+            let initEstates = []
+            for (let i = 0; i < res.length; i++){
+                let tempEstate = new Estate();
+                tempEstate.state = {
+                    id: res[i].id,
+                    name: res[i].name,
+                    status: res[i].status
+                }
+                initEstates.push(tempEstate);
     
-    // get list of Estates from database and put in this array
-    const [estates, setEstates] = useState(getEstatesFromDB());
+            }
+            let newEstates = estates.concat(initEstates);
+            setEstates(newEstates);
+            console.log(initEstates);
+        });
+    }, [])
     
     const handleChange = (e) => {
        setNameInput(e.target.value);
     }
 
     function addToEstateList() {
-        let est = new Estate();
-        est.state.name=nameInput;
-        let newEstates = estates.concat([est]);
+        const x = new Estate()
+        x.state = {
+            name: nameInput,
+            status: true
+        }
+        let newEstates = estates.concat([x]);
+        authService.addEstate(x.state.name, true);
         setEstates(newEstates);
     }
 
@@ -46,11 +60,11 @@ function AdminEstates() {
     
     
     return(
-        <div>
+        <div className="AdminEstates">
             <div className="createEstate">
                 <form className="form">
                     <div className ="form-group text-left" >
-                    <label htmlFor="exampleUserName">Opprett Dødsbo</label>
+                    <label htmlFor="estateNameInput">Opprett Dødsbo</label>
                     <input type="text" 
                         className="form-control" 
                         id="nameInput" 
@@ -64,21 +78,22 @@ function AdminEstates() {
                         className="form-text"> 
                     </small>
                 </form>
-                <button type="submit" className="btn btn-secondary" onClick={submitEstate}>
+                <button type="submit" className="btn btn-outline-danger" onClick={submitEstate}>
                     Opprett Dødsbo
                 </button>
             </div>
-
-            <div className="estates">
-                <ul className="estateList">
+            
+            <div className="estates" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', height: '100%', position: 'relative'}}>
+                <div className="estateList" style={{marginLeft: 100, marginRight: 100, width: 800}}>
                     {estates.map((item, index) => (
-                        <div key={"estate"+index} id={"e"+index}>
-                            <h1>Dødsbo {item.state.name}</h1>
+                        <div key={"estate"+index} id={"e"+index} style={{border: '1px solid'}}>
+                            <h1 style={{margin:'20px 0 20px 300px'}}>Dødsbo {item.state.name}</h1>
                             <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
                         </div>
                     ))}
-                </ul>
+                </div>
+                {/*<ul className="estateList" style={{margin: '50 50 50 50'}}></ul>*/}
             </div>
         </div>
 
