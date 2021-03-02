@@ -8,11 +8,11 @@ class Estate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: undefined,
+            id: null,
             name: "",
             items: [],
             members: [],
-            open: true // Boolean for if the estate is finished.
+            status: true // Boolean for if the estate is finished.
         }
     }
     

@@ -5,6 +5,7 @@ class Item extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: null,
             name: "",
             picture: Blob, // Not sure about the blob-type, but we will check it out.
             description: "",

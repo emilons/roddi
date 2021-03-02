@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service'
+import Login from './Login';
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -12,7 +13,15 @@ function RegisterUser(props) {
         confirmPassword: "",
         isAdmin: false,
         estates: []
-    })
+    });
+    
+
+    const history = useHistory();
+    function routeChange() {
+        let path = '/AdminEstates';
+        history.push(path);
+    }
+
 
     const handleChange = (e) => {
         const {id , value} = e.target   
@@ -21,7 +30,6 @@ function RegisterUser(props) {
             [id] : value
         }))
     }
-
 
     const validateSubmit = (e) => {
         if (
@@ -32,6 +40,7 @@ function RegisterUser(props) {
             document.getElementById('name').value != '')
             {
                 AuthService.register(state.name, state.email, state.password, state.estates);
+                routeChange();
             } 
                 
         else {
@@ -102,12 +111,12 @@ function RegisterUser(props) {
                 </div>
                 <button 
                     type="submit" 
-                    className="btn btn-secondary"
+                    className="btn btn-outline-danger"
                     onClick={validateSubmit}
                     >
                     Registrer deg
                 </button>
-                <button type="submit" className="btn-light"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
+                <button type="submit" className="btn btn-outline-danger" id="loginDiriger"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
             </form>
         </div>
     )
