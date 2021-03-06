@@ -130,10 +130,16 @@ function AdminEstatePage(props) {
 
     function submitItem() {
         const x = new Item()
+        const familyMembers = members
+        const choiceMap = new Map()
+        for (let i = 0; i < members.length; i++) {
+            choiceMap.set(members[i], -1);
+        }
         x.state = {
             name: addNewItem.itemName,
             description: addNewItem.itemDescription,
-            estate: estateID
+            estate: estateID,
+            userChoice: choiceMap
         }
         let newItems = items.concat([x]);
         console.log(newItems)
