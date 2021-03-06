@@ -9,11 +9,10 @@ class Item extends React.Component {
             name: "",
             picture: Blob, // Not sure about the blob-type, but we will check it out.
             description: "",
-            wanted: false,
-            wantedBy: [],
-            dispose: false,
-            donate: false            
+            userChoice: Map()//.set(User, 0), // map with user as key and priority as value
+           
         }
+        //this.setState(userChoice.set(User, 0)); // something like this to initiate map
     }
     
     
