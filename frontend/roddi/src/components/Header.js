@@ -10,6 +10,13 @@ import Login from './Login';
 
 function Header() {
 
+    const history = useHistory();
+    const routeChange = () => {
+        let path = '/Login';
+        history.push(path);
+    }
+
+
     const [state , setState] = useState({
     isAdmin: false,
     currentUser: undefined,

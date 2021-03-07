@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, {useState} from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import API from '../services/api';
@@ -6,6 +5,13 @@ import AuthService from '../services/auth.service'
 import Login from './Login';
 
 function RegisterUser(props) {
+
+    const history = useHistory();
+    const routeChange = () => {
+        let path = '/';
+        history.push(path);
+    }
+
     const [state , setState] = useState({
         name : "",
         email : "",
@@ -27,7 +33,7 @@ function RegisterUser(props) {
         const {id , value} = e.target   
         setState(prevState => ({
             ...prevState,
-            [id] : value
+            [id] : value,
         }))
     }
 
@@ -84,7 +90,7 @@ function RegisterUser(props) {
                         id="password"
                         required 
                         placeholder="Velg et passord"
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,55}"
                         value={state.password}
                         onChange={handleChange} 
                     />

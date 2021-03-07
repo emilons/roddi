@@ -25,7 +25,14 @@ class AuthService {
       name,
       email,
       password,
-      estates,
+//      email
+    }).then(json => {
+      localStorage.setItem('token', json.token)
+      /*this.setState({
+        loggedIn: true,
+        currentUser: json.email,
+        isAdmin: true
+      })
     });
     localStorage.setItem('token', 'admin');
     window.location.reload(false);

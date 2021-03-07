@@ -1,18 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
-##Dette er egentlig utdatert mtp Victorias token logikk, men lettere å jobbe med for frontend
-class User(models.Model):
-    name = models.CharField(max_length=55)
-    password = models.CharField(max_length=255)
-    email = models.EmailField(max_length=100, unique=True)
 
 
 class Estate(models.Model):
     name = models.CharField(max_length=50, unique=True)
     status = models.BooleanField()
-    users = models.ManyToManyField(User, blank=True, through="User_In_Estate")
 
 
 class Item(models.Model):

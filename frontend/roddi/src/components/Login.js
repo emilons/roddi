@@ -1,4 +1,5 @@
 import React, {Component, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
 import { useHistory } from 'react-router-dom';
@@ -22,9 +23,9 @@ function handleLogin() {
         });*/
     }
 
-function Login(props)  {
+
     const [state , setState] = useState({
-        email : "",
+        username : "",
         password : "",
     })
 
@@ -41,11 +42,11 @@ function Login(props)  {
             [id] : value
         }))
     }
+
     
     const handleSubmit = () => {
         console.log(state);
-        if (document.getElementById('email').value == '' || 
-            (!document.getElementById('email').value.includes('@')) ||
+        if (document.getElementById('username').value == '' || 
             document.getElementById('password').value == '')
             return;
         else {
@@ -62,12 +63,12 @@ function Login(props)  {
         <div className="form">
             <form>
                 <div className="form-group text-left">
-                    <label htmlFor="exampleUserName">E-mail</label>
-                    <input type="email" 
+                    <label htmlFor="exampleUserName">Navn</label>
+                    <input type="text" 
                         className="form-control"
-                        id="email" 
+                        id="username" 
                         required
-                        placeholder="Skriv inn din E-mail" 
+                        placeholder="Skriv inn ditt navn" 
                         value={state.email} 
                         onChange={handleChange}/>
                 </div> 
