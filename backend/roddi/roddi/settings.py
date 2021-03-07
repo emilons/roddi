@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
+from datetime import datetime
+from datetime import time
+from datetime import date
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -95,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'roddi',
         'USER': 'root',
-        'PASSWORD': 'rootuser',
+        'PASSWORD': 'ATLASbob97',
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -121,7 +126,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'roddi.utils.my_jwt_response_handler'
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'roddi.utils.my_jwt_response_handler',
+#    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300),
+    'JWT_VERIFY_EXPIRATION': False
+
 }
 
 

@@ -6,12 +6,6 @@ import Login from './Login';
 
 function RegisterUser(props) {
 
-    const history = useHistory();
-    const routeChange = () => {
-        let path = '/';
-        history.push(path);
-    }
-
     const [state , setState] = useState({
         name : "",
         email : "",
@@ -45,7 +39,7 @@ function RegisterUser(props) {
             document.getElementById('password').value != '' &&
             document.getElementById('name').value != '')
             {
-                AuthService.register(state.name, state.email, state.password, state.estates);
+                AuthService.register(state.name, state.password, state.email);
                 routeChange();
             } 
                 

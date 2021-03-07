@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Estate, Item
+from .models import Estate, Item, User_Item, User_In_Estate
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
 

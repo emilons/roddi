@@ -22,12 +22,6 @@ function Header() {
     currentUser: undefined,
     loggedIn: false
   })
-  const history = useHistory();
-  const routeChange = () => {
-      let path = '/Login';
-      history.push(path);
-  }
-
 
 /*
   useEffect(() => {

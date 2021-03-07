@@ -11,6 +11,7 @@ import AdminEstates from "./components/AdminEstates";
 import AdminEstatePage from './components/AdminEstatePage';
 //import MyEstate from './components/MyEstate';
 import AuthService from "./services/auth.service";
+import {Component} from  'react';
 
 
 function logOut() {
@@ -46,5 +47,5 @@ class App extends Component {
     </HashRouter>
   );
 }
-
+}
 export default App;

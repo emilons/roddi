@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from.serializers import UserSerializer, UserSerializerWithToken, EstateSerializer, ItemSerializer
-from .models import Estate, Item
+from.serializers import UserSerializer, UserSerializerWithToken, EstateSerializer, ItemSerializer, User_In_EstateSerializer
+from .models import Estate, Item, User_In_Estate, User_Item
 
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -49,7 +49,7 @@ def current_user(request):
     """
     Determine the current user by their token, and return their data
     """
-    permission_classes = (IsAuthenticated,)
+#    permission_classes = (IsAuthenticated,)
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
 
