@@ -8,9 +8,10 @@ import Login from './components/Login';
 import Header from "./components/Header"
 import RegisterUser from "./components/RegisterUser";
 import AdminEstates from "./components/AdminEstates";
-import myEstate from './components/myEstate';
+import AdminEstatePage from './components/AdminEstatePage';
+//import MyEstate from './components/MyEstate';
 import AuthService from "./services/auth.service";
-import { Component, useEffect } from 'react';
+
 
 function logOut() {
   AuthService.logout();
@@ -38,13 +39,12 @@ class App extends Component {
         <div className="App">
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
-          <Route path="/AdminEstates" component={AdminEstates} />
-          <Route path="/myEstates" component={myEstate} />
-          <Route exact path="/" component={Home} />
-        </div>
-      </HashRouter>
-    );
-  }
+          <Route path="/AdminEstates" component={AdminEstates}/>
+          <Route path="/AdminEstatePage" component={AdminEstatePage}/>
+          <Route exact path="/" component=""/> 
+      </div>
+    </HashRouter>
+  );
 }
 
 export default App;

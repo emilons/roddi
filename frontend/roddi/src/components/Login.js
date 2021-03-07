@@ -2,13 +2,25 @@ import React, {Component, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
+import { useHistory } from 'react-router-dom';
+import Header from './Header';
 
-
-function Login(props)  {
-    const history = useHistory();
-    const routeChange = () => {
-        let path = '/';
-        history.push(path);
+function handleLogin() {
+    localStorage.setItem('token', 'admin')
+    /*   AuthService.login(this.state.email, this.state.password, this.state.isAdmin).then(
+        () => {
+            if (this.state.isAdmin) {
+                this.props.history.push("/estates");
+                window.location.reload(false);
+            } 
+            else {
+                this.props.history.push("/my-estate");
+                window.location.reload(false);
+            } 
+        },
+        error => {
+          console.log("Noe gikk feil.");
+        });*/
     }
 
 
@@ -16,7 +28,13 @@ function Login(props)  {
         username : "",
         password : "",
     })
-    
+
+    const history = useHistory();
+    const routeChange = () => {
+        let path = '/AdminEstates';
+        history.push(path);
+    }
+
     const handleChange = (e) => {
         const {id , value} = e.target   
         setState(prevState => ({
@@ -32,13 +50,13 @@ function Login(props)  {
             document.getElementById('password').value == '')
             return;
         else {
-            if (AuthService.login(state.username, state.password)) {
-                routeChange();
-            }
+            handleLogin();
+            routeChange();
+            window.location.reload(false);
         }
     }
 
-
+    
     
     
     return(
@@ -65,7 +83,7 @@ function Login(props)  {
                         onChange={handleChange}/>
                 </div>
                 <div>
-                    <button type="submit" className="btn-secondary" onClick={handleSubmit}>Logg inn</button>
+                    <button type="submit" className="btn btn-outline-danger" onClick={handleSubmit} id="Login">Logg inn</button>
                 </div>
             </form>
         </div>

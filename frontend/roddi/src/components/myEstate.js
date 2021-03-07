@@ -75,7 +75,7 @@ export default AdminEstates;
 import AuthService from "../services/auth.service";
 import Estate from './Estate';
 
-export default class myEstate extends Component {
+export default class MyEstate extends Component {
   constructor(props) {
     super(props);
 

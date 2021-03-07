@@ -4,9 +4,9 @@ import {
     useHistory
   } from "react-router-dom";
 import "../App.css"
-
 import User from './User';
 import AuthService from '../services/auth.service'
+import Login from './Login';
 
 function Header() {
 
@@ -22,7 +22,14 @@ function Header() {
     currentUser: undefined,
     loggedIn: false
   })
+  const history = useHistory();
+  const routeChange = () => {
+      let path = '/Login';
+      history.push(path);
+  }
 
+
+/*
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
@@ -33,41 +40,57 @@ function Header() {
         loggedIn: true 
       })
     };
-  })
+  })*/
 
-  function logOut() {
+  function logOut(props) {
       AuthService.logout();
       routeChange();
+      window.location.reload(false);
   }
 
+/*  function logIn() {
+        routeChange("/AdminEstates");
+        this.setState({
+            isAdmin: true,
+            currentUser: undefined,
+            loggedIn: true
+    })
+
+}
+*/
     return (
         User.name, 
-        <nav className = "navbar navbar-dark bg-dark">
-            <div className ="row col-12 d-flex justify-content-center text-white">
-                <span className = "Overskrift"><NavLink to="/">Røddi - Nettsiden som bla bla bla</NavLink></span>
+        <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
+            <div className ="row col-12 d-flex justify-content-center text-white" style={{fontSize:"50px", fontFamily:"Comic Sans MS"}}>
+                <span className = "Overskrift"><NavLink to="/">Røddi</NavLink></span>
             </div>
             <div className="buttons">
-                {(!localStorage.getItem("token")) && (
-                <button className="btn-secondary">
+                {(!localStorage.getItem('token')) && (
+                <button className="btn btn-outline-danger">
                     <NavLink to="/Registrer">Registrer deg</NavLink>
                 </button>
                 )}
-                {(!localStorage.getItem("token")) && (
-                <button className="btn-secondary">
+                {(!localStorage.getItem('token')) && (
+                <button className="btn btn-outline-danger">
                     <NavLink to="/Login">Logg Inn</NavLink>
                 </button>)}
-                {(localStorage.getItem("token")) && (
-                <button className="btn-secondary">
+                {localStorage.getItem('token') && (
+                    <button className="btn btn-outline-danger">
                     <NavLink to="/AdminEstates">Admin</NavLink>
-                </button>)}
-                {(localStorage.getItem("token")) && (
+                </button>
+                )}
+                {localStorage.getItem('token') && (
+                <button className="btn btn-outline-danger">
+                <NavLink to="/AdminEstatePage">AdminEstate</NavLink>
+            </button>)}
+                {state.currentUser && (
                     <button>
-                        <NavLink to="/myEstates">myEstates</NavLink>
+                        MyEstate
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}
-                {localStorage.getItem("token") && (
-                    <button onClick={logOut}>
-                        <NavLink to="/Login">Logg Ut</NavLink>
+                {localStorage.getItem('token') && (
+                    <button className="btn btn-outline-danger" onClick={logOut}>
+                        Logg Ut
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}
             </div>

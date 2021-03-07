@@ -12,20 +12,30 @@ class Estate(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length=55)
-    estate = models.ForeignKey(Estate, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
-    donate = models.BooleanField(default=False)
-    discard = models.BooleanField(default=False)
-    wanted = models.BooleanField(default=False)
-    wanted_level = models.IntegerField(null=True, blank=True)
-
-   
-    voters = models.ManyToManyField(User, blank=True)
+    estate = models.ForeignKey(Estate, on_delete=models.CASCADE)
+    voters = models.ManyToManyField(User, blank=True, through="User_Item")
 
     class Meta:
         unique_together = (('name', 'estate'),)
 
 
 
+class User_In_Estate(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    estate = models.ForeignKey(Estate, on_delete=models.CASCADE)
 
 
+    class Meta:
+        unique_together=(('user', 'estate'),)
+    
+
+
+class User_Item(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+
+    donate = models.BooleanField(default=False)
+    discard = models.BooleanField(default=False)
+    wanted = models.BooleanField(default=False)
+    wanted_level = models.IntegerField(default=0)
