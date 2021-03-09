@@ -29,7 +29,7 @@ function AdminEstatePage(props) {
     const [estateName, setEstateName] = useState("");
     const [items, setItems] = useState([]);
     const [members, setMembers] = useState([]);
-    const [membersInEstate, setMembersInEstate] = useState([]);
+    const [membersInEstate, setMembersInEstate] = useState([]); // member/estate relation
     const [itemModalIsOpen, setItemModalIsOpen] = useState(false);
     const [memberModalIsOpen, setMemberModalIsOpen] = useState(false);
     
@@ -59,9 +59,11 @@ function AdminEstatePage(props) {
         }))
     }
     
-     // get Estates from Backend and initialize list of estates with these
+     // get data from Backend and initialize the estate page
      useEffect(() => {
         // setEstateID bbased on URL
+
+        // get Estate
         authService.getEstateFromID(estateID).then(res => {
             let tempEstate = new Estate();
             tempEstate.state = {
@@ -84,6 +86,7 @@ function AdminEstatePage(props) {
             setMembers(newMembers);
             setEstateName(res.data.name);
         });
+        // get User-Estate relation
         authService.getUserInEstateId(estateID).then(res => {
             let userInEstateList = [];
             for (let i = 0; i < res.length; i++) {
@@ -93,7 +96,7 @@ function AdminEstatePage(props) {
             let newIds = membersInEstate.concat(userInEstateList);
             setMembersInEstate(newIds);
         })
-
+        // get items
         authService.getItemsByEstateID(estateID).then(res => {
             let initItems = [];
             let itemsLength = res.length;
