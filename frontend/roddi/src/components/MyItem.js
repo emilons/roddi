@@ -34,7 +34,7 @@ function MyItem() {
             members: res.data.users,
             }
             let initMembers = [];
-            let choiceMap = new Map()
+            
             for (let i = 0; i < tempEstate.state.members.length; i++) {
                 let tempUser = new User();
                 tempUser.state = {
@@ -42,14 +42,13 @@ function MyItem() {
                     name: res.data.users[i].name,
                     email: res.data.users[i].email
                 }
-                choiceMap.set(tempUser.state.name, -1);
+                
                 // if tempUser.name == currentUser.name then skip (so that current user is not in member list)
                 initMembers.push(tempUser);
             }
             let newMembers = members.concat(initMembers);
             setMembers(newMembers);
             setEstateName(res.data.name);
-            setMemberChoiceMap(choiceMap);
             setIsLoading(false);
         })
     }
@@ -66,7 +65,37 @@ function MyItem() {
             setItem(tempItem);
             setIsLoading(false);
         })
+        authService.getUserItemRelationByItemId(itemID).then(res => {
+            let choiceMap = new Map()
+            res.forEach(element => {
+                let userName = element.id;
+                members.forEach(el => {
+                    if (el.state.id == element.id) {
+                        userName = el.state.name
+                    }
+                });
+                if (element.wanted) {
+                    choiceMap.set(userName, element.wanted_level);
+                }
+                else if (element.donate) {
+                    choiceMap.set(userName, 0);
+                }
+                else {
+                    choiceMap.set(userName, 1);
+                }
+            })
+            console.log(choiceMap)
+            setMemberChoiceMap(choiceMap);
+        })
     }
+
+    // helper function to get user name from user id
+    function getUserNameFromUserId(userId) {
+        authService.getUserByID(userId).then(res => {
+            return res.data.name;
+        });
+    }
+
 
     useEffect(() => {
         initializeEstateAndMembers();
@@ -102,7 +131,7 @@ function MyItem() {
                             <p>Comment...</p> 
                         </div>
                         <div className="userVotes">
-                        {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.name)}/> : <p>Loading...</p>}
+                        {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.id)}/> : <p>Loading...</p>}
 
 
                         {/*element.state.userChoice[element.state.name] > 1 ? 

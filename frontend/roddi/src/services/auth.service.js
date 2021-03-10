@@ -55,15 +55,8 @@ class AuthService {
 
   // GET specific estate from DB
   async getEstateFromID(id) {
-    let returnList = [];
     const response = await axios.get(API_URL + "estate-detail/" + id);
     return response;
-    /* .then(
-      response => response.data.map((item) => (
-      returnList.push(item)
-      )));
-    //console.log(returnList);
-    return returnList; */
   }
 
   // GET EstateID from url or something... ########for next sprint#########
@@ -134,6 +127,11 @@ class AuthService {
     })
     return returnList;
   }
+  // GET User by ID
+  async getUserByID(userId) {
+    const response = await axios.get(API_URL + "user-detail/" + userId);
+    return response;
+  }
 
   // GET user_in_estate ID
   async getUserInEstateId(estateId) {
@@ -149,6 +147,22 @@ class AuthService {
       }
     })
     return returnList;
+  }
+  
+  // GET list of User_Item relations from ItemID
+  async getUserItemRelationByItemId(itemId) {
+    let totalUserItemList = [];
+    let userItemList = [];
+    await axios.get(API_URL + "user_item-list")
+    .then(response => response.data.map((element) => (
+      totalUserItemList.push(element)
+    )));
+    totalUserItemList.forEach(element => {
+      if (element.item == itemId) {
+        userItemList.push(element);
+      }
+    })
+    return userItemList;
   }
 
   // DELETE User from Estate
