@@ -133,7 +133,6 @@ function AdminEstatePage(props) {
 
     function submitItem() {
         const x = new Item()
-        const familyMembers = members
         const choiceMap = new Map()
         for (let i = 0; i < members.length; i++) {
             choiceMap.set(members[i], -1);

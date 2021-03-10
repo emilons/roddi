@@ -45,7 +45,7 @@ function MyEstate() {
             tempItem.state = {
                 id: res[i].id,
                 name: res[i].name,
-                wantedBy: res[i].voters
+                //wantedBy: res[i].voters
             }
             initItems.push(tempItem);
         }

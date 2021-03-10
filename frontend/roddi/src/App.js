@@ -8,7 +8,8 @@ import Header from "./components/Header"
 import RegisterUser from "./components/RegisterUser";
 import AdminEstates from "./components/AdminEstates";
 import AdminEstatePage from './components/AdminEstatePage';
-//import MyEstate from './components/MyEstate';
+import MyEstate from './components/MyEstate';
+import MyItem from './components/MyItem';
 import AuthService from "./services/auth.service";
 
 
@@ -28,6 +29,8 @@ function App() {
           <Route path="/Login" component={Login} />
           <Route path="/AdminEstates" component={AdminEstates}/>
           <Route path="/AdminEstatePage" component={AdminEstatePage}/>
+          <Route path="/MyEstate" component={MyEstate}/>
+          <Route path="/MyItem" component={MyItem}/>
           <Route exact path="/" component=""/> 
       </div>
     </HashRouter>

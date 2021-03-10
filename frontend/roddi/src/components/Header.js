@@ -75,7 +75,18 @@ function Header() {
                 {localStorage.getItem('token') && (
                 <button className="btn btn-outline-danger">
                 <NavLink to="/AdminEstatePage">AdminEstate</NavLink>
-            </button>)}
+                </button>
+                )}
+                {localStorage.getItem('token') && (
+                <button className="btn btn-outline-danger">
+                <NavLink to="/MyEstate">MyEstate</NavLink>
+                </button>
+                )}
+                {localStorage.getItem('token') && (
+                <button className="btn btn-outline-danger">
+                <NavLink to="/MyItem">MyItem</NavLink>
+                </button>
+                )}
                 {state.currentUser && (
                     <button>
                         MyEstate

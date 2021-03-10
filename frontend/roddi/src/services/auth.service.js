@@ -87,6 +87,11 @@ class AuthService {
     })
     return returnList;
   }
+  // GET item by item ID
+  async getItemByID(itemId) {
+    const response = await axios.get(API_URL + "item-detail/" + itemId);
+    return response;
+  }
 
   // POST item to DB
   async addItem(name, description, estate) {
