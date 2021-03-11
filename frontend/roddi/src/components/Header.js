@@ -6,16 +6,17 @@ import AuthService from '../services/auth.service';
 import Login from './Login';
 
 function Header() {
-  const [state, setState] = useState({
-    isAdmin: false,
-    currentUser: undefined,
-    loggedIn: false,
-  });
   const history = useHistory();
   const routeChange = () => {
     let path = '/Login';
     history.push(path);
   };
+
+  const [state, setState] = useState({
+    isAdmin: false,
+    currentUser: undefined,
+    loggedIn: false,
+  });
 
   /*
   useEffect(() => {
@@ -72,11 +73,6 @@ function Header() {
           {localStorage.getItem('token') && (
             <button className="btn btn-outline-danger">
               <NavLink to="/AdminEstates">Admin</NavLink>
-            </button>
-          )}
-          {localStorage.getItem('token') && (
-            <button className="btn btn-outline-danger">
-              <NavLink to="/AdminEstatePage">AdminEstate</NavLink>
             </button>
           )}
           {state.currentUser && (
