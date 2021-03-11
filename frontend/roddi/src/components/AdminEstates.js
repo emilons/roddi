@@ -91,8 +91,7 @@ function AdminEstates() {
                             <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
                             <button onClick={() => localStorage.setItem('id', item.state.id)}><Link to={{
-                                pathname:'/AdminEstatePage',
-                                state: {id: item.state.id}  
+                                pathname:'/AdminEstatePage'  
                              }}>
                                   Go to Estate
                             </Link>
