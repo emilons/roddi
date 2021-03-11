@@ -2,7 +2,7 @@ import axios from "axios";
 import {Component} from 'react';
 import Estate from "../components/Estate";
 
-const API_URL = "http://localhost:8000/api/";
+const API_URL = 'http://localhost:8000/api/';
 
 class AuthService extends Component {
 
@@ -101,7 +101,6 @@ class AuthService extends Component {
   }
 
   // GET EstateID from url or something... ########for next sprint#########
-  
 
   // GET items from DB by estate ID
   async getItemsByEstateID(estateId) {
@@ -122,14 +121,14 @@ class AuthService extends Component {
       if (element.estate == estateId) {
         returnList.push(element);
       }
-    })
+    });
     return returnList;
   }
 
   // POST item to DB
   async addItem(name, description, estate) {
     //let voters = []; // temp solution
-    const response = await axios.post(API_URL + "item-create/", {
+    const response = await axios.post(API_URL + 'item-create/', {
       name,
       description,
       estate
@@ -153,7 +152,7 @@ class AuthService extends Component {
 
   // ADD User to Estate
   async addMember(estateId, userId) {
-    const response = await axios.post(API_URL + "user_in_estate-create/", {
+    const response = await axios.post(API_URL + 'user_in_estate-create/', {
       user: userId,
       estate: estateId
     }, 
@@ -166,7 +165,7 @@ class AuthService extends Component {
 
   // GET User by email
   async getUserIdByEmail(userEmail) {
-    let returnList = []
+    let returnList = [];
     let userList = [];
     await axios.get(API_URL + "user-list/", 
     { headers: {
@@ -180,7 +179,7 @@ class AuthService extends Component {
       if (element.email == userEmail) {
         returnList.push(element);
       }
-    })
+    });
     return returnList;
   }
 
@@ -201,7 +200,7 @@ class AuthService extends Component {
       if (element.estate == estateId) {
         returnList.push(element);
       }
-    })
+    });
     return returnList;
   }
 
@@ -219,6 +218,6 @@ class AuthService extends Component {
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));
   }
-} 
+}
 
 export default new AuthService();

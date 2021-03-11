@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import Estate from "./Estate";
-import User from "./User";
-import Item from "./Item";
-import tempImage from "../images/WIP.jpg";
-import authService from "../services/auth.service";
-import Modal from "react-modal";
-import "../App.css";
+import React, { useState, useEffect } from 'react';
+import Estate from './Estate';
+import User from './User';
+import Item from './Item';
+import tempImage from '../images/WIP.jpg';
+import authService from '../services/auth.service';
+import Modal from 'react-modal';
+import '../App.css';
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
 function dummyUsers() {
   let per = new User();
   per.state = {
     id: 12,
-    name: "Per",
+    name: 'Per',
   };
   let marte = new User();
   marte.state = {
     id: 12,
-    name: "Marte",
+    name: 'Marte',
   };
   return [per, marte];
 }
@@ -44,18 +44,6 @@ function AdminEstatePage(props) {
   const handleItemChange = (e) => {
     const { id, value } = e.target;
     setAddNewItem((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
-  const [addNewMember, setAddNewMember] = useState({
-    memberEmail: "",
-  });
-
-  // State for add Member Modal
-  const handleMemberChange = (e) => {
-    const { id, value } = e.target;
-    setAddNewMember((prevState) => ({
       ...prevState,
       [id]: value,
     }));
@@ -140,7 +128,7 @@ function AdminEstatePage(props) {
     console.log(newItems);
     authService.addItem(x.state.name, x.state.description, x.state.estate);
     setItems(newItems);
-    setAddNewItem({ itemName: "", itemDescription: "" });
+    setAddNewItem({ itemName: '', itemDescription: '' });
     closeItemModal();
     window.location.reload(false);
   }
@@ -186,9 +174,9 @@ function AdminEstatePage(props) {
           window.location.reload(false);
         } else {
           // log that email doesnt exist
-          document.getElementById("confirmEmail").innerHTML =
-            "Vennligst fyll inn en eksisterende email!";
-          document.getElementById("confirmEmail").style.color = "red";
+          document.getElementById('confirmEmail').innerHTML =
+            'Vennligst fyll inn en eksisterende email!';
+          document.getElementById('confirmEmail').style.color = 'red';
         }
       });
   }
@@ -215,15 +203,15 @@ function AdminEstatePage(props) {
           <h2>Deltakere</h2>
           {members.map((element, index) => (
             <div
-              key={"member" + index}
-              id={"m" + index}
-              style={{ border: "1px solid" }}
+              key={'member' + index}
+              id={'m' + index}
+              style={{ border: '1px solid' }}
             >
               <h4>{element.state.name}</h4>
               <button
                 type="button"
                 className="btn btn-outline-warning"
-                onClick={() => deleteMember("m" + index, element.state.id)}
+                onClick={() => deleteMember('m' + index, element.state.id)}
               >
                 Slett
               </button>
@@ -270,12 +258,12 @@ function AdminEstatePage(props) {
           <div className="itemRow">
             {items.map((element, index) => (
               <div
-                key={"item" + index}
-                id={"i" + index}
-                style={{ border: "1px solid" }}
+                key={'item' + index}
+                id={'i' + index}
+                style={{ border: '1px solid' }}
               >
                 <img
-                  style={{ height: "180px", width: "200px" }}
+                  style={{ height: '180px', width: '200px' }}
                   src={tempImage}
                   alt="temporary pic"
                 />
@@ -284,7 +272,7 @@ function AdminEstatePage(props) {
                 <button
                   type="button"
                   className="btn-danger"
-                  onClick={() => deleteItem("i" + index, element.state.id)}
+                  onClick={() => deleteItem('i' + index, element.state.id)}
                 >
                   Slett
                 </button>
