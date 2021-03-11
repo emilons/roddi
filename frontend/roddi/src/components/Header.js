@@ -7,6 +7,7 @@ import "../App.css"
 import User from './User';
 import AuthService from '../services/auth.service'
 import Login from './Login';
+import logo from '../images/logo_transparent.jpg'
 
 function Header() {
 
@@ -55,7 +56,7 @@ function Header() {
         User.name, 
         <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
             <div className ="row col-12 d-flex justify-content-center text-white" style={{fontSize:"50px", fontFamily:"Comic Sans MS"}}>
-                <span className = "Overskrift"><NavLink to="/">Røddi</NavLink></span>
+                <span className = "Overskrift"><NavLink to="/">RØDDI</NavLink></span>
             </div>
             <div className="buttons">
                 {(!localStorage.getItem('token')) && (

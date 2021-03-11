@@ -85,10 +85,10 @@ function AdminEstates() {
             
             <div className="estates" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', height: '100%', position: 'relative'}}>
                 <div className="estateList" style={{marginLeft: 100, marginRight: 100, marginTop: 20, marginBottom: 30, width: 650}}>
-                <p>Alle dødsbo:</p>
+                <p>ALLE DØDSBO:</p>
                     {estates.map((item, index) => (
                         <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
-                            <h1 style={{margin:'20px 0 20px 40%', fontSize: 30, color: "#7a7272"}}> {item.state.name}</h1>
+                            <h1 style={{margin:'20px 0 20px 40%', fontSize: 30, color: "#454343"}}> {item.state.name}</h1>
                             <img style={{height: "150px", width: "250px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
                         </div>
