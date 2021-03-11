@@ -60,6 +60,13 @@ function Login(props)  {
     
     return(
         <div className="form">
+            <div id="left">
+                <p>
+                    Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
+                </p>
+            </div>
+
+            <div id="right">
             <form>
                 <div className="form-group text-left">
                     <label htmlFor="exampleUserName">E-mail</label>
@@ -85,6 +92,7 @@ function Login(props)  {
                     <button type="submit" className="btn btn-outline-danger" onClick={handleSubmit} id="Login">Logg inn</button>
                 </div>
             </form>
+            </div>
         </div>
     );
 }
