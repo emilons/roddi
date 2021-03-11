@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Estate from './Estate';
-import tempImage from '../images/WIP.jpg'
+import tempImage from '../images/house.jpg'
 import authService from '../services/auth.service';
 
 
@@ -84,11 +84,12 @@ function AdminEstates() {
             </div>
             
             <div className="estates" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', height: '100%', position: 'relative'}}>
-                <div className="estateList" style={{marginLeft: 100, marginRight: 100, width: 800}}>
+                <div className="estateList" style={{marginLeft: 100, marginRight: 100, marginTop: 20, marginBottom: 30, width: 650}}>
+                <p>Alle dødsbo:</p>
                     {estates.map((item, index) => (
-                        <div key={"estate"+index} id={"e"+index} style={{border: '1px solid'}}>
-                            <h1 style={{margin:'20px 0 20px 300px'}}>Dødsbo {item.state.name}</h1>
-                            <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
+                        <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
+                            <h1 style={{margin:'20px 0 20px 40%', fontSize: 30, color: "#7a7272"}}> {item.state.name}</h1>
+                            <img style={{height: "150px", width: "250px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
                         </div>
                     ))}
