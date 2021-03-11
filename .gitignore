@@ -129,3 +129,4 @@ fabric.properties
 
 
 __pycache__/
+/backend/roddi/api/migrations
