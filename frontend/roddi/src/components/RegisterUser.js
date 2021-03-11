@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import API from '../services/api';
@@ -38,12 +37,7 @@ function RegisterUser(props) {
       document.getElementById('password').value != '' &&
       document.getElementById('name').value != ''
     ) {
-      AuthService.register(
-        state.name,
-        state.email,
-        state.password,
-        state.estates
-      );
+      AuthService.register(state.name, state.password, state.email);
       routeChange();
     } else {
       document.getElementById('confirmPasswordHelp').innerHTML =
@@ -90,7 +84,7 @@ function RegisterUser(props) {
             id="password"
             required
             placeholder="Velg et passord"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,55}"
             value={state.password}
             onChange={handleChange}
           />

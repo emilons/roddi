@@ -1,38 +1,20 @@
-import React, {Component, useState} from 'react';
+import React, { Component, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
 import Header from './Header';
 
-function handleLogin() {
-  localStorage.setItem('token', 'admin');
-  /*   AuthService.login(this.state.email, this.state.password, this.state.isAdmin).then(
-        () => {
-            if (this.state.isAdmin) {
-                this.props.history.push("/estates");
-                window.location.reload(false);
-            } 
-            else {
-                this.props.history.push("/my-estate");
-                window.location.reload(false);
-            } 
-        },
-        error => {
-          console.log("Noe gikk feil.");
-        });*/
-}
-
 function Login(props) {
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-  });
-
   const history = useHistory();
   const routeChange = () => {
     let path = '/AdminEstates';
     history.push(path);
   };
+
+  const [state, setState] = useState({
+    username: '',
+    password: '',
+  });
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -45,15 +27,14 @@ function Login(props) {
   const handleSubmit = () => {
     console.log(state);
     if (
-      document.getElementById('email').value == '' ||
-      !document.getElementById('email').value.includes('@') ||
+      document.getElementById('username').value == '' ||
       document.getElementById('password').value == ''
     )
       return;
     else {
-      handleLogin();
-      routeChange();
-      window.location.reload(false);
+      if (AuthService.login(state.username, state.password)) {
+        routeChange();
+      }
     }
   };
 
@@ -61,13 +42,13 @@ function Login(props) {
     <div className="form">
       <form>
         <div className="form-group text-left">
-          <label htmlFor="exampleUserName">E-mail</label>
+          <label htmlFor="exampleUserName">Navn</label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="email"
+            id="username"
             required
-            placeholder="Skriv inn din E-mail"
+            placeholder="Skriv inn ditt navn"
             value={state.email}
             onChange={handleChange}
           />
