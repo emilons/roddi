@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Estate from './Estate';
 import tempImage from '../images/WIP.jpg';
 import authService from '../services/auth.service';
-
-function AdminEstates() {
-  const [nameInput, setNameInput] = useState('');
-  const [estates, setEstates] = useState([]);
+import { Link } from 'react-router-dom';
 
   // get Estates from Backend and initialize list of estates with these
   useEffect(() => {
@@ -80,35 +77,60 @@ function AdminEstates() {
         </button>
       </div>
 
-      <div
-        className="estates"
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          height: '100%',
-          position: 'relative',
-        }}
-      >
-        <div
-          className="estateList"
-          style={{ marginLeft: 100, marginRight: 100, width: 800 }}
-        >
-          {estates.map((item, index) => (
-            <div
-              key={'estate' + index}
-              id={'e' + index}
-              style={{ border: '1px solid' }}
-            >
-              <h1 style={{ margin: '20px 0 20px 300px' }}>
-                Dødsbo {item.state.name}
-              </h1>
-              <img
-                style={{ height: '200px', width: '360px' }}
-                src={tempImage}
-                alt="temporary pic"
-              />
-              {/* img med src=item.state.image */}
+    function submitEstate() {
+        document.getElementById('confirmName').innerHTML = '';
+        if (document.getElementById('nameInput').value != '') {
+            addToEstateList();
+            setNameInput("");
+        }
+        else {
+            document.getElementById('confirmName').innerHTML = 'Vennligst fyll inn et navn på dødsboet!';
+            document.getElementById('confirmName').style.color = 'red';
+        }
+    }
+    
+    
+    return(
+        <div className="AdminEstates">
+            <div className="createEstate">
+                <form className="form">
+                    <div className ="form-group text-left" >
+                    <label htmlFor="estateNameInput">Opprett Dødsbo</label>
+                    <input type="text" 
+                        className="form-control" 
+                        id="nameInput" 
+                        required
+                        placeholder="Skriv inn navn på dødsbo" 
+                        value={nameInput} 
+                        onChange={handleChange}
+                    />
+                    </div>
+                    <small id="confirmName" 
+                        className="form-text"> 
+                    </small>
+                </form>
+                <button type="submit" className="btn btn-outline-danger" onClick={submitEstate}>
+                    Opprett Dødsbo
+                </button>
+            </div>
+            
+            <div className="estates" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', height: '100%', position: 'relative'}}>
+                <div className="estateList" style={{marginLeft: 100, marginRight: 100, width: 800}}>
+                    {estates.map((item, index) => (
+                        <div key={"estate"+index} id={"e"+index} style={{border: '1px solid'}}>
+                            <h1 style={{margin:'20px 0 20px 300px'}}>Dødsbo {item.state.name}</h1>
+                            <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
+                            {/* img med src=item.state.image */}
+                            <button onClick={() => localStorage.setItem('id', item.state.id)}><Link to={{
+                                pathname:'/AdminEstatePage'  
+                             }}>
+                                  Go to Estate
+                            </Link>
+                            </button>
+                        </div>
+                    ))}
+                </div>
+                {/*<ul className="estateList" style={{margin: '50 50 50 50'}}></ul>*/}
             </div>
           ))}
         </div>

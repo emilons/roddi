@@ -24,9 +24,11 @@ function dummyUsers() {
 }
 
 function AdminEstatePage(props) {
+  //const { id } = props.location.id.id;
+
   // EstateID based on props
-  const [estateID, setEstateID] = useState(1);
-  const [estateName, setEstateName] = useState('');
+  const [estateID, setEstateID] = useState(localStorage.getItem("id")); // Metode som gir deg siden til estate med id man trykker på
+  const [estateName, setEstateName] = useState("");
   const [items, setItems] = useState([]);
   const [members, setMembers] = useState([]);
   const [membersInEstate, setMembersInEstate] = useState([]);
@@ -35,25 +37,13 @@ function AdminEstatePage(props) {
 
   // State for add Item Modal
   const [addNewItem, setAddNewItem] = useState({
-    itemName: '',
-    itemDescription: '',
+    itemName: "",
+    itemDescription: "",
     // state for item picture
   });
   const handleItemChange = (e) => {
     const { id, value } = e.target;
     setAddNewItem((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
-  const [addNewMember, setAddNewMember] = useState({
-    memberEmail: '',
-  });
-
-  // State for add Member Modal
-  const handleMemberChange = (e) => {
-    const { id, value } = e.target;
-    setAddNewMember((prevState) => ({
       ...prevState,
       [id]: value,
     }));
