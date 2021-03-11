@@ -62,7 +62,7 @@ function Login(props)  {
     return(
         <div className="form">
             <div id="left">
-            <img style={{height: "500px", width: "500px"}} src={logo} alt="logoen"/>
+            <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
 
                 <div class="description">
                     <p>
