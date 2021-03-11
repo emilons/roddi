@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 class Estate(models.Model):
     name = models.CharField(max_length=50, unique=True)
     status = models.BooleanField()
+    users = models.ManyToManyField(User, blank=True, through="User_In_Estate")
 
 
 class Item(models.Model):

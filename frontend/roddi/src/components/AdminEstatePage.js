@@ -9,7 +9,7 @@ import '../App.css';
 
 Modal.setAppElement('#root')
 
-function dummyUsers() {
+ function dummyUsers() {
     let per = new User();
     per.state = {
         id: 12,
@@ -24,8 +24,10 @@ function dummyUsers() {
 }
 
 function AdminEstatePage(props) {
+    //const { id } = props.location.id.id;
+
     // EstateID based on props
-    const [estateID, setEstateID] = useState(1);
+    const [estateID, setEstateID] = useState(localStorage.getItem('id')); // Metode som gir deg siden til estate med id man trykker på
     const [estateName, setEstateName] = useState("");
     const [items, setItems] = useState([]);
     const [members, setMembers] = useState([]);

@@ -10,7 +10,7 @@ class User extends React.Component {
             name: "",
             email: "",
             password: "",
-            estates: []
+            estates: null
             // Estate eller motsatt med user-array i Estate entiteten
         }
 

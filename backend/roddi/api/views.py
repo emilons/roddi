@@ -70,11 +70,11 @@ class UserList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 #API User
-#@api_view(['GET'])
-#def user_list(request):
-    #users = User.objects.all()
-    #serializer = UserSerializer(users, many=True)
-    #return Response(serializer.data)
+@api_view(['GET'])
+def user_list(request):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])

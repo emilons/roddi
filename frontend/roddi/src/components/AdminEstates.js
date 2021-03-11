@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Estate from './Estate';
 import tempImage from '../images/WIP.jpg'
 import authService from '../services/auth.service';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -90,6 +90,13 @@ function AdminEstates() {
                             <h1 style={{margin:'20px 0 20px 300px'}}>Dødsbo {item.state.name}</h1>
                             <img style={{height: "200px", width: "360px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
+                            <button onClick={() => localStorage.setItem('id', item.state.id)}><Link to={{
+                                pathname:'/AdminEstatePage',
+                                state: {id: item.state.id}  
+                             }}>
+                                  Go to Estate
+                            </Link>
+                            </button>
                         </div>
                     ))}
                 </div>
