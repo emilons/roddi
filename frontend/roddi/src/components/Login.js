@@ -1,7 +1,7 @@
-import React, {Component, useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { Component, useState } from 'react';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
+import { useHistory } from 'react-router-dom';
 import Header from './Header';
 
 function handleLogin() {
