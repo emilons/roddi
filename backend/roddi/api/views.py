@@ -2,14 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from.serializers import UserSerializer, UserSerializerWithToken, EstateSerializer, ItemSerializer, User_In_EstateSerializer
-from .models import Estate, Item, User_In_Estate, User_Item
-
-from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
-from rest_framework import permissions, status
-from rest_framework.views import APIView
-
+from.serializers import UserSerializer, EstateSerializer, ItemSerializer, User_ItemSerializer, User_In_EstateSerializer
+from .models import User, Estate, Item, User_Item, User_In_Estate
 
 
 
@@ -19,7 +13,6 @@ from rest_framework.views import APIView
 
 @api_view(['GET'])
 def api_overview(request):
-    permission_classes = (IsAuthenticated,)
     api_urls = {
         'User List': '/user-list/',
         'User Detail View':'/user-detail/<str:pk>',
@@ -44,30 +37,7 @@ def api_overview(request):
     }
     return Response(api_urls)
 
-@api_view(['GET'])
-def current_user(request):
-    """
-    Determine the current user by their token, and return their data
-    """
-#    permission_classes = (IsAuthenticated,)
-    serializer = UserSerializer(request.user)
-    return Response(serializer.data)
 
-
-class UserList(APIView):
-    """
-    Create a new user. It's called 'UserList' because normally we'd have a get
-    method here too, for retrieving a list of all User objects.
-    """
-
-    permission_classes = (permissions.AllowAny,)
-
-    def post(self, request, format=None):
-        serializer = UserSerializerWithToken(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 #API User
 @api_view(['GET'])
@@ -79,8 +49,6 @@ def user_list(request):
 
 @api_view(['GET'])
 def user_detail(request, pk):
-    #permission_classes = (IsAuthenticated,)
-    #authentication_classes = (SessionAuthentication, BasicAuthentication, TokenAuthentication)
     users = User.objects.get(id=pk)
     serializer = UserSerializer(users, many=False)
     return Response(serializer.data)
@@ -89,7 +57,6 @@ def user_detail(request, pk):
 
 @api_view(['POST'])
 def user_create(request):
-    #permission_classes = (IsAuthenticated,)
     serializer = UserSerializer(data=request.data)
 
     if serializer.is_valid():
@@ -100,7 +67,6 @@ def user_create(request):
 
 @api_view(['PUT'])
 def user_update(request, pk):
-    #permission_classes = (IsAuthenticated,)
     user = User.objects.get(id=pk)
     serializer = UserSerializer(instance=user, data=request.data)
 
@@ -112,7 +78,6 @@ def user_update(request, pk):
 
 @api_view(['DELETE'])
 def user_delete(request, pk):
-    #permission_classes = (IsAuthenticated,)
     user = User.objects.get(id=pk)
     user.delete()
 
