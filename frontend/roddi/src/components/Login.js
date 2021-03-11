@@ -1,12 +1,12 @@
-import React, {Component, useState} from 'react';
+import React, { Component, useState } from 'react';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
 import { useHistory } from 'react-router-dom';
 import Header from './Header';
 
 function handleLogin() {
-    localStorage.setItem('token', 'admin')
-    /*   AuthService.login(this.state.email, this.state.password, this.state.isAdmin).then(
+  localStorage.setItem('token', 'admin');
+  /*   AuthService.login(this.state.email, this.state.password, this.state.isAdmin).then(
         () => {
             if (this.state.isAdmin) {
                 this.props.history.push("/estates");
@@ -20,73 +20,83 @@ function handleLogin() {
         error => {
           console.log("Noe gikk feil.");
         });*/
-    }
+}
 
-function Login(props)  {
-    const [state , setState] = useState({
-        email : "",
-        password : "",
-    })
+function Login(props) {
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
 
-    const history = useHistory();
-    const routeChange = () => {
-        let path = '/AdminEstates';
-        history.push(path);
-    }
+  const history = useHistory();
+  const routeChange = () => {
+    let path = '/AdminEstates';
+    history.push(path);
+  };
 
-    const handleChange = (e) => {
-        const {id , value} = e.target   
-        setState(prevState => ({
-            ...prevState,
-            [id] : value
-        }))
-    }
-    
-    const handleSubmit = () => {
-        console.log(state);
-        if (document.getElementById('email').value == '' || 
-            (!document.getElementById('email').value.includes('@')) ||
-            document.getElementById('password').value == '')
-            return;
-        else {
-            handleLogin();
-            routeChange();
-            window.location.reload(false);
-        }
-    }
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
 
-    
-    
-    
-    return(
-        <div className="form">
-            <form>
-                <div className="form-group text-left">
-                    <label htmlFor="exampleUserName">E-mail</label>
-                    <input type="email" 
-                        className="form-control"
-                        id="email" 
-                        required
-                        placeholder="Skriv inn din E-mail" 
-                        value={state.email} 
-                        onChange={handleChange}/>
-                </div> 
-                <div className="form-group text-left">
-                    <label htmlFor="exampleUserName">Passord</label>
-                    <input type="password" 
-                        className="form-control" 
-                        id="password"
-                        required
-                        placeholder="Skriv inn ditt passord"
-                        value={state.password} 
-                        onChange={handleChange}/>
-                </div>
-                <div>
-                    <button type="submit" className="btn btn-outline-danger" onClick={handleSubmit} id="Login">Logg inn</button>
-                </div>
-            </form>
+  const handleSubmit = () => {
+    console.log(state);
+    if (
+      document.getElementById('email').value == '' ||
+      !document.getElementById('email').value.includes('@') ||
+      document.getElementById('password').value == ''
+    )
+      return;
+    else {
+      handleLogin();
+      routeChange();
+      window.location.reload(false);
+    }
+  };
+
+  return (
+    <div className="form">
+      <form>
+        <div className="form-group text-left">
+          <label htmlFor="exampleUserName">E-mail</label>
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            required
+            placeholder="Skriv inn din E-mail"
+            value={state.email}
+            onChange={handleChange}
+          />
         </div>
-    );
+        <div className="form-group text-left">
+          <label htmlFor="exampleUserName">Passord</label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            required
+            placeholder="Skriv inn ditt passord"
+            value={state.password}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <button
+            type="submit"
+            className="btn btn-outline-danger"
+            onClick={handleSubmit}
+            id="Login"
+          >
+            Logg inn
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default Login;
