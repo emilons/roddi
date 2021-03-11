@@ -30,7 +30,7 @@ a, a:hover {
 
 form:last-child {
   margin-left: 2px;
-  font-size: 10px;
+  font-size: 20px;
   padding: 0px 20px 0px 20px;
 }
 .AdminEstatePage {
@@ -115,9 +115,10 @@ form:last-child {
   position: relative;
   width: 50%;
   float: left;
-  height: 100%;
+  height: 1000px;
   background-color: #f8f0f2;
   z-index: 1010101010;
+  font-size: 30px;
 }
 
 #right {
@@ -127,4 +128,6 @@ form:last-child {
   height: 100%;
   background-color: #fff;
   z-index: 1010101010;
+  margin: 100px 0 100px 0;
+  
 }

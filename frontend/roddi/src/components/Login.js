@@ -3,6 +3,7 @@ import API from '../services/api';
 import AuthService from '../services/auth.service';
 import { useHistory } from 'react-router-dom';
 import Header from './Header';
+import logo from '../images/logo_transparent.jpg'
 
 function handleLogin() {
     localStorage.setItem('token', 'admin')
@@ -61,9 +62,13 @@ function Login(props)  {
     return(
         <div className="form">
             <div id="left">
-                <p>
-                    Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
-                </p>
+            <img style={{height: "500px", width: "500px"}} src={logo} alt="logoen"/>
+
+                <div class="description">
+                    <p>
+                        Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
+                    </p>
+                </div>
             </div>
 
             <div id="right">
