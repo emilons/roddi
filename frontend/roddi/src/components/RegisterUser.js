@@ -4,6 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service'
 import Login from './Login';
+import logo from '../images/logo_transparent.jpg'
 
 function RegisterUser(props) {
     const [state , setState] = useState({
@@ -54,70 +55,81 @@ function RegisterUser(props) {
 
     return(
         <div className="form">
-            <form>
-                <div className ="form-group text-left" >
-                <label htmlFor="exampleUserName">Fullt Navn</label>
-                <input type="text" 
-                    className="form-control" 
-                    id="name" 
-                    required
-                    placeholder="Skriv inn ditt fulle navn" 
-                    value={state.name} 
-                    onChange={handleChange}
-                />
-                </div>
-                <div className="form-group text-left">
-                <label htmlFor="exampleInputEmail1">Email-Adresse</label>
-                <input type="email" 
-                       className="form-control" 
-                       id="email"
-                       required 
-                       placeholder="Skriv inn din Email" 
-                       value={state.email}
-                       onChange={handleChange}
-                />
-                </div>
-                <div className="form-group text-left">
-                    <label htmlFor="exampleInputPassword1">Passord</label>
-                    <input type="password" 
-                        className="form-control" 
-                        id="password"
-                        required 
-                        placeholder="Velg et passord"
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
-                        value={state.password}
-                        onChange={handleChange} 
-                    />
-                    <small id="passwordHelp" 
-                        className="form-text text-muted">
-                            Passordet må inneholde minst én stor og én liten bokstav, 
-                            og minst ett tall. Minimum lengde er 6 tegn. 
-                    </small>
-                </div>
-                <div className="form-group text-left">
-                    <label htmlFor="exampleInputPassword1">Bekreft Passord</label>
-                    <input type="password" 
-                        className="form-control" 
-                        id="confirmPassword"
-                        required 
-                        placeholder="Bekreft passordet"
-                        value={state.confirmPassword}
-                        onChange={handleChange} 
-                    />
-                    <small id="confirmPasswordHelp" 
-                        className="form-text"> 
-                    </small>
+             <div id="left">
+            <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
 
+                <div class="description">
+                    <p>
+                        Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
+                    </p>
                 </div>
-                <button 
-                    type="submit" 
-                    className="btn btn-outline-danger"
-                    onClick={validateSubmit}
-                    >
-                    Registrer deg
-                </button>
-                <button type="submit" className="btn btn-outline-danger" id="loginDiriger"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
-            </form>
+            </div>
+            <div id="right">
+                <form>
+                    <div className ="form-group text-left" >
+                    <label htmlFor="exampleUserName">Fullt Navn</label>
+                    <input type="text" 
+                        className="form-control" 
+                        id="name" 
+                        required
+                        placeholder="Skriv inn ditt fulle navn" 
+                        value={state.name} 
+                        onChange={handleChange}
+                    />
+                    </div>
+                    <div className="form-group text-left">
+                    <label htmlFor="exampleInputEmail1">Email-Adresse</label>
+                    <input type="email" 
+                        className="form-control" 
+                        id="email"
+                        required 
+                        placeholder="Skriv inn din Email" 
+                        value={state.email}
+                        onChange={handleChange}
+                    />
+                    </div>
+                    <div className="form-group text-left">
+                        <label htmlFor="exampleInputPassword1">Passord</label>
+                        <input type="password" 
+                            className="form-control" 
+                            id="password"
+                            required 
+                            placeholder="Velg et passord"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+                            value={state.password}
+                            onChange={handleChange} 
+                        />
+                        <small id="passwordHelp" 
+                            className="form-text text-muted">
+                                Passordet må inneholde minst én stor og én liten bokstav, 
+                                og minst ett tall. Minimum lengde er 6 tegn. 
+                        </small>
+                    </div>
+                    <div className="form-group text-left">
+                        <label htmlFor="exampleInputPassword1">Bekreft Passord</label>
+                        <input type="password" 
+                            className="form-control" 
+                            id="confirmPassword"
+                            required 
+                            placeholder="Bekreft passordet"
+                            value={state.confirmPassword}
+                            onChange={handleChange} 
+                        />
+                        <small id="confirmPasswordHelp" 
+                            className="form-text"> 
+                        </small>
+
+                    </div>
+                    <button 
+                        type="submit" 
+                        className="btn btn-outline-danger"
+                        onClick={validateSubmit}
+                        >
+                        Registrer deg
+                    </button>
+                    <button type="submit" className="btn btn-outline-danger" id="loginDiriger"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
+                </form>
+            </div>
         </div>
     )
 }
