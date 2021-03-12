@@ -44,7 +44,7 @@ form:last-child {
   color: #f5f1f1;
   border-color: #f5f1f1;
   background-color: #900C27;
-  border: 0.5px outset
+  border: 0.5px outset;
 }
 
 .membersList div {
@@ -90,15 +90,15 @@ form:last-child {
 }
 
 .estateList > div {
-  border-radius: 3%;
+  border-radius: 2%;
   margin-bottom: 2%;
   margin-right: 2%;
   margin-left: 2%;
-  background-color:#f8f0f2;
+  background-color: #f9f9f9;
   border-color: #bab5b5;
 }
 .estateList div > img {
-  border-radius: 3%;
+  border-radius: 2%;
   margin-bottom: 5%;
   margin-left: 30%;
 }
@@ -162,3 +162,4 @@ form:last-child {
   z-index: 1010101010;
   margin: 100px 0 100px 0;
 }
+
