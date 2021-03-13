@@ -64,11 +64,13 @@ form:last-child {
 }
 
 .membersList div {
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
 .membersList h2 {
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
+  margin-top: 35px;
 }
 
 .btn-danger {
@@ -94,6 +96,7 @@ form:last-child {
 
 .itemRow {
   margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .addItem > button {
@@ -110,7 +113,7 @@ form:last-child {
   margin-bottom: 2%;
   margin-right: 2%;
   margin-left: 2%;
-  background-color: #f9f9f9;
+  background-color:#f9f9f9;
   border-color: #bab5b5;
 }
 .estateList div > img {
@@ -133,7 +136,7 @@ form:last-child {
 }
 
 .items {
-  margin-top: 5px;
+  margin-top: 35px;
 }
 
 .items > h2 {
