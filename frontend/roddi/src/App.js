@@ -9,6 +9,7 @@ import AdminEstatePage from './components/AdminEstatePage';
 //import MyEstate from './components/MyEstate';
 import AuthService from './services/auth.service';
 import { Component } from 'react';
+import StartPage from './components/StartPage';
 
 function logOut() {
   AuthService.logout();
@@ -31,14 +32,14 @@ class App extends Component {
           <Header />
       </div>
       <div className="App">
+          
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
-          <Route path="/AdminEstates" component={AdminEstates} />
-          <Route path="/AdminEstatePage" component={AdminEstatePage} />
-          <Route exact path="/" component="" />
-        </div>
-      </HashRouter>
-    );
-  }
-}
+          <Route path="/AdminEstates" component={AdminEstates}/>
+          <Route path="/AdminEstatePage" component={AdminEstatePage}/>
+          <Route exact path="/" component={StartPage}/> 
+      </div>
+    </HashRouter>
+  );
+}}
 export default App;

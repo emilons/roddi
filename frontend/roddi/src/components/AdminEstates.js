@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Estate from './Estate';
-import tempImage from '../images/WIP.jpg';
+import tempImage from '../images/house.jpg'
 import authService from '../services/auth.service';
 import { Link } from 'react-router-dom';
 
@@ -53,78 +53,55 @@ function AdminEstates() {
       document.getElementById('confirmName').style.color = 'red';
     }
   }
-
-  return (
-    <div className="AdminEstates">
-      <div className="createEstate">
-        <form className="form">
-          <div className="form-group text-left">
-            <label htmlFor="estateNameInput">Opprett Dødsbo</label>
-            <input
-              type="text"
-              className="form-control"
-              id="nameInput"
-              required
-              placeholder="Skriv inn navn på dødsbo"
-              value={nameInput}
-              onChange={handleChange}
-            />
-          </div>
-          <small id="confirmName" className="form-text"></small>
-        </form>
-        <button
-          type="submit"
-          className="btn btn-outline-danger"
-          onClick={submitEstate}
-        >
-          Opprett Dødsbo
-        </button>
-      </div>
-
-      <div
-        className="estates"
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          height: '100%',
-          position: 'relative',
-        }}
-      >
-        <div
-          className="estateList"
-          style={{ marginLeft: 100, marginRight: 100, width: 800 }}
-        >
-          {estates.map((item, index) => (
-            <div
-              key={'estate' + index}
-              id={'e' + index}
-              style={{ border: '1px solid' }}
-            >
-              <h1 style={{ margin: '20px 0 20px 300px' }}>
-                Dødsbo {item.state.name}
-              </h1>
-              <img
-                style={{ height: '200px', width: '360px' }}
-                src={tempImage}
-                alt="temporary pic"
-              />
-              {/* img med src=item.state.image */}
-              <button onClick={() => localStorage.setItem('id', item.state.id)}>
-                <Link
-                  to={{
-                    pathname: '/AdminEstatePage',
-                  }}
-                >
-                  Go to Estate
-                </Link>
-              </button>
+    
+    return(
+        <div className="AdminEstates">
+            <div className="createEstate">
+                <form className="form">
+                    <div className ="form-group text-left" >
+                    <label htmlFor="estateNameInput">Opprett Dødsbo</label>
+                    <input type="text" 
+                        className="form-control" 
+                        id="nameInput" 
+                        required
+                        placeholder="Skriv inn navn på dødsbo" 
+                        value={nameInput} 
+                        onChange={handleChange}
+                    />
+                    </div>
+                    <small id="confirmName" 
+                        className="form-text"> 
+                    </small>
+                </form>
+                <button type="submit" className="btn btn-outline-danger" onClick={submitEstate}>
+                    Opprett Dødsbo
+                </button>
             </div>
-          ))}
-        </div>
+            
+            <div className="estates" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', height: '100%', position: 'relative'}}>
+                <div className="estateList" style={{marginLeft: 100, marginRight: 100, marginTop: 20, marginBottom: 30, width: 650}}>
+                <p>ALLE DØDSBO:</p>
+                    {estates.map((item, index) => (
+                        <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
+                            <h1 style={{margin:'20px 0 20px 40%', fontSize: 30, color: "#454343"}}> {item.state.name}</h1>
+                            <img style={{height: "150px", width: "250px"}} src={tempImage} alt="temporary pic"/>
+                            {/* img med src=item.state.image */}
+                            <button onClick={() => localStorage.setItem('id', item.state.id)}>
+                              <Link
+                                to={{
+                                  pathname: '/AdminEstatePage',
+                                }}
+                              >
+                                Go to Estate
+                              </Link>
+                            </button>
+                        </div>
+                        
+                    ))}
+                </div>
+              </div>
         {/*<ul className="estateList" style={{margin: '50 50 50 50'}}></ul>*/}
       </div>
-    </div>
   );
 }
 export default AdminEstates;

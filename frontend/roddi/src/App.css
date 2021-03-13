@@ -2,6 +2,35 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+html {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  height: 100%;
+  background-repeat: repeat-y;
+  background-size: 50% auto;
+  position: absolute;
+  
+}
+.startPage {
+  text-align: center;
+}
+
+.startPage > h1{
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+#introParagraph{
+  margin-top: 50px;
+  line-height: 1,6em;
+  width: 50%;
+  margin-left:25%
+
+}
+
 .form {
   margin: 50px 100px 0px 100px;
 }
@@ -12,14 +41,14 @@ a, a:hover {
 }
 
 #loginDiriger {
-  margin-left: 2px;
+  margin-left: 220px;
   font-size: 10px;
-  padding: 0px 20px 0px 20px;
+  padding: 0px 30px 0px 30px;
 }
 
 form:last-child {
   margin-left: 2px;
-  font-size: 10px;
+  font-size: 20px;
   padding: 0px 20px 0px 20px;
 }
 .AdminEstatePage {
@@ -27,13 +56,21 @@ form:last-child {
   justify-content: space-around;
   margin: 40px 0 0 0;
 }
+.btn-outline-danger{
+  color: #f5f1f1;
+  border-color: #f5f1f1;
+  background-color: #900C27;
+  border: 0.5px outset;
+}
 
 .membersList div {
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
 .membersList h2 {
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
+  margin-top: 35px;
 }
 
 .btn-danger {
@@ -59,22 +96,47 @@ form:last-child {
 
 .itemRow {
   margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .addItem > button {
   margin-left: 35px;
 }
 
-.estateList > h1 {
-  margin-left: 40px;
+.estateList div > h1 {
+  margin-left: 30px; 
+  color: #454343;
 }
+
+.estateList > div {
+  border-radius: 2%;
+  margin-bottom: 2%;
+  margin-right: 2%;
+  margin-left: 2%;
+  background-color:#f9f9f9;
+  border-color: #bab5b5;
+}
+.estateList div > img {
+  border-radius: 2%;
+  margin-bottom: 5%;
+  margin-left: 30%;
+}
+
+.estateList > p {
+  font-size: x-large;
+  text-align: center;
+  color: #454343;
+  margin-bottom: 25px;
+  margin-top: 20px;
+}
+
 
 .createEstate > button {
   margin-left: 100px;
 }
 
 .items {
-  margin-top: 5px;
+  margin-top: 35px;
 }
 
 .items > h2 {
@@ -89,13 +151,34 @@ form:last-child {
 }
 
 .Overskrift {
-  color: #CC0000;
+  color: #900C27;
 }
 
 .buttons > button, #Login {
-  color: #CC0000;
+  color: #f5f1f1;
 }
 
 .navbar-dark {
-  background-color: white;
+  background-color: #f8f0f2;
 }
+
+#left {
+  position: relative;
+  width: 50%;
+  float: left;
+  height: 500px;
+  background-color: #f8f0f2;
+  z-index: 1010101010;
+  font-size: 30px;
+}
+
+#right {
+  position: relative;
+  width: 50%;
+  float: left;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1010101010;
+  margin: 100px 0 100px 0;
+}
+

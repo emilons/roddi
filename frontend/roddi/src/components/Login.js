@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
 import Header from './Header';
+import logo from '../images/logo_transparent.jpg'
 
 function Login(props) {
   const history = useHistory();
@@ -38,45 +39,47 @@ function Login(props) {
     }
   };
 
-  return (
-    <div className="form">
-      <form>
-        <div className="form-group text-left">
-          <label htmlFor="exampleUserName">Navn</label>
-          <input
-            type="text"
-            className="form-control"
-            id="username"
-            required
-            placeholder="Skriv inn ditt navn"
-            value={state.email}
-            onChange={handleChange}
-          />
+    
+    return(
+        <div className="form">
+            <div id="left">
+            <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
+
+                <div class="description">
+                    <p>
+                        Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div id="right">
+            <form>
+                <div className="form-group text-left">
+                    <label htmlFor="exampleUserName">E-mail</label>
+                    <input type="email" 
+                        className="form-control"
+                        id="email" 
+                        required
+                        placeholder="Skriv inn din E-mail" 
+                        value={state.email} 
+                        onChange={handleChange}/>
+                </div> 
+                <div className="form-group text-left">
+                    <label htmlFor="exampleUserName">Passord</label>
+                    <input type="password" 
+                        className="form-control" 
+                        id="password"
+                        required
+                        placeholder="Skriv inn ditt passord"
+                        value={state.password} 
+                        onChange={handleChange}/>
+                </div>
+                <div>
+                    <button type="submit" className="btn btn-outline-danger" onClick={handleSubmit} id="Login">Logg inn</button>
+                </div>
+            </form>
+            </div>
         </div>
-        <div className="form-group text-left">
-          <label htmlFor="exampleUserName">Passord</label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            required
-            placeholder="Skriv inn ditt passord"
-            value={state.password}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button
-            type="submit"
-            className="btn btn-outline-danger"
-            onClick={handleSubmit}
-            id="Login"
-          >
-            Logg inn
-          </button>
-        </div>
-      </form>
-    </div>
   );
 }
 

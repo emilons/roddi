@@ -128,5 +128,6 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains
 
 
-__pycache__/
 /backend/roddi/api/migrations
+.DS_Store
+__pycache__/
