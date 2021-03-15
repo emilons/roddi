@@ -1,5 +1,5 @@
-import React from 'react'
-import User from "./User"
+import React from 'react';
+import User from './User';
 
 class Item extends React.Component {
     constructor(props) {
@@ -18,13 +18,13 @@ class Item extends React.Component {
     
     
 
-    render() {
-        return (
-            <div className="Item">
-                <p>{this.state.name}</p>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="Item">
+        <p>{this.state.name}</p>
+      </div>
+    );
+  }
 }
 
 export default Item;

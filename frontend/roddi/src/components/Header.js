@@ -1,28 +1,25 @@
-import React, {useState, useEffect} from 'react'
-import {
-    NavLink,
-    useHistory
-  } from "react-router-dom";
-import "../App.css"
+import React, { useState, useEffect } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import '../App.css';
 import User from './User';
-import AuthService from '../services/auth.service'
+import AuthService from '../services/auth.service';
 import Login from './Login';
+import logo_header from '../images/logo_header.png'
 
-function Header() {
-
-    const [state , setState] = useState({
-    isAdmin: false,
-    currentUser: undefined,
-    loggedIn: false
-  })
+function Header() {
   const history = useHistory();
   const routeChange = () => {
-      let path = '/Login';
-      history.push(path);
-  }
+    let path = '/Login';
+    history.push(path);
+  };
 
+  const [state, setState] = useState({
+    isAdmin: false,
+    currentUser: undefined,
+    loggedIn: false,
+  });
 
-/*
+  /*
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
@@ -36,12 +33,12 @@ function Header() {
   })*/
 
   function logOut(props) {
-      AuthService.logout();
-      routeChange();
-      window.location.reload(false);
+    AuthService.logout();
+    routeChange();
+    window.location.reload(false);
   }
 
-/*  function logIn() {
+  /*  function logIn() {
         routeChange("/AdminEstates");
         this.setState({
             isAdmin: true,
@@ -54,8 +51,8 @@ function Header() {
     return (
         User.name, 
         <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
-            <div className ="row col-12 d-flex justify-content-center text-white" style={{fontSize:"50px", fontFamily:"Comic Sans MS"}}>
-                <span className = "Overskrift"><NavLink to="/">Røddi</NavLink></span>
+            <div  id="header_pic">
+            <img style={{height: "130px", width: "250px" , margin: "0 500px 0 500px"}} src={logo_header} alt="logoen"/>
             </div>
             <div className="buttons">
                 {(!localStorage.getItem('token')) && (
@@ -99,6 +96,6 @@ function Header() {
                 )}
             </div>
         </nav>
-    )
+    );
 }
-export default Header
+export default Header;
