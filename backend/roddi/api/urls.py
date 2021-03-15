@@ -22,6 +22,7 @@ urlpatterns = [
     path('item-list/', views.item_list, name="item-overview"),
     path('item-detail/<str:pk>/', views.item_detail, name= "item-detail"),
     path('item-create/', views.item_create, name="item-create"),
+    path('item-newcreate/', views.ItemCreate.as_view(), name="item-create"),
     path('item-update/<str:pk>/', views.item_update, name="item-update"),
     path('item-delete/<str:pk>/', views.item_delete, name="item-delete"),
 
