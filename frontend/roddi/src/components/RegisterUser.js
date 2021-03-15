@@ -92,7 +92,7 @@ function RegisterUser(props) {
                             id="password"
                             required 
                             placeholder="Velg et passord"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,55}"
                             value={state.password}
                             onChange={handleChange} 
                         />

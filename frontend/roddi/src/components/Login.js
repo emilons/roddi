@@ -33,8 +33,12 @@ function Login(props) {
     )
       return;
     else {
-      if (AuthService.login(state.username, state.password)) {
+      try {
+        if (AuthService.login(state.username, state.password)) {
         routeChange();
+      }
+      } catch (error) {
+        console.log(error);
       }
     }
   };
@@ -55,13 +59,13 @@ function Login(props) {
             <div id="right">
             <form>
                 <div className="form-group text-left">
-                    <label htmlFor="exampleUserName">E-mail</label>
-                    <input type="email" 
+                    <label htmlFor="exampleUserName">Navn</label>
+                    <input type="text" 
                         className="form-control"
-                        id="email" 
+                        id="username" 
                         required
-                        placeholder="Skriv inn din E-mail" 
-                        value={state.email} 
+                        placeholder="Skriv inn ditt navn" 
+                        value={state.username} 
                         onChange={handleChange}/>
                 </div> 
                 <div className="form-group text-left">
