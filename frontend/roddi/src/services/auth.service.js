@@ -42,8 +42,8 @@ class AuthService extends Component {
         password,
         email,
       })
-      .then((json) => {
-        localStorage.setItem('token', json.token);
+      .then((response) => {
+        localStorage.setItem('token', response.data.token);
         /*this.setState({
         loggedIn: true,
         currentUser: json.email,
@@ -163,8 +163,8 @@ class AuthService extends Component {
     const response = await axios.post(
       API_URL + 'user_in_estate-create/',
       {
-        user: userId,
         estate: estateId,
+        user: userId,
       },
       {
         headers: {
@@ -177,6 +177,7 @@ class AuthService extends Component {
 
   // GET User by email
   async getUserIdByEmail(userEmail) {
+    console.log(userEmail);
     let returnList = [];
     let userList = [];
     await axios
@@ -218,7 +219,7 @@ class AuthService extends Component {
   // DELETE User from Estate
   async deleteMember(userId) {
     const response = await axios.delete(
-      API_URL + 'user_in_estate-delete/' + localStorage.getItem('id'),
+      API_URL + 'user_in_estate-delete/' + userId,
       {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`,

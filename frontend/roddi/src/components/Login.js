@@ -45,7 +45,7 @@ function Login(props) {
             <div id="left">
             <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
 
-                <div class="description">
+                <div className="description">
                     <p>
                         Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
                     </p>
@@ -55,13 +55,13 @@ function Login(props) {
             <div id="right">
             <form>
                 <div className="form-group text-left">
-                    <label htmlFor="exampleUserName">E-mail</label>
-                    <input type="email" 
+                    <label htmlFor="exampleUserName">Brukernavn</label>
+                    <input type="text" 
                         className="form-control"
-                        id="email" 
+                        id="username" 
                         required
-                        placeholder="Skriv inn din E-mail" 
-                        value={state.email} 
+                        placeholder="Skriv inn ditt brukernavn" 
+                        value={state.username} 
                         onChange={handleChange}/>
                 </div> 
                 <div className="form-group text-left">

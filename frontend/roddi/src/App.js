@@ -30,16 +30,16 @@ class App extends Component {
       <HashRouter>
         <div className="Header">
           <Header />
-      </div>
-      <div className="App">
-          
+        </div>
+        <div className="App">
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
-          <Route path="/AdminEstates" component={AdminEstates}/>
-          <Route path="/AdminEstatePage" component={AdminEstatePage}/>
-          <Route exact path="/" component={StartPage}/> 
-      </div>
-    </HashRouter>
-  );
-}}
+          <Route path="/AdminEstates" component={AdminEstates} />
+          <Route path="/AdminEstatePage" component={AdminEstatePage} />
+          <Route exact path="/" component={StartPage} />
+        </div>
+      </HashRouter>
+    );
+  }
+}
 export default App;

@@ -75,7 +75,7 @@ function AdminEstatePage(props) {
         let tempUser = new User();
         tempUser.state = {
           id: res.data.users[i].id,
-          name: res.data.users[i].name,
+          name: res.data.users[i].username,
           email: res.data.users[i].email,
         };
         initMembers.push(tempUser);
@@ -179,6 +179,7 @@ function AdminEstatePage(props) {
           };
           let newMembers = members.concat([x]);
           authService.addMember(estateID, x.state.id);
+          console.log(x.state.id);
           setMembers(newMembers);
           closeMemberModal();
           window.location.reload(false);

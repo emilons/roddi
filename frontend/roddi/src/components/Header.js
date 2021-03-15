@@ -69,16 +69,12 @@ function Header() {
                     <NavLink to="/AdminEstates">Admin</NavLink>
                 </button>
                 )}
-                {localStorage.getItem('token') && (
-                <button className="btn btn-outline-danger">
-                <NavLink to="/AdminEstatePage">AdminEstate</NavLink>
-            </button>)}
                 {state.currentUser && (
                     <button>
                         MyEstate
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
                 )}
-                {localStorage.getItem('token') && (
+                {localStorage.getItem('token') && ( 
                     <button className="btn btn-outline-danger" onClick={logOut}>
                         Logg Ut
                     </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
