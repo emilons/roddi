@@ -9,7 +9,6 @@ import AdminEstatePage from './components/AdminEstatePage';
 import MyEstate from './components/MyEstate';
 import MyItem from './components/MyItem';
 import AuthService from "./services/auth.service";
-import MyEstate from './components/MyEstate';
 import { Component } from 'react';
 import StartPage from './components/StartPage';
 

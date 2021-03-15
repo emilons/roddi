@@ -15,7 +15,7 @@ import '../App.css';
 
 function MyItem() {
     const [isLoading, setIsLoading] = useState(true);
-    const [estateID, setEstateID] = useState(1); // need function for getting ID
+    const [estateID, setEstateID] = useState(localStorage.getItem('id'));
     const [itemID, setItemID] = useState(7); // need function for getting ID
     const [estateName, setEstateName] = useState("");
     const [item, setItem] = useState(new Item());

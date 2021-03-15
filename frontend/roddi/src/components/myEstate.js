@@ -7,7 +7,7 @@ import tempImage from '../images/WIP.jpg';
 import '../App.css';
 
 function MyEstate() {
-  const [estateID, setEstateID] = useState(1);
+  const [estateID, setEstateID] = useState(localStorage.getItem('id'));
   const [estateName, setEstateName] = useState("");
   const [items, setItems] = useState([]);
   const [members, setMembers] = useState([]);
