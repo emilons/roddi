@@ -64,7 +64,7 @@ function AdminEstates() {
             <div className="createEstate">
                 <form className="form">
                     <div className ="form-group text-left" >
-                    <label htmlFor="estateNameInput">Opprett Dødsbo</label>
+                    <label htmlFor="estateNameInput">Opprett dødsbo</label>
                     <input type="text" 
                         className="form-control" 
                         id="nameInput" 
@@ -79,17 +79,17 @@ function AdminEstates() {
                     </small>
                 </form>
                 <button type="submit" id = "AdminEstatesButtons" className="btn btn-outline-danger" onClick={submitEstate}>
-                    Opprett Dødsbo
+                    Opprett dødsbo
                 </button>
             </div>
             
-            <div className="estates" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', height: '100%', position: 'relative'}}>
+            <div className="estates">
                 <div className="estateList" style={{marginLeft: 100, marginRight: 100, marginTop: 20, marginBottom: 30, width: 650}}>
                 <p>ALLE DØDSBO:</p>
                     {estates.map((item, index) => (
                         <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
-                            <h1 style={{margin:'20px 0 20px 40%', fontSize: 30, color: "#454343"}}> {item.state.name}</h1>
-                            <img style={{height: "150px", width: "250px"}} src={tempImage} alt="temporary pic"/>
+                            <h1 style={{margin:'20px 0 20px 0', fontSize: "3vw", color: "#454343", textAlign:"center"}}> {item.state.name}</h1>
+                            <img id="tempImage" src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
                         </div>
                     ))}
