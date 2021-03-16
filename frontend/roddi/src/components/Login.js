@@ -62,17 +62,20 @@ function Login(props)  {
     return(
         <div className="form">
             <div id="left">
-            <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
+            <img src={logo} alt="logoen"/>
 
                 <div class="description">
                     <p>
-                        Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
+                        Røddi er en nettside som hjelper deg å gjøre opp dødsbo
                     </p>
                 </div>
             </div>
 
             <div id="right">
             <form>
+                <div className ="welcome">
+                    <label> Velkommen </label>
+                </div>
                 <div className="form-group text-left">
                     <label htmlFor="exampleUserName">E-mail</label>
                     <input type="email" 

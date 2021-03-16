@@ -32,7 +32,7 @@ body {
 }
 
 .form {
-  margin: 50px 100px 0px 100px;
+  margin: 0px;
 }
 
 a, a:hover {
@@ -41,15 +41,18 @@ a, a:hover {
 }
 
 #loginDiriger {
-  margin-left: 220px;
-  font-size: 10px;
-  padding: 0px 30px 0px 30px;
+  font-size: 15px;
+  padding: 5px 20px 5px 20px;
+  margin: auto;
+  margin-top: 20px;
+
 }
 
 form:last-child {
   margin-left: 2px;
   font-size: 20px;
   padding: 0px 20px 0px 20px;
+
 }
 .AdminEstatePage {
   display: flex;
@@ -61,6 +64,9 @@ form:last-child {
   border-color: #f5f1f1;
   background-color: #900C27;
   border: 0.5px outset;
+  margin-left: 30px;
+  margin-top: 20px;
+
 }
 
 .membersList div {
@@ -169,7 +175,7 @@ form:last-child {
   height: 500px;
   background-color: #f8f0f2;
   z-index: 1010101010;
-  font-size: 30px;
+  font-size: 2.5vw;
 }
 
 #right {
@@ -182,3 +188,33 @@ form:last-child {
   margin: 100px 0 100px 0;
 }
 
+.description{
+  text-align: center;
+  background-color: #f8f0f2;
+  transform: translate(0%,-50%);
+
+
+
+}
+
+img{
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.form-group{
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+
+
+.welcome{
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}

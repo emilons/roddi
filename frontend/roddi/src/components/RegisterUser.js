@@ -56,18 +56,20 @@ function RegisterUser(props) {
     return(
         <div className="form">
              <div id="left">
-            <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
-
+             <img src={logo} alt="logoen"/>
                 <div class="description">
                     <p>
-                        Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
+                        Røddi er en nettside som hjelper deg å gjøre opp dødsbo
                     </p>
                 </div>
             </div>
             <div id="right">
                 <form>
+                    <div className ="welcome">
+                        <label> Velkommen </label>
+                    </div>
                     <div className ="form-group text-left" >
-                    <label htmlFor="exampleUserName">Fullt Navn</label>
+                    <label htmlFor="exampleUserName">Fullt navn</label>
                     <input type="text" 
                         className="form-control" 
                         id="name" 
@@ -78,12 +80,12 @@ function RegisterUser(props) {
                     />
                     </div>
                     <div className="form-group text-left">
-                    <label htmlFor="exampleInputEmail1">Email-Adresse</label>
+                    <label htmlFor="exampleInputEmail1">E-mail</label>
                     <input type="email" 
                         className="form-control" 
                         id="email"
                         required 
-                        placeholder="Skriv inn din Email" 
+                        placeholder="Skriv inn din e-mail" 
                         value={state.email}
                         onChange={handleChange}
                     />
@@ -106,7 +108,7 @@ function RegisterUser(props) {
                         </small>
                     </div>
                     <div className="form-group text-left">
-                        <label htmlFor="exampleInputPassword1">Bekreft Passord</label>
+                        <label htmlFor="exampleInputPassword1">Bekreft passord</label>
                         <input type="password" 
                             className="form-control" 
                             id="confirmPassword"
@@ -127,7 +129,7 @@ function RegisterUser(props) {
                         >
                         Registrer deg
                     </button>
-                    <button type="submit" className="btn btn-outline-danger" id="loginDiriger"><NavLink to="/Login"> Allerede bruker? Logg inn her.</NavLink></button>
+                    <button type="submit" className="btn btn-outline-danger" id="loginDiriger"><NavLink to="/Login"> Allerede bruker? Logg inn her</NavLink></button>
                 </form>
             </div>
         </div>
