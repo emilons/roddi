@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 
 
 
+
 # Create your models here.
 
 
@@ -19,6 +20,8 @@ class Estate(models.Model):
 
 def upload_to(instance, filename):
     return '{filename}'.format(filename=filename)
+
+
 
 
 class Item(models.Model):

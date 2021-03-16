@@ -145,7 +145,7 @@ function AdminEstatePage(props) {
     console.log(newItems);
     authService.addItem(x.state.name, x.state.description, postImage.image[0], x.state.estate);
     setItems(newItems);
-    setAddNewItem({ itemName: '', itemDescription: '' });
+    setAddNewItem({ itemName: '', itemDescription: ''});
     closeItemModal();
     window.location.reload(false);
   }
@@ -283,7 +283,7 @@ function AdminEstatePage(props) {
               >
                 <img
                   style={{ height: '180px', width: '200px' }}
-                  src={tempImage}
+                  src={'http://localhost:8000'+ element.state.image}
                   alt="item image"
                 />
                 <h4>{element.state.name}</h4>
