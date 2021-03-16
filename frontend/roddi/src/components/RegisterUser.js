@@ -55,14 +55,6 @@ function RegisterUser(props) {
 
     return(
         <div className="form">
-             <div id="left">
-             <img src={logo} alt="logoen"/>
-                <div class="description">
-                    <p>
-                        Røddi er en nettside som hjelper deg å gjøre opp dødsbo
-                    </p>
-                </div>
-            </div>
             <div id="right">
                 <form>
                     <div className ="welcome">

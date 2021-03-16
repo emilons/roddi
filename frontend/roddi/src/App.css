@@ -41,10 +41,11 @@ a, a:hover {
 }
 
 #loginDiriger {
-  font-size: 15px;
-  padding: 5px 20px 5px 20px;
-  margin: auto;
+  font-size: 16px;
+  padding: 5px 25px 5px 25px;
+
   margin-top: 20px;
+  border: 0.5px outset;
 
 }
 
@@ -64,7 +65,7 @@ form:last-child {
   border-color: #f5f1f1;
   background-color: #900C27;
   border: 0.5px outset;
-  margin-left: 30px;
+
   margin-top: 20px;
 
 }
@@ -166,40 +167,40 @@ form:last-child {
 
 .navbar-dark {
   background-color: #f8f0f2;
+
 }
 
+/*
 #left {
   position: relative;
   width: 50%;
   float: left;
-  height: 500px;
+  height: 800px;
+
   background-color: #f8f0f2;
   z-index: 1010101010;
-  font-size: 2.5vw;
+  font-size: 2.3vw;
 }
+*/
 
 #right {
-  position: relative;
-  width: 50%;
-  float: left;
-  height: 100%;
-  background-color: #fff;
-  z-index: 1010101010;
-  margin: 100px 0 100px 0;
+  text-align: center;
+  margin: 20px 200px;
+
 }
 
 .description{
   text-align: center;
   background-color: #f8f0f2;
   transform: translate(0%,-50%);
+  padding: 25px;
 
 
 
 }
 
 img{
-  max-width: 80%;
-  height: auto;
+  height: 120px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -217,4 +218,16 @@ img{
   font-size: 40px;
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 70px;
 }
+
+#header_pic{
+  height: 50px;
+  width: 30%;
+  margin: "0 500px 0 500px";
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
