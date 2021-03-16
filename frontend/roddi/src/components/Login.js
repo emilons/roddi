@@ -49,7 +49,7 @@ function Login(props) {
             <div id="left">
             <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
 
-                <div class="description">
+                <div className="description">
                     <p>
                         Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
                     </p>

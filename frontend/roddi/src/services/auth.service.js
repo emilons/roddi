@@ -23,6 +23,9 @@ class AuthService extends Component {
       .then((response) => {
         if (response.data.token) {
           localStorage.setItem('token', response.data.token);
+          localStorage.setItem('userId', response.data.user.id);
+          localStorage.setItem('userName', response.data.user.username);
+          localStorage.setItem('userEmail', response.data.user.email);
           window.location.reload(false);
         }
         console.log(localStorage);
@@ -41,14 +44,6 @@ class AuthService extends Component {
         username,
         password,
         email,
-      })
-      .then((json) => {
-        localStorage.setItem('token', json.token);
-        /*this.setState({
-        loggedIn: true,
-        currentUser: json.email,
-        isAdmin: true
-      })*/
       });
     window.location.reload(false);
     console.log(response);
@@ -123,7 +118,11 @@ class AuthService extends Component {
   }
   // GET item by item ID
   async getItemByID(itemId) {
-    const response = await axios.get(API_URL + "item-detail/" + itemId);
+    const response = await axios.get(API_URL + "item-detail/" + itemId, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      },
+    })
     return response;
   }
 
@@ -193,7 +192,11 @@ class AuthService extends Component {
   }
   // GET User by ID
   async getUserByID(userId) {
-    const response = await axios.get(API_URL + "user-detail/" + userId);
+    const response = await axios.get(API_URL + "user-detail/" + userId, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      },
+    });
     return response;
   }
 
@@ -222,7 +225,11 @@ class AuthService extends Component {
   async getUserItemRelationByItemId(itemId) {
     let totalUserItemList = [];
     let userItemList = [];
-    await axios.get(API_URL + "user_item-list")
+    await axios.get(API_URL + "user_item-list", {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      },
+    })
     .then(response => response.data.map((element) => (
       totalUserItemList.push(element)
     )));
@@ -232,6 +239,40 @@ class AuthService extends Component {
       }
     })
     return userItemList;
+  }
+
+  // PUT User Vote in User_Item relation
+  async putVote(itemId, userId, vote) {
+    if (vote > 0 && vote < 6) {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '/' + userId, {
+        donate: false,
+        discard: false,
+        wanted: true,
+        wanted_level: vote,
+        item_id: itemId,
+        user_id: userId
+      })
+    }
+    else if (vote == 0) {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '/' + userId, {
+        donate: true,
+        discard: false,
+        wanted: false,
+        wanted_level: null,
+        item_id: itemId,
+        user_id: userId
+      })
+    }
+    else {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '/' + userId, {
+        donate: false,
+        discard: true,
+        wanted: false,
+        wanted_level: null,
+        item_id: itemId,
+        user_id: userId
+      })
+    }
   }
 
   // DELETE User from Estate

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Link } from 'react-router-dom';
 import Estate from './Estate';
 import User from './User';
 import Item from './Item';
@@ -7,7 +8,7 @@ import tempImage from '../images/WIP.jpg';
 import '../App.css';
 
 function MyEstate() {
-  const [estateID, setEstateID] = useState(localStorage.getItem('id'));
+  const [estateID] = useState(localStorage.getItem('estateId'));
   const [estateName, setEstateName] = useState("");
   const [items, setItems] = useState([]);
   const [members, setMembers] = useState([]);
@@ -26,7 +27,7 @@ function MyEstate() {
           let tempUser = new User();
           tempUser.state = {
               id: res.data.users[i].id,
-              name: res.data.users[i].name,
+              name: res.data.users[i].username,
               email: res.data.users[i].email
           }
           initMembers.push(tempUser);
@@ -79,6 +80,15 @@ function MyEstate() {
               <div key={"item"+index} id={"i"+index} style={{direction: "grid", border: '1px solid'}}>
                 <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
                 <h4>{element.state.name}</h4>
+                <button onClick={() => localStorage.setItem('itemId', element.state.id)}>
+                              <Link
+                                to={{
+                                  pathname: '/MyItem',
+                                }}
+                              >
+                                Go to Item
+                              </Link>
+                            </button>
               </div>
             ))}
           </div>

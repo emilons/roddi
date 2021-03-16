@@ -83,9 +83,7 @@ form:last-child {
 .estateNameAndItem {
 
 }
-.userInteractionsList {
 
-}
 .userInteractions {
   display: grid;
   grid-template-columns: auto 50px auto;

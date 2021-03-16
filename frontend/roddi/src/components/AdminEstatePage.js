@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Estate from './Estate';
 import User from './User';
 import Item from './Item';
@@ -25,7 +26,7 @@ function dummyUsers() {
 
 function AdminEstatePage(props) {
   // EstateID based on props
-  const [estateID, setEstateID] = useState(localStorage.getItem('id')); // Metode som gir deg siden til estate med id man trykker på
+  const [estateID, setEstateID] = useState(localStorage.getItem('estateId')); // Metode som gir deg siden til estate med id man trykker på
   const [estateName, setEstateName] = useState('');
   const [items, setItems] = useState([]);
   const [members, setMembers] = useState([]);
@@ -75,7 +76,7 @@ function AdminEstatePage(props) {
         let tempUser = new User();
         tempUser.state = {
           id: res.data.users[i].id,
-          name: res.data.users[i].name,
+          name: res.data.users[i].username,
           email: res.data.users[i].email,
         };
         initMembers.push(tempUser);
@@ -279,6 +280,15 @@ function AdminEstatePage(props) {
                 />
                 <h4>{element.state.name}</h4>
                 {/*<button type="button" className="btn-primary" onClick={editItem}>Rediger</button>*/}
+                <button onClick={() => localStorage.setItem('itemId', element.state.id)}>
+                              <Link
+                                to={{
+                                  pathname: '/MyItem',
+                                }}
+                              >
+                                Go to Item
+                              </Link>
+                            </button>
                 <button
                   type="button"
                   className="btn-danger"
