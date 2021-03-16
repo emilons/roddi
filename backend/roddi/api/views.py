@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from.serializers import UserSerializer, UserSerializerWithToken, EstateSerializer, ItemSerializer, User_In_EstateSerializer
+from.serializers import UserSerializer, UserSerializerWithToken, EstateSerializer, ItemSerializer, User_In_EstateSerializer, User_ItemSerializer
 from .models import Estate, Item, User_In_Estate, User_Item
 
 from django.http import HttpResponseRedirect
@@ -236,11 +236,19 @@ def user_item_create(request):
     return Response(serializer.data)
 
 
+""" @api_view(['PUT'])
+def user_item_put(request, fk1, fk2):
+    user_item = User_Item.objects.get(item_id=fk1, user_id=fk2)
+    serializer = User_ItemSerializer(instance=user_item, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data) """
 
 @api_view(['PUT'])
 def user_item_update(request, pk):
     user_item = User_Item.objects.get(id=pk)
-    serializer = User_ItemSerializer(instance=estate, data=request.data)
+    serializer = User_ItemSerializer(instance=user_item, data=request.data)
 
     if serializer.is_valid():
         serializer.save()
