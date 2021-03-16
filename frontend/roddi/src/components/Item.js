@@ -7,7 +7,7 @@ class Item extends React.Component {
     this.state = {
       id: null,
       name: '',
-      picture: Blob, // Not sure about the blob-type, but we will check it out.
+      image: '', // Not sure about the blob-type, but we will check it out.
       description: '',
       //            userChoice: Map()//.set(User, 0), // map with user as key and priority as value
     };
