@@ -60,6 +60,16 @@ form:last-child {
   justify-content: space-around;
   margin: 40px 0 0 0;
 }
+
+.AdminEstates {
+  text-align: center;
+  margin: 100px 200px;
+}
+
+#AdminEstatesButtons{
+ margin: 50px 300px 50px 300px; 
+}
+
 .btn-outline-danger{
   color: #f5f1f1;
   border-color: #f5f1f1;

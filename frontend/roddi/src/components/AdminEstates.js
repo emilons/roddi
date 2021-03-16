@@ -78,7 +78,7 @@ function AdminEstates() {
                         className="form-text"> 
                     </small>
                 </form>
-                <button type="submit" className="btn btn-outline-danger" onClick={submitEstate}>
+                <button type="submit" id = "AdminEstatesButtons" className="btn btn-outline-danger" onClick={submitEstate}>
                     Opprett Dødsbo
                 </button>
             </div>
