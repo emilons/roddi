@@ -41,7 +41,7 @@ function MyItem() {
                     name: res.data.users[i].username,
                     email: res.data.users[i].email
                 }
-                if (tempUser.name != localStorage.getItem('userName')){
+                if (tempUser.state.name != localStorage.getItem('userName')){
                     initMembers.push(tempUser);
                 }
             }
@@ -97,7 +97,9 @@ function MyItem() {
     
     function onChangeVote(event) {
         let itemId = localStorage.getItem('itemId');
-        let userId = user.state.id;
+        let userId = user.id;
+        /* itemId = parseInt(itemId);
+        userId = parseInt(userId); */
         let vote = null
         if (event.target.value == "divide") {
             vote = 1;

@@ -17,7 +17,7 @@ function MemberVotes(props) {
             <div className="voteTrash" style={{border: '1px solid', margin: "2px"}}>Kast</div>
             </Fragment>
         )}
-    else if (props.value == -1 ){
+    else if (props.value == -1 ) {
         return (
             <Fragment>
             <div className="voteDivide" style={{border: '1px solid', margin: "2px"}}>Fordel</div>

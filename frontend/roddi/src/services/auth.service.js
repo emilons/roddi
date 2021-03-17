@@ -244,33 +244,45 @@ class AuthService extends Component {
   // PUT User Vote in User_Item relation
   async putVote(itemId, userId, vote) {
     if (vote > 0 && vote < 6) {
-      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '/' + userId, {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '-' + userId + '/', {
         donate: false,
         discard: false,
         wanted: true,
         wanted_level: vote,
         item_id: itemId,
         user_id: userId
+      }, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
       })
     }
     else if (vote == 0) {
-      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '/' + userId, {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '-' + userId + '/', {
         donate: true,
         discard: false,
         wanted: false,
-        wanted_level: null,
+        wanted_level: vote,
         item_id: itemId,
         user_id: userId
+      }, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
       })
     }
     else {
-      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '/' + userId, {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '-' + userId + '/', {
         donate: false,
         discard: true,
         wanted: false,
-        wanted_level: null,
+        wanted_level: vote,
         item_id: itemId,
         user_id: userId
+      }, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
       })
     }
   }

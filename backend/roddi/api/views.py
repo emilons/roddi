@@ -230,29 +230,43 @@ def user_item_detail(request, pk):
 @api_view(['POST'])
 def user_item_create(request):
     serializer = User_ItemSerializer(data=request.data)
-
+    print("SERIALIZER: ", serializer)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
 
 
-""" @api_view(['PUT'])
-def user_item_put(request, fk1, fk2):
-    user_item = User_Item.objects.get(item_id=fk1, user_id=fk2)
-    serializer = User_ItemSerializer(instance=user_item, data=request.data)
+@api_view(['PUT'])
+def user_item_put(request, pk):
+    x = pk.split("-")
+    #fk1 = int(x[0])
+    #fk2 = int(x[1])
+    fk1 = x[0]
+    fk2 = x[1]
+    try:
+        user_item = User_Item.objects.get(item_id=fk1, user_id=fk2)
+        print("USER ITEM: ", type(user_item.item_id))
+        serializer = User_ItemSerializer(instance=user_item, data=request.data)
+        print("SERIALIZER: ", serializer)
+        if serializer.is_valid():
+            print("----------HAPAPPAPAPAP")
+            serializer.save()
+        return Response(serializer.data)
+    except User_Item.DoesNotExist:
+        serializer = User_ItemSerializer(data=request.data)
+        print("SERIALIZER: ", serializer)
+        if serializer.is_valid():
+            print("----------HAPAPPAPAPAP")
+            serializer.save()
+        return Response(serializer.data)
 
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data) """
 
 @api_view(['PUT'])
 def user_item_update(request, pk):
     user_item = User_Item.objects.get(id=pk)
     serializer = User_ItemSerializer(instance=user_item, data=request.data)
-
     if serializer.is_valid():
         serializer.save()
-
     return Response(serializer.data)
 
 
