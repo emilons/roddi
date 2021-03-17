@@ -29,7 +29,6 @@ urlpatterns = [
     path('user_item-detail/<str:pk>/', views.user_item_detail, name= "user_item-detail"),
     path('user_item-put/<str:pk>/', views.user_item_put, name="user_item-put"),
     path('user_item-create/', views.user_item_create, name="user_item-create"),
-    path('user_item-update/<str:pk>/', views.user_item_update, name="user_item-update"),
     path('user_item-delete/<str:pk>/', views.user_item_delete, name="user_item-delete"),
 
     path('user_in_estate-create/', views.user_in_estate_create, name="user_in_estate-create"),
