@@ -5,10 +5,10 @@ import AuthService from '../services/auth.service';
 import Header from './Header';
 import logo from '../images/logo_transparent.jpg'
 
-function Login(props) {
+function Login() {
   const history = useHistory();
   const routeChange = () => {
-    let path = '/AdminEstates';
+    let path = '/Home'
     history.push(path);
   };
 

@@ -19,7 +19,7 @@ function MyItem() {
         name: localStorage.getItem('userName'),
         email: localStorage.getItem('userEmail')
     }); // current logged in 
-    const [userItemChoice, setUserItemChoice] = useState(-1) // what current user voted on this item (update item.state.userChoice for this user based on this)
+    const [userItemChoice, setUserItemChoice] = useState() // what current user voted on this item (update item.state.userChoice for this user based on this)
     const [members, setMembers] = useState([]); // all family members except current user
     const [memberChoiceMap, setMemberChoiceMap] = useState(new Map())
 
@@ -65,27 +65,21 @@ function MyItem() {
             setItem(tempItem);
             setIsLoading(false);
         })
+        
         authService.getUserItemRelationByItemId(itemID).then(res => {
-            let choiceMap = new Map()
+            let choiceMap = new Map();
             res.forEach(element => {
-                let userName = element.id;
-                members.forEach(el => {
-                    if (el.state.id == element.id) {
-                        userName = el.state.name
-                    }
-                });
-                if (element.wanted) {
-                    choiceMap.set(userName, element.wanted_level);
-                }
-                else if (element.donate) {
-                    choiceMap.set(userName, 0);
-                }
-                else {
-                    choiceMap.set(userName, 1);
+                let memberId = element.user
+                choiceMap.set(memberId, element.wanted_level);
+                if (user.id == element.user) {
+                    setUserItemChoice(element.wanted_level)
                 }
             })
             setMemberChoiceMap(choiceMap);
         })
+        
+       
+
     }
 
 
@@ -110,6 +104,7 @@ function MyItem() {
         else if (event.target.value == "discard") {
             vote = -1;
         }
+        setUserItemChoice(vote);
         authService.putVote(itemId, userId, vote);
     }
     
@@ -137,6 +132,7 @@ function MyItem() {
                         <div className="voteDivide"><input type="radio" value="divide" name="vote"/> Fordel</div>
                         <div className="voteDonate"><input type="radio" value="donate" name="vote"/> Doner</div>
                         <div className="voteTrash"><input type="radio" value="discard" name="vote"/> Kast</div>
+                        <MemberVotes value={userItemChoice}/>
                     </div>
                 </div>
                 {members.map((element, index) => (
@@ -147,19 +143,6 @@ function MyItem() {
                         </div>
                         <div className="userVotes">
                         {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.id)}/> : <p>Loading...</p>}
-
-
-                        {/*element.state.userChoice[element.state.name] > 1 ? 
-                            <div className="voteDivide" style={{border: '1px solid', margin: "2px", backgroundColor: 'yellow'}}>Fordel</div>
-                        :
-                            <div className="voteDivide" style={{border: '1px solid', margin: "2px", backgroundColor: 'white'}}>Fordel</div>
-
-                            <div className="voteDonate" style={{border: '1px solid', margin: "2px"}}>Doner</div>
-                            <div className="voteTrash" style={{border: '1px solid', margin: "2px"}}>Kast</div>
-                                <div className="voteDivide"><input type="radio" value="Divide" name="vote"/> Fordel</div>
-                                <div className="voteDonate"><input type="radio" value="Donate" name="vote"/> Doner</div>
-                                <div className="voteTrash"><input type="radio" value="Trash" name="vote"/> Kast</div>
-                                */}
                         </div>
                     </div>
                 ))}

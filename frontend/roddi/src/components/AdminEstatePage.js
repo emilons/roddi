@@ -10,23 +10,9 @@ import '../App.css';
 
 Modal.setAppElement('#root');
 
-function dummyUsers() {
-  let per = new User();
-  per.state = {
-    id: 12,
-    name: 'Per',
-  };
-  let marte = new User();
-  marte.state = {
-    id: 12,
-    name: 'Marte',
-  };
-  return [per, marte];
-}
-
-function AdminEstatePage(props) {
+function AdminEstatePage() {
   // EstateID based on props
-  const [estateID, setEstateID] = useState(localStorage.getItem('estateId')); // Metode som gir deg siden til estate med id man trykker på
+  const [estateID] = useState(localStorage.getItem('estateId'));
   const [estateName, setEstateName] = useState('');
   const [items, setItems] = useState([]);
   const [members, setMembers] = useState([]);
@@ -62,7 +48,6 @@ function AdminEstatePage(props) {
 
   // get Estates from Backend and initialize list of estates with these
   useEffect(() => {
-    // setEstateID bbased on URL
     authService.getEstateFromID(estateID).then((res) => {
       let tempEstate = new Estate();
       tempEstate.state = {
@@ -144,8 +129,6 @@ function AdminEstatePage(props) {
     window.location.reload(false);
   }
 
-  function editItem() {}
-
   function deleteItem(guiId, itemId) {
     let GUIItem = document.getElementById(guiId);
     GUIItem.remove();
@@ -169,7 +152,6 @@ function AdminEstatePage(props) {
     //validering av input og om input allerede eksisterer i estate og om input i det hele tatt eksisterer
     authService
       .getUserIdByEmail(addNewMember.memberEmail)
-      // legg til at man bare kan presse enter for å legge til
       .then((res) => {
         let x = new User();
         if (res[0] != undefined) {
@@ -184,7 +166,6 @@ function AdminEstatePage(props) {
           closeMemberModal();
           window.location.reload(false);
         } else {
-          // log that email doesnt exist
           document.getElementById('confirmEmail').innerHTML =
             'Vennligst fyll inn en eksisterende email!';
           document.getElementById('confirmEmail').style.color = 'red';

@@ -36,6 +36,7 @@ class App extends Component {
           
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
+          <Route path="/Home" component={Home} />
           <Route path="/AdminEstates" component={AdminEstates}/>
           <Route path="/AdminEstatePage" component={AdminEstatePage}/>
           <Route path="/MyEstate" component={MyEstate}/>

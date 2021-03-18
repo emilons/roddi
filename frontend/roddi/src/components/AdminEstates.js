@@ -23,7 +23,6 @@ function AdminEstates() {
       }
       let newEstates = estates.concat(initEstates);
       setEstates(newEstates);
-      console.log(initEstates);
     });
   }, []);
 
