@@ -129,5 +129,6 @@ fabric.properties
 
 
 /backend/roddi/api/migrations
+/backend/roddi/media
 .DS_Store
 __pycache__/
