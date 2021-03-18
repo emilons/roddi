@@ -141,7 +141,12 @@ function AdminEstatePage(props) {
       description: addNewItem.itemDescription,
       estate: estateID,
     };
-    let newItems = items.concat([x]);
+    if (postImage === null){
+
+    }
+
+    else{ 
+      let newItems = items.concat([x]);
     authService.addItem(x.state.name, x.state.description, postImage.image[0], x.state.estate);
     setItems(newItems);
     setAddNewItem({ itemName: '', itemDescription: ''});
@@ -152,6 +157,8 @@ function AdminEstatePage(props) {
       window.location.reload(false);
     },200)
   }
+  };
+    
 
 
   function editItem() {}
