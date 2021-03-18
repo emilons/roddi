@@ -223,14 +223,14 @@ function AdminEstatePage(props) {
                     ))}
                     <div className="addMember">
                         <button type="submit" className="btn btn-outline-danger" onClick={addMember}>Legg til medlem</button>
-                        <Modal
+                        <Modal id = "myModal"
                             isOpen={memberModalIsOpen}
                             onRequestClose={closeMemberModal}
                             contentLabel="Example Modal">
                             <h2>Brukere</h2>
                             <form>
-                                <div className="form-group text-left">
-                                    <label htmlFor="memberEmail">Fyll inn bruker email</label>
+                                <div className="form-group text-left" >
+                                    <label htmlFor="memberEmail">Fyll inn bruker email:</label>
                                     <input type="name" 
                                         className="form-control"
                                         id="memberEmail" 
@@ -242,7 +242,7 @@ function AdminEstatePage(props) {
                                     className="form-text"> 
                                 </small>
                             </form>
-                            <button className="btn btn-outline-danger" onClick={submitMember}>Legg til medlem</button>
+                            <button id = "estateButton" className="btn btn-outline-danger" onClick={submitMember}>Legg til medlem</button>
                         </Modal>
                     </div>
                 </div>
@@ -262,7 +262,7 @@ function AdminEstatePage(props) {
                     </div>
                     <div className="addItem">
                         <button type="submit" className="btn btn-outline-danger" onClick={addItem}>Legg til eiendel</button>
-                        <Modal
+                        <Modal id = "myModal"
                             isOpen={itemModalIsOpen}
                             onRequestClose={closeItemModal}
                             contentLabel="Example Modal">

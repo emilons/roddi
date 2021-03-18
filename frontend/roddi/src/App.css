@@ -12,8 +12,8 @@ body {
   background-repeat: repeat-y;
   background-size: 50% auto;
   position: absolute;
-  
 }
+
 .startPage {
   text-align: center;
 }
@@ -28,7 +28,6 @@ body {
   line-height: 1,6em;
   width: 50%;
   margin-left:25%
-
 }
 
 .form {
@@ -43,18 +42,16 @@ a, a:hover {
 #loginDiriger {
   font-size: 16px;
   padding: 5px 25px 5px 25px;
-
   margin-top: 20px;
   border: 0.5px outset;
-
 }
 
 form:last-child {
   margin-left: 2px;
   font-size: 20px;
   padding: 0px 20px 0px 20px;
-
 }
+
 .AdminEstatePage {
   display: flex;
   justify-content: space-around;
@@ -76,9 +73,7 @@ form:last-child {
   border-color: #f5f1f1;
   background-color: #900C27;
   border: 0.5px outset;
-
   margin-top: 20px;
-
 }
 
 .membersList div {
@@ -134,6 +129,7 @@ form:last-child {
   background-color:#f9f9f9;
   border-color: #bab5b5;
 }
+
 .estateList div > img {
   border-radius: 2%;
   margin-bottom: 5%;
@@ -178,14 +174,12 @@ form:last-child {
 
 .navbar-dark {
   background-color: #f8f0f2;
-
 }
 
 
 #right {
   text-align: center;
   margin: 20px 200px;
-
 }
 
 .description{
@@ -193,9 +187,6 @@ form:last-child {
   background-color: #f8f0f2;
   transform: translate(0%,-50%);
   padding: 25px;
-
-
-
 }
 
 img{
@@ -203,15 +194,12 @@ img{
   display: block;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .form-group{
   font-size: 20px;
   margin-left: 20px;
 }
-
-
 
 .welcome{
   font-size: 40px;
@@ -227,8 +215,8 @@ img{
   display: block;
   margin-left: auto;
   margin-right: auto;
-
 }
+
 .estates{
   display: flex;
   flex-direction: row;
@@ -245,3 +233,8 @@ img{
   margin-left: auto;
   margin-right: auto;
 }
+
+#myModal{
+  text-align: center;
+}
+
