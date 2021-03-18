@@ -142,12 +142,15 @@ function AdminEstatePage(props) {
       estate: estateID,
     };
     let newItems = items.concat([x]);
-    console.log(newItems);
     authService.addItem(x.state.name, x.state.description, postImage.image[0], x.state.estate);
     setItems(newItems);
     setAddNewItem({ itemName: '', itemDescription: ''});
     closeItemModal();
-    window.location.reload(false);
+
+    //Trenger en liten delay før reload her, eller så vil serveren til tider ikke henge med på bildelaging
+    setTimeout(function() {
+      window.location.reload(false);
+    },200)
   }
 
 
@@ -284,7 +287,6 @@ function AdminEstatePage(props) {
                 <img
                   style={{ height: '180px', width: '200px' }}
                   src={'http://localhost:8000'+ element.state.image}
-                  alt="item image"
                 />
                 <h4>{element.state.name}</h4>
                 {/*<button type="button" className="btn-primary" onClick={editItem}>Rediger</button>*/}

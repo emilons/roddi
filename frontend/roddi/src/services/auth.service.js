@@ -135,7 +135,6 @@ class AuthService extends Component {
   async addItem(name, description, image, estate) {
     //let voters = []; // temp solution
     const URL = API_URL + "item-newcreate/";
-    axios.defaults.headers.common['Authorization'] = `JWT ${localStorage.getItem('token')}`
     const config = {headers : {Authorization : `JWT ${localStorage.getItem('token')}`,
     'Content-Type': 'multipart/form-data'}}
 
@@ -146,11 +145,7 @@ class AuthService extends Component {
     formData.append('estate', estate);
 
     axios
-        .post(URL, formData, config)
-        .then(((res) => {
-          console.log(res.data)
-        })
-        .catch((err) => console.log(err)));
+        .post(URL, formData, config);
   }
 
 
