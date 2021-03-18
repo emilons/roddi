@@ -39,6 +39,7 @@ function AdminEstatePage(props) {
     itemDescription: '',
     // state for item picture
   });
+  const [postImage, setPostImage] = useState(null);
   const handleItemChange = (e) => {
     const { id, value } = e.target;
     setAddNewItem((prevState) => ({
@@ -46,6 +47,11 @@ function AdminEstatePage(props) {
       [id]: value,
     }));
   };
+
+  const handleItemImageChange = (e) => {
+    setPostImage({image: e.target.files});
+};
+
   const [addNewMember, setAddNewMember] = useState({
     memberEmail: '',
   });
@@ -103,6 +109,7 @@ function AdminEstatePage(props) {
           tempItem.state = {
             id: res[i].id,
             name: res[i].name,
+            image: res[i].image,
             wantedBy: res[i].voters,
           };
           initItems.push(tempItem);
@@ -135,13 +142,17 @@ function AdminEstatePage(props) {
       estate: estateID,
     };
     let newItems = items.concat([x]);
-    console.log(newItems);
-    authService.addItem(x.state.name, x.state.description, x.state.estate);
+    authService.addItem(x.state.name, x.state.description, postImage.image[0], x.state.estate);
     setItems(newItems);
-    setAddNewItem({ itemName: '', itemDescription: '' });
+    setAddNewItem({ itemName: '', itemDescription: ''});
     closeItemModal();
-    window.location.reload(false);
+
+    //Trenger en liten delay før reload her, eller så vil serveren til tider ikke henge med på bildelaging
+    setTimeout(function() {
+      window.location.reload(false);
+    },200)
   }
+
 
   function editItem() {}
 
@@ -275,8 +286,7 @@ function AdminEstatePage(props) {
               >
                 <img
                   style={{ height: '180px', width: '200px' }}
-                  src={tempImage}
-                  alt="temporary pic"
+                  src={'http://localhost:8000'+ element.state.image}
                 />
                 <h4>{element.state.name}</h4>
                 {/*<button type="button" className="btn-primary" onClick={editItem}>Rediger</button>*/}
@@ -329,6 +339,19 @@ function AdminEstatePage(props) {
                     placeholder="..."
                     value={addNewItem.itemDescription}
                     onChange={handleItemChange}
+                  />
+                </div>
+                <div className="form-group text-left">
+                  <label htmlFor="itemImage">
+                    Legg til et bilde
+                  </label>
+                  <input
+                  accept="image/*"
+                  className="form-control"
+                  id = "post-image"
+                  onChange={handleItemImageChange}
+                  name="image"
+                  type="file"
                   />
                 </div>
               </form>

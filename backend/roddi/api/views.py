@@ -9,12 +9,29 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from rest_framework import permissions, status
 from rest_framework.views import APIView
+from rest_framework import status
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 
 
 
 # Create your views here.
+
+
+class ItemCreate(APIView):
+    #permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
+
+    def post(self, request, format=None):
+        serializer = ItemSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 @api_view(['GET'])

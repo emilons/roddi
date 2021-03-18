@@ -1,5 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
+
+
+
+
+
 
 
 # Create your models here.
@@ -11,10 +17,18 @@ class Estate(models.Model):
     users = models.ManyToManyField(User, blank=True, through="User_In_Estate")
 
 
+
+def upload_to(instance, filename):
+    return '{filename}'.format(filename=filename)
+
+
+
+
 class Item(models.Model):
     name = models.CharField(max_length=55)
     description = models.CharField(max_length=255)
     estate = models.ForeignKey(Estate, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=upload_to, default = "default")
     voters = models.ManyToManyField(User, blank=True, through="User_Item")
 
     class Meta:

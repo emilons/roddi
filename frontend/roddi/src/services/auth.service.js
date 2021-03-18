@@ -4,6 +4,8 @@ import Estate from '../components/Estate';
 
 const API_URL = 'http://localhost:8000/api/';
 
+
+
 class AuthService extends Component {
   constructor(props) {
     super(props);
@@ -130,23 +132,22 @@ class AuthService extends Component {
   }
 
   // POST item to DB
-  async addItem(name, description, estate) {
+  async addItem(name, description, image, estate) {
     //let voters = []; // temp solution
-    const response = await axios.post(
-      API_URL + 'item-create/',
-      {
-        name,
-        description,
-        estate,
-      },
-      {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem('token')}`,
-        },
-      }
-    );
-    console.log(response);
+    const URL = API_URL + "item-newcreate/";
+    const config = {headers : {Authorization : `JWT ${localStorage.getItem('token')}`,
+    'Content-Type': 'multipart/form-data'}}
+
+    let formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('image', image);
+    formData.append('estate', estate);
+
+    axios
+        .post(URL, formData, config);
   }
+
 
   // DELETE item from DB
   async deleteItem(itemId) {

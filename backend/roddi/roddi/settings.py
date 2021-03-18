@@ -15,6 +15,9 @@ from datetime import timedelta
 from datetime import datetime
 from datetime import time
 from datetime import date
+import os
+
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -156,3 +159,11 @@ STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ('http://localhost:3000',)
+
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
+MEDIA_URL = '/media/'
+
+
+
