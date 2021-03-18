@@ -17,7 +17,7 @@ function RegisterUser(props) {
 
   const history = useHistory();
   function routeChange() {
-    let path = '/AdminEstates';
+    let path = '/Login';
     history.push(path);
   }
 

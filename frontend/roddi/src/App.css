@@ -51,6 +51,8 @@ form:last-child {
   font-size: 20px;
   padding: 0px 20px 0px 20px;
 }
+
+
 .AdminEstatePage {
   display: flex;
   justify-content: space-around;
@@ -61,6 +63,40 @@ form:last-child {
   border-color: #f5f1f1;
   background-color: #900C27;
   border: 0.5px outset;
+}
+
+
+.MyEstate {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0 0 0;
+}
+
+/* MyItem */
+.MyItem {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 40px 0 0 0;
+}
+
+.estateNameAndItem {
+
+}
+
+.userInteractions {
+  display: grid;
+  grid-template-columns: auto 50px auto;
+  padding: 10px;
+}
+
+.userNameAndComment {
+  grid-column-start: 1;
+}
+.userVotes {
+  grid-column-start: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .membersList div {

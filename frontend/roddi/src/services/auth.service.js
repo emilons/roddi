@@ -25,6 +25,9 @@ class AuthService extends Component {
       .then((response) => {
         if (response.data.token) {
           localStorage.setItem('token', response.data.token);
+          localStorage.setItem('userId', response.data.user.id);
+          localStorage.setItem('userName', response.data.user.username);
+          localStorage.setItem('userEmail', response.data.user.email);
           window.location.reload(false);
         }
         console.log(localStorage);
@@ -90,7 +93,6 @@ class AuthService extends Component {
 
   // GET specific estate from DB
   async getEstateFromID(id) {
-    let returnList = [];
     const response = await axios.get(
       API_URL + 'estate-detail/' + localStorage.getItem('id'),
       {
@@ -100,12 +102,6 @@ class AuthService extends Component {
       }
     );
     return response;
-    /* .then(
-      response => response.data.map((item) => (
-      returnList.push(item)
-      )));
-    //console.log(returnList);
-    return returnList; */
   }
 
   // GET EstateID from url or something... ########for next sprint#########
@@ -129,6 +125,15 @@ class AuthService extends Component {
       }
     });
     return returnList;
+  }
+  // GET item by item ID
+  async getItemByID(itemId) {
+    const response = await axios.get(API_URL + "item-detail/" + itemId, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      },
+    })
+    return response;
   }
 
   // POST item to DB
@@ -195,6 +200,15 @@ class AuthService extends Component {
     });
     return returnList;
   }
+  // GET User by ID
+  async getUserByID(userId) {
+    const response = await axios.get(API_URL + "user-detail/" + userId, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      },
+    });
+    return response;
+  }
 
   // GET user_in_estate ID
   async getUserInEstateId(estateId) {
@@ -215,6 +229,72 @@ class AuthService extends Component {
       }
     });
     return returnList;
+  }
+  
+  // GET list of User_Item relations from ItemID
+  async getUserItemRelationByItemId(itemId) {
+    let totalUserItemList = [];
+    let userItemList = [];
+    await axios.get(API_URL + "user_item-list", {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      },
+    })
+    .then(response => response.data.map((element) => (
+      totalUserItemList.push(element)
+    )));
+    totalUserItemList.forEach(element => {
+      if (element.item == itemId) {
+        userItemList.push(element);
+      }
+    })
+    return userItemList;
+  }
+
+  // PUT User Vote in User_Item relation
+  async putVote(itemId, userId, vote) {
+    if (vote > 0 && vote < 6) {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '-' + userId + '/', {
+        donate: false,
+        discard: false,
+        wanted: true,
+        wanted_level: vote,
+        item_id: itemId,
+        user_id: userId
+      }, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+    }
+    else if (vote == 0) {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '-' + userId + '/', {
+        donate: true,
+        discard: false,
+        wanted: false,
+        wanted_level: vote,
+        item_id: itemId,
+        user_id: userId
+      }, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+    }
+    else {
+      const response = await axios.put(API_URL + 'user_item-put/' + itemId + '-' + userId + '/', {
+        donate: false,
+        discard: true,
+        wanted: false,
+        wanted_level: vote,
+        item_id: itemId,
+        user_id: userId
+      }, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+    }
   }
 
   // DELETE User from Estate

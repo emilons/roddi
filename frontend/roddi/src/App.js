@@ -6,8 +6,9 @@ import Header from './components/Header';
 import RegisterUser from './components/RegisterUser';
 import AdminEstates from './components/AdminEstates';
 import AdminEstatePage from './components/AdminEstatePage';
-//import MyEstate from './components/MyEstate';
-import AuthService from './services/auth.service';
+import MyEstate from './components/MyEstate';
+import MyItem from './components/MyItem';
+import AuthService from "./services/auth.service";
 import { Component } from 'react';
 import StartPage from './components/StartPage';
 
@@ -34,12 +35,14 @@ class App extends Component {
         <div className="App">
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
-          <Route path="/AdminEstates" component={AdminEstates} />
-          <Route path="/AdminEstatePage" component={AdminEstatePage} />
-          <Route exact path="/" component={StartPage} />
-        </div>
-      </HashRouter>
-    );
-  }
-}
+          <Route path="/Home" component={Home} />
+          <Route path="/AdminEstates" component={AdminEstates}/>
+          <Route path="/AdminEstatePage" component={AdminEstatePage}/>
+          <Route path="/MyEstate" component={MyEstate}/>
+          <Route path="/MyItem" component={MyItem}/>
+          <Route exact path="/" component={StartPage}/> 
+      </div>
+    </HashRouter>
+  );
+}}
 export default App;

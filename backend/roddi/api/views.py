@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from.serializers import UserSerializer, UserSerializerWithToken, EstateSerializer, ItemSerializer, User_In_EstateSerializer
+from.serializers import UserSerializer, UserSerializerWithToken, EstateSerializer, ItemSerializer, User_In_EstateSerializer, User_ItemSerializer
 from .models import Estate, Item, User_In_Estate, User_Item
 
 from django.http import HttpResponseRedirect
@@ -247,22 +247,42 @@ def user_item_detail(request, pk):
 @api_view(['POST'])
 def user_item_create(request):
     serializer = User_ItemSerializer(data=request.data)
-
+    print("SERIALIZER: ", serializer)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
-
 
 
 @api_view(['PUT'])
-def user_item_update(request, pk):
-    user_item = User_Item.objects.get(id=pk)
-    serializer = User_ItemSerializer(instance=estate, data=request.data)
+def user_item_put(request, pk):
+    x = pk.split("-")
+    fk1 = x[0]
+    fk2 = x[1]
+    data = request.data
+    
+    try:
+        user_item = User_Item.objects.get(item_id = fk1, user_id = fk2)
 
-    if serializer.is_valid():
-        serializer.save()
+        user_item.user = User.objects.get(id=data["user_id"])
+        user_item.item = Item.objects.get(id=data["item_id"])
+        user_item.donate = data["donate"]
+        user_item.discard = data["discard"]
+        user_item.wanted = data["wanted"]
+        user_item.wanted_level = data["wanted_level"]
+    
+        user_item.save()
 
-    return Response(serializer.data)
+        serializer = User_ItemSerializer(user_item)
+        return Response(serializer.data)
+
+    except User_Item.DoesNotExist:
+        user_item = User_Item.objects.create(user=User.objects.get(id=data["user_id"]), 
+        item=Item.objects.get(id=data["item_id"]),donate=data["donate"],
+        discard=data["discard"], wanted=data["wanted"], wanted_level=data["wanted_level"])
+
+        serializer = User_ItemSerializer(user_item)
+        return Response(serializer.data)
+
 
 
 @api_view(['DELETE'])

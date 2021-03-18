@@ -13,41 +13,12 @@ function Header() {
     history.push(path);
   };
 
-  const [state, setState] = useState({
-    isAdmin: false,
-    currentUser: undefined,
-    loggedIn: false,
-  });
-
-  /*
-  useEffect(() => {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      this.setState({
-        isAdmin: user.isAdmin,
-        currentUser: user,
-        loggedIn: true 
-      })
-    };
-  })*/
-
-  function logOut(props) {
+  function logOut() {
     AuthService.logout();
     routeChange();
     window.location.reload(false);
   }
 
-  /*  function logIn() {
-        routeChange("/AdminEstates");
-        this.setState({
-            isAdmin: true,
-            currentUser: undefined,
-            loggedIn: true
-    })
-
-}
-*/
     return (
         User.name, 
         <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
@@ -64,15 +35,15 @@ function Header() {
                 <button className="btn btn-outline-danger">
                     <NavLink to="/Login">Logg Inn</NavLink>
                 </button>)}
-                {localStorage.getItem('token') && (
+                {localStorage.getItem('token') && localStorage.getItem('isAdmin') == "true" && (
                     <button className="btn btn-outline-danger">
-                    <NavLink to="/AdminEstates">Admin</NavLink>
+                    <NavLink to="/AdminEstates">Hjem</NavLink>
                 </button>
                 )}
-                {state.currentUser && (
-                    <button>
-                        MyEstate
-                    </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
+                {localStorage.getItem('token') && localStorage.getItem('isAdmin') == "false" && (
+                    <button className="btn btn-outline-danger">
+                    <NavLink to="/MyEstate">Hjem</NavLink>
+                </button>
                 )}
                 {localStorage.getItem('token') && ( 
                     <button className="btn btn-outline-danger" onClick={logOut}>

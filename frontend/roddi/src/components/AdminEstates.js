@@ -23,7 +23,6 @@ function AdminEstates() {
       }
       let newEstates = estates.concat(initEstates);
       setEstates(newEstates);
-      console.log(initEstates);
     });
   }, []);
 
@@ -86,7 +85,7 @@ function AdminEstates() {
                             <h1 style={{margin:'20px 0 20px 40%', fontSize: 30, color: "#454343"}}> {item.state.name}</h1>
                             <img style={{height: "150px", width: "250px"}} src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
-                            <button onClick={() => localStorage.setItem('id', item.state.id)}>
+                            <button onClick={() => localStorage.setItem('estateId', item.state.id)}>
                               <Link
                                 to={{
                                   pathname: '/AdminEstatePage',

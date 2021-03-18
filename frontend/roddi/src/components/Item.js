@@ -7,11 +7,11 @@ class Item extends React.Component {
     this.state = {
       id: null,
       name: '',
-      image: '', // Not sure about the blob-type, but we will check it out.
+      image: '',
       description: '',
-      //            userChoice: Map()//.set(User, 0), // map with user as key and priority as value
+      estate: null,
+      userChoice: null
     };
-    //this.setState(userChoice.set(User, 0)); // something like this to initiate map
   }
 
   render() {
