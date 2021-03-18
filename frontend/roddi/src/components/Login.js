@@ -58,6 +58,9 @@ function Login() {
 
             <div id="right">
             <form>
+                <div className ="welcome">
+                    <label> Velkommen </label>
+                </div>
                 <div className="form-group text-left">
                     <label htmlFor="exampleUserName">Brukernavn</label>
                     <input type="text" 

@@ -12,8 +12,8 @@ body {
   background-repeat: repeat-y;
   background-size: 50% auto;
   position: absolute;
-  
 }
+
 .startPage {
   text-align: center;
 }
@@ -28,11 +28,10 @@ body {
   line-height: 1,6em;
   width: 50%;
   margin-left:25%
-
 }
 
 .form {
-  margin: 50px 100px 0px 100px;
+  margin: 0px;
 }
 
 a, a:hover {
@@ -41,9 +40,10 @@ a, a:hover {
 }
 
 #loginDiriger {
-  margin-left: 220px;
-  font-size: 10px;
-  padding: 0px 30px 0px 30px;
+  font-size: 16px;
+  padding: 5px 25px 5px 25px;
+  margin-top: 20px;
+  border: 0.5px outset;
 }
 
 form:last-child {
@@ -52,17 +52,28 @@ form:last-child {
   padding: 0px 20px 0px 20px;
 }
 
-
 .AdminEstatePage {
   display: flex;
   justify-content: space-around;
   margin: 40px 0 0 0;
 }
+
+.AdminEstates {
+  text-align: center;
+  margin: 100px 200px;
+}
+
+#AdminEstatesButtons{
+ margin:50px 300px 50px 300px; 
+ place-items: center;
+}
+
 .btn-outline-danger{
   color: #f5f1f1;
   border-color: #f5f1f1;
   background-color: #900C27;
   border: 0.5px outset;
+  margin-top: 20px;
 }
 
 
@@ -152,6 +163,7 @@ form:last-child {
   background-color:#f9f9f9;
   border-color: #bab5b5;
 }
+
 .estateList div > img {
   border-radius: 2%;
   margin-bottom: 5%;
@@ -198,23 +210,65 @@ form:last-child {
   background-color: #f8f0f2;
 }
 
-#left {
-  position: relative;
-  width: 50%;
-  float: left;
-  height: 500px;
-  background-color: #f8f0f2;
-  z-index: 1010101010;
-  font-size: 30px;
-}
 
 #right {
-  position: relative;
-  width: 50%;
-  float: left;
+  text-align: center;
+  margin: 20px 200px;
+}
+
+.description{
+  text-align: center;
+  background-color: #f8f0f2;
+  transform: translate(0%,-50%);
+  padding: 25px;
+}
+
+img{
+  height: 120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group{
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.welcome{
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 70px;
+}
+
+#header_pic{
+  height: 50px;
+  width: 30%;
+  margin: "0 500px 0 500px";
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.estates{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   height: 100%;
-  background-color: #fff;
-  z-index: 1010101010;
-  margin: 100px 0 100px 0;
+  position: relative;
+}
+ 
+
+#tempImage{
+  height: 100%;
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#myModal{
+  text-align: center;
 }
 

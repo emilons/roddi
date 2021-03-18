@@ -23,7 +23,7 @@ function Header() {
         User.name, 
         <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
             <div  id="header_pic">
-            <img style={{height: "130px", width: "250px" , margin: "0 500px 0 500px"}} src={logo_header} alt="logoen"/>
+            <img src={logo_header} alt="logoen"/>
             </div>
             <div className="buttons">
                 {(!localStorage.getItem('token')) && (

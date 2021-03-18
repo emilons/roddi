@@ -210,154 +210,85 @@ function AdminEstatePage() {
         <div className="estateName">
           <h1>{estateName}</h1>
         </div>
-        <div className="membersList">
-          <h2>Deltakere</h2>
-          {members.map((element, index) => (
-            <div
-              key={'member' + index}
-              id={'m' + index}
-              style={{ border: '1px solid' }}
-            >
-              <h4>{element.state.name}</h4>
-              <button
-                type="button"
-                className="btn btn-outline-warning"
-                onClick={() => deleteMember('m' + index, element.state.id)}
-              >
-                Slett
-              </button>
+              <div className="membersList">
+                    <h2>Deltakere</h2>
+                    {members.map((element, index) => (
+                        <div key={"member"+index} id={"m"+index} style={{border: '1px solid'}}>
+                            <h4>{element.state.name}</h4>
+                            <button type="button" className="btn btn-outline-warning" onClick={() => deleteMember("m"+index, element.state.id)}>Slett</button>
+                        </div>
+                    ))}
+                    <div className="addMember">
+                        <button type="submit" className="btn btn-outline-danger" onClick={addMember}>Legg til medlem</button>
+                        <Modal id = "myModal"
+                            isOpen={memberModalIsOpen}
+                            onRequestClose={closeMemberModal}
+                            contentLabel="Example Modal">
+                            <h2>Brukere</h2>
+                            <form>
+                                <div className="form-group text-left" >
+                                    <label htmlFor="memberEmail">Fyll inn bruker email:</label>
+                                    <input type="name" 
+                                        className="form-control"
+                                        id="memberEmail" 
+                                        required
+                                        value={addNewMember.memberEmail} 
+                                        onChange={handleMemberChange}/>
+                                </div> 
+                                <small id="confirmEmail" 
+                                    className="form-text"> 
+                                </small>
+                            </form>
+                            <button id = "estateButton" className="btn btn-outline-danger" onClick={submitMember}>Legg til medlem</button>
+                        </Modal>
+                    </div>
+                </div>
             </div>
-          ))}
-          <div className="addMember">
-            <button
-              type="submit"
-              className="btn btn-outline-danger"
-              onClick={addMember}
-            >
-              Legg til medlem
-            </button>
-            <Modal
-              isOpen={memberModalIsOpen}
-              onRequestClose={closeMemberModal}
-              contentLabel="Example Modal"
-            >
-              <h2>Brukere</h2>
-              <form>
-                <div className="form-group text-left">
-                  <label htmlFor="memberEmail">Fyll inn bruker email</label>
-                  <input
-                    type="name"
-                    className="form-control"
-                    id="memberEmail"
-                    required
-                    value={addNewMember.memberEmail}
-                    onChange={handleMemberChange}
-                  />
-                </div>
-                <small id="confirmEmail" className="form-text"></small>
-              </form>
-              <button className="btn btn-outline-danger" onClick={submitMember}>
-                Legg til medlem
-              </button>
-            </Modal>
-          </div>
-        </div>
-      </div>
-      <div className="items">
-        <h2>Eiendeler</h2>
-        <div className="itemsList">
-          <div className="itemRow">
-            {items.map((element, index) => (
-              <div
-                key={'item' + index}
-                id={'i' + index}
-                style={{ border: '1px solid' }}
-              >
-                <img
-                  style={{ height: '180px', width: '200px' }}
-                  src={'http://localhost:8000'+ element.state.image}
-                />
-                <h4>{element.state.name}</h4>
-                {/*<button type="button" className="btn-primary" onClick={editItem}>Rediger</button>*/}
-                <button onClick={() => localStorage.setItem('itemId', element.state.id)}>
-                              <Link
-                                to={{
-                                  pathname: '/MyItem',
-                                }}
-                              >
-                                Go to Item
-                              </Link>
-                            </button>
-                <button
-                  type="button"
-                  className="btn-danger"
-                  onClick={() => deleteItem('i' + index, element.state.id)}
-                >
-                  Slett
-                </button>
-              </div>
-            ))}
-          </div>
-          <div className="addItem">
-            <button
-              type="submit"
-              className="btn btn-outline-danger"
-              onClick={addItem}
-            >
-              Legg til eiendel
-            </button>
-            <Modal
-              isOpen={itemModalIsOpen}
-              onRequestClose={closeItemModal}
-              contentLabel="Example Modal"
-            >
-              <h2>Oppgjør: {estateName}</h2>
-              <form>
-                <div className="form-group text-left">
-                  <label htmlFor="itemName">Legg til en eiendel</label>
-                  <input
-                    type="name"
-                    className="form-control"
-                    id="itemName"
-                    required
-                    placeholder="Navn på eiendel"
-                    value={addNewItem.itemName}
-                    onChange={handleItemChange}
-                  />
-                </div>
-                <div className="form-group text-left">
-                  <label htmlFor="itemDescription">
-                    Legg til en beskrivelse
-                  </label>
-                  <textarea
-                    type="text"
-                    className="form-control"
-                    id="itemDescription"
-                    required
-                    placeholder="..."
-                    value={addNewItem.itemDescription}
-                    onChange={handleItemChange}
-                  />
-                </div>
-                <div className="form-group text-left">
-                  <label htmlFor="itemImage">
-                    Legg til et bilde
-                  </label>
-                  <input
-                  accept="image/*"
-                  className="form-control"
-                  id = "post-image"
-                  onChange={handleItemImageChange}
-                  name="image"
-                  type="file"
-                  />
-                </div>
-              </form>
-              <button className="btn btn-outline-danger" onClick={submitItem}>
-                Legg til eiendel
-              </button>
-            </Modal>
-          </div>
+            <div className="items">
+                <h2>Eiendeler</h2>
+                <div className="itemsList">
+                    <div className="itemRow">
+                        {items.map((element, index) => (
+                            <div key={"item"+index} id={"i"+index} style={{border: '1px solid'}}>
+                                <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
+                                <h4>{element.state.name}</h4>
+                                {/*<button type="button" className="btn-primary" onClick={editItem}>Rediger</button>*/}
+                                <button type="button" className="btn-danger" onClick={() => deleteItem("i"+index,element.state.id)}>Slett</button>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="addItem">
+                        <button type="submit" className="btn btn-outline-danger" onClick={addItem}>Legg til eiendel</button>
+                        <Modal id = "myModal"
+                            isOpen={itemModalIsOpen}
+                            onRequestClose={closeItemModal}
+                            contentLabel="Example Modal">
+                            <h2>Oppgjør: {estateName}</h2>
+                            <form>
+                                <div className="form-group text-left">
+                                    <label htmlFor="itemName">Legg til en eiendel</label>
+                                    <input type="name" 
+                                        className="form-control"
+                                        id="itemName" 
+                                        required
+                                        placeholder="Navn på eiendel" 
+                                        value={addNewItem.itemName} 
+                                        onChange={handleItemChange}/>
+                                </div> 
+                                <div className="form-group text-left">
+                                    <label htmlFor="itemDescription">Legg til en beskrivelse</label>
+                                    <textarea type="text"
+                                        className="form-control"
+                                        id="itemDescription"
+                                        required
+                                        placeholder="..."
+                                        value={addNewItem.itemDescription}
+                                        onChange={handleItemChange}/>
+                                </div>
+                            </form>
+                            <button className="btn btn-outline-danger" onClick={submitItem}>Legg til eiendel</button>
+                        </Modal>
+                    </div>
         </div>
       </div>
     </div>
