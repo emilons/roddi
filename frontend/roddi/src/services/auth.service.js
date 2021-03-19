@@ -115,7 +115,7 @@ class AuthService extends Component {
   // GET specific estate from DB
   async getEstateFromID(id) {
     const response = await axios.get(
-      API_URL + 'estate-detail/' + localStorage.getItem('id'),
+      API_URL + 'estate-detail/' + localStorage.getItem('estateId'),
       {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`,

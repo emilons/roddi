@@ -11,7 +11,6 @@ function MyEstates() {
   useEffect(() => {
     authService.getEstatesByUser().then((res) => {
       let initEstates = [];
-      console.log(res)
       for (let i = 0; i < res.length; i++) {
         let tempEstate = new Estate();
         tempEstate.state = {
@@ -19,7 +18,6 @@ function MyEstates() {
           name: res[i].name,
           status: res[i].status
         };
-        console.log(tempEstate);
         initEstates.push(tempEstate);
       }
       let newEstates = estates.concat(initEstates);
