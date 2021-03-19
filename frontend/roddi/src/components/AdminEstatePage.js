@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Estate from './Estate';
 import User from './User';
 import Item from './Item';
-import tempImage from '../images/WIP.jpg';
 import authService from '../services/auth.service';
 import Modal from 'react-modal';
 import '../App.css';
@@ -130,7 +129,6 @@ function AdminEstatePage() {
     if (postImage === null){
 
     }
-
     else{ 
       let newItems = items.concat([x]);
     authService.addItem(x.state.name, x.state.description, postImage.image[0], x.state.estate);
@@ -250,9 +248,17 @@ function AdminEstatePage() {
                     <div className="itemRow">
                         {items.map((element, index) => (
                             <div key={"item"+index} id={"i"+index} style={{border: '1px solid'}}>
-                                <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
+                                <img style={{height: "180px", width: "200px"}} src={'http://localhost:8000'+ element.state.image} alt="temporary pic"/>
                                 <h4>{element.state.name}</h4>
-                                {/*<button type="button" className="btn-primary" onClick={editItem}>Rediger</button>*/}
+                                <button onClick={() => localStorage.setItem('itemId', element.state.id)}>
+                                  <Link
+                                    to={{
+                                      pathname: '/AdminItem',
+                                    }}
+                                  >
+                                    Gå til eiendel
+                                  </Link>
+                                </button>
                                 <button type="button" className="btn-danger" onClick={() => deleteItem("i"+index,element.state.id)}>Slett</button>
                             </div>
                         ))}
@@ -284,6 +290,19 @@ function AdminEstatePage() {
                                         placeholder="..."
                                         value={addNewItem.itemDescription}
                                         onChange={handleItemChange}/>
+                                </div>
+                                <div className="form-group text-left">
+                                  <label htmlFor="itemImage">
+                                    Legg til et bilde
+                                  </label>
+                                  <input
+                                  accept="image/*"
+                                  className="form-control"
+                                  id = "post-image"
+                                  onChange={handleItemImageChange}
+                                  name="image"
+                                  type="file"
+                                  />
                                 </div>
                             </form>
                             <button className="btn btn-outline-danger" onClick={submitItem}>Legg til eiendel</button>

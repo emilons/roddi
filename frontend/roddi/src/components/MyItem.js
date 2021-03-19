@@ -60,7 +60,9 @@ function MyItem() {
                 id: res.data.id,
                 name: res.data.name,
                 description: res.data.description,
-                estate: res.data.estate
+                estate: res.data.estate,
+                image: res.data.image,
+                wantedBy: res.data.voters
             }
             setItem(tempItem);
             setIsLoading(false);
@@ -77,9 +79,6 @@ function MyItem() {
             })
             setMemberChoiceMap(choiceMap);
         })
-        
-       
-
     }
 
 
@@ -107,6 +106,15 @@ function MyItem() {
         setUserItemChoice(vote);
         authService.putVote(itemId, userId, vote);
     }
+
+    function loadImage() {
+        if (item.state.image == "") {
+            return "";
+        }
+        else {
+            return 'http://localhost:8000'+item.state.image
+        }
+    }
     
 
     return(
@@ -119,7 +127,7 @@ function MyItem() {
                 <div className="item">
                     <h4>{item.state.name}</h4>
                     <p>{item.state.description}</p>
-                    <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
+                    <img style={{height: "180px", width: "200px"}} src={loadImage()} alt="loading pic"/>
                 </div>
             </div>
             <div className="userInteractionsList">

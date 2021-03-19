@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Component } from 'react';
-import Estate from '../components/Estate';
 
 const API_URL = 'http://localhost:8000/api/';
 
@@ -28,9 +27,9 @@ class AuthService extends Component {
           localStorage.setItem('userId', response.data.user.id);
           localStorage.setItem('userName', response.data.user.username);
           localStorage.setItem('userEmail', response.data.user.email);
+          localStorage.setItem('isAdmin', response.data.user.is_superuser);
           window.location.reload(false);
         }
-        console.log(localStorage);
         return response.data;
       });
   }
@@ -61,7 +60,6 @@ class AuthService extends Component {
 
   // POST Estate to DB
   async addEstate(name, status) {
-    console.log(`JWT ${localStorage.getItem('token')}`);
     const response = await axios.post(
       API_URL + 'estate-create/',
       {
@@ -74,7 +72,6 @@ class AuthService extends Component {
         },
       }
     );
-    console.log(`JWT ${localStorage.getItem('token')}`);
   }
 
   // GET List of Estates from DB
@@ -90,6 +87,30 @@ class AuthService extends Component {
     //console.log(returnList);
     return returnList;
   }
+
+    // GET estate by user
+    async getEstatesByUser() {
+      let returnList = [];
+      let userInEstateList = [];
+      let userId = localStorage.getItem('userId');
+      await axios
+        .get(API_URL + 'estate-list/', {
+          headers: {
+            Authorization: `JWT ${localStorage.getItem('token')}`,
+          },
+        })
+        .then((response) =>
+          response.data.map((element) => userInEstateList.push(element))
+        );
+      userInEstateList.forEach((element) => {
+        element.users.forEach((user) => {
+          if (user.id == userId) {
+          returnList.push(element);
+        }
+        })
+      });
+      return returnList;
+    }
 
   // GET specific estate from DB
   async getEstateFromID(id) {
@@ -183,7 +204,6 @@ class AuthService extends Component {
 
   // GET User by email
   async getUserIdByEmail(userEmail) {
-    console.log(userEmail);
     let returnList = [];
     let userList = [];
     await axios
@@ -209,6 +229,7 @@ class AuthService extends Component {
     });
     return response;
   }
+
 
   // GET user_in_estate ID
   async getUserInEstateId(estateId) {

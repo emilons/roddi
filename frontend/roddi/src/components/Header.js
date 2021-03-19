@@ -3,7 +3,6 @@ import { NavLink, useHistory } from 'react-router-dom';
 import '../App.css';
 import User from './User';
 import AuthService from '../services/auth.service';
-import Login from './Login';
 import logo_header from '../images/logo_header.png'
 
 function Header() {
@@ -42,7 +41,7 @@ function Header() {
                 )}
                 {localStorage.getItem('token') && localStorage.getItem('isAdmin') == "false" && (
                     <button className="btn btn-outline-danger">
-                    <NavLink to="/MyEstate">Hjem</NavLink>
+                    <NavLink to="/MyEstates">Hjem</NavLink>
                 </button>
                 )}
                 {localStorage.getItem('token') && ( 

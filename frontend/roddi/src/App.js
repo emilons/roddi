@@ -1,12 +1,13 @@
 import './App.css';
 import { Route, HashRouter } from 'react-router-dom';
-import Home from './components/Home';
 import Login from './components/Login';
 import Header from './components/Header';
 import RegisterUser from './components/RegisterUser';
 import AdminEstates from './components/AdminEstates';
 import AdminEstatePage from './components/AdminEstatePage';
-import MyEstate from './components/MyEstate';
+import AdminItem from './components/AdminItem';
+import MyEstatePage from './components/MyEstatePage';
+import MyEstates from './components/MyEstates';
 import MyItem from './components/MyItem';
 import AuthService from "./services/auth.service";
 import { Component } from 'react';
@@ -35,10 +36,12 @@ class App extends Component {
         <div className="App">
           <Route path="/Registrer" component={RegisterUser} />
           <Route path="/Login" component={Login} />
-          <Route path="/Home" component={Home} />
+          <Route path="/StartPage" component={StartPage} />
           <Route path="/AdminEstates" component={AdminEstates}/>
           <Route path="/AdminEstatePage" component={AdminEstatePage}/>
-          <Route path="/MyEstate" component={MyEstate}/>
+          <Route path="/AdminItem" component={AdminItem}/>
+          <Route path="/MyEstates" component={MyEstates}/>
+          <Route path="/MyEstatePage" component={MyEstatePage}/>
           <Route path="/MyItem" component={MyItem}/>
           <Route exact path="/" component={StartPage}/> 
       </div>

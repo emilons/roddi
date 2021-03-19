@@ -8,9 +8,14 @@ import logo from '../images/logo_transparent.jpg'
 function Login() {
   const history = useHistory();
   const routeChange = () => {
-    let path = '/Home'
+    let path = '/StartPage'
     history.push(path);
   };
+  const routeChangeFail = () => {
+    let path = '/Login'
+    history.push(path);
+  }
+
 
   const [state, setState] = useState({
     username: '',
@@ -26,7 +31,6 @@ function Login() {
   };
 
   const handleSubmit = () => {
-    console.log(state);
     if (
       document.getElementById('username').value == '' ||
       document.getElementById('password').value == ''
@@ -39,6 +43,7 @@ function Login() {
       }
       } catch (error) {
         console.log(error);
+        routeChangeFail();
       }
     }
   };
@@ -46,7 +51,7 @@ function Login() {
     
     return(
         <div className="form">
-            <div id="left">
+            {/* <div id="left">
             <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
 
                 <div className="description">
@@ -55,7 +60,7 @@ function Login() {
                     </p>
                 </div>
             </div>
-
+ */}
             <div id="right">
             <form>
                 <div className ="welcome">

@@ -4,10 +4,9 @@ import Estate from './Estate';
 import User from './User';
 import Item from './Item';
 import authService from '../services/auth.service';
-import tempImage from '../images/WIP.jpg';
 import '../App.css';
 
-function MyEstate() {
+function MyEstatePage() {
   const [estateID] = useState(localStorage.getItem('estateId'));
   const [estateName, setEstateName] = useState("");
   const [items, setItems] = useState([]);
@@ -46,7 +45,8 @@ function MyEstate() {
             tempItem.state = {
                 id: res[i].id,
                 name: res[i].name,
-                //wantedBy: res[i].voters
+                image: res[i].image,
+                wantedBy: res[i].voters,
             }
             initItems.push(tempItem);
         }
@@ -58,7 +58,7 @@ function MyEstate() {
   },[]);
 
   return(
-    <div className="MyEstate">
+    <div className="MyEstatePage">
       <div className="nameAndMembers">
           <div className="estateName">
               <h1>{estateName}</h1>
@@ -78,7 +78,7 @@ function MyEstate() {
           <div className="itemRow">
             {items.map((element, index) => (
               <div key={"item"+index} id={"i"+index} style={{direction: "grid", border: '1px solid'}}>
-                <img style={{height: "180px", width: "200px"}} src={tempImage} alt="temporary pic"/>
+                <img style={{height: "180px", width: "200px"}} src={'http://localhost:8000'+ element.state.image} alt="temporary pic"/>
                 <h4>{element.state.name}</h4>
                 <button onClick={() => localStorage.setItem('itemId', element.state.id)}>
                               <Link
@@ -86,7 +86,7 @@ function MyEstate() {
                                   pathname: '/MyItem',
                                 }}
                               >
-                                Go to Item
+                                Gå til eiendel
                               </Link>
                             </button>
               </div>
@@ -97,4 +97,4 @@ function MyEstate() {
     </div>
   );
 }
-export default MyEstate;
+export default MyEstatePage;

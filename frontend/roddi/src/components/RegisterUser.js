@@ -40,6 +40,8 @@ function RegisterUser(props) {
     ) {
       AuthService.register(state.name, state.password, state.email);
       routeChange();
+      AuthService.logout();
+      
     } else {
       document.getElementById('confirmPasswordHelp').innerHTML =
         'Passordene må være like!';
@@ -52,7 +54,7 @@ function RegisterUser(props) {
 
   return (
     <div className="form">
-      <div id="left">
+      {/* <div id="left">
         <img
           style={{ height: '400px', width: '500px', margin: '0 0 0 8%' }}
           src={logo}
@@ -65,7 +67,7 @@ function RegisterUser(props) {
             <strong>dødsbo</strong>
           </p>
         </div>
-      </div>
+      </div> */}
       <div id="right">
         <form>
           <div className="form-group text-left">
