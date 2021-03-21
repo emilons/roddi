@@ -4,7 +4,7 @@ import User from './User';
 import Item from './Item';
 import MemberVotes from './MemberVotes';
 import authService from '../services/auth.service';
-import tempImage from '../images/WIP.jpg';
+import StarVote from './StarVote';
 
 import '../App.css';
 
@@ -107,6 +107,8 @@ function MyItem() {
         authService.putVote(itemId, userId, vote);
     }
 
+
+
     function loadImage() {
         if (item.state.image == "") {
             return "";
@@ -131,18 +133,25 @@ function MyItem() {
                 </div>
             </div>
             <div className="userInteractionsList">
-                <div className="myVote" style={{border: '1px solid', margin: '20px'}}>
-                    <div className="userNameAndComment">
+                <div className="myVote">
+                    <div className="myUserNameAndComment">
                         <h4>{user.name}</h4>
-                        <p>Comment...</p> 
                     </div>
-                    <div className="userVotes" onChange={onChangeVote}>
-                        <div className="voteDivide"><input type="radio" value="divide" name="vote"/> Fordel</div>
-                        <div className="voteDonate"><input type="radio" value="donate" name="vote"/> Doner</div>
-                        <div className="voteTrash"><input type="radio" value="discard" name="vote"/> Kast</div>
-                        <MemberVotes value={userItemChoice}/>
+                    <div className="myUserPriority">
+                        <div className="myUserVotes" onChange={onChangeVote}>
+                            <div className="voteDivide"><input type="radio" value="divide" name="vote"/></div>
+                            <div className="voteDonate"><input type="radio" value="donate" name="vote"/></div>
+                            <div className="voteTrash"><input type="radio" value="discard" name="vote"/></div>
+                        </div>
+                        <div className="myVoteHighlight">
+                            <MemberVotes value={userItemChoice}/>
+                        </div>
+                    </div>
+                    <div className="starVote">
+                        <StarVote value={3}/>
                     </div>
                 </div>
+                
                 {members.map((element, index) => (
                     <div className="userInteractions" key={"user"+index} id={"u"+index} style={{border: '1px solid', margin: '20px'}}>
                         <div className="userNameAndComment">
