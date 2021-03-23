@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username','email','is_superuser')
+        fields = ('id', 'username','email','is_superuser', 'date_joined')
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
@@ -34,7 +34,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('token', 'username', 'email', 'password')
+        fields = ('token', 'username', 'email', 'password', 'date_joined')
 
 
 class EstateSerializer(serializers.ModelSerializer):

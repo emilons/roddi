@@ -15,6 +15,8 @@ class Estate(models.Model):
     name = models.CharField(max_length=50, unique=True)
     status = models.BooleanField()
     users = models.ManyToManyField(User, blank=True, through="User_In_Estate")
+    date_created = models.DateField(auto_now=True)
+
 
 
 
@@ -54,3 +56,8 @@ class User_Item(models.Model):
     discard = models.BooleanField(default=False)
     wanted = models.BooleanField(default=False)
     wanted_level = models.IntegerField(default=0)
+
+    date_created = models.DateField(auto_now=True)
+
+    class Meta:
+        unique_together = (('user', 'item'))
