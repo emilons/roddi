@@ -10,6 +10,7 @@ import MyEstatePage from './components/MyEstatePage';
 import MyEstates from './components/MyEstates';
 import MyItem from './components/MyItem';
 import AuthService from "./services/auth.service";
+import Statistics from './components/Statistics';
 import { Component } from 'react';
 import StartPage from './components/StartPage';
 
@@ -43,6 +44,7 @@ class App extends Component {
           <Route path="/MyEstates" component={MyEstates}/>
           <Route path="/MyEstatePage" component={MyEstatePage}/>
           <Route path="/MyItem" component={MyItem}/>
+          <Route path="/Statistics" component={Statistics}/>
           <Route exact path="/" component={StartPage}/> 
       </div>
     </HashRouter>
