@@ -260,6 +260,20 @@ class AuthService extends Component {
     console.log(response);
   }
 
+  //GET all Users
+  async getUsers() {
+    let returnList = [];
+    const response = await axios
+      .get(API_URL + 'user-list/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((response) => response.data.map((item) => returnList.push(item)));
+    //console.log(returnList);
+    return returnList;
+  }
+
   // GET User by email
   async getUserIdByEmail(userEmail) {
     let returnList = [];
