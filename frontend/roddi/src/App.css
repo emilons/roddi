@@ -283,3 +283,42 @@ img{
   text-align: center;
 }
 
+#t01 {
+  width: 50%;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 30px;
+}
+
+#headerStatistics {
+  size: 10px;
+  margin-top: 40px;
+  margin-left: 300px;
+  margin-right: 300px;
+  color: #900C27;
+}
+
+#numbers {
+  color: #900C27;
+}
+#numbers1 {
+  color: #900C27;
+  background-color: #f8f0f2;
+}
+
+#second {
+  background-color: #f8f0f2;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+
+
