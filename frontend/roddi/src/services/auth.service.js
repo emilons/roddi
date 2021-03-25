@@ -4,6 +4,21 @@ import { Component } from 'react';
 const API_URL = 'http://localhost:8000/api/';
 
 
+//Useful where one needs current date in yyyy-mm-dd
+function formatDate() {
+  var d = new Date(),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
 
 class AuthService extends Component {
   constructor(props) {
@@ -58,6 +73,29 @@ class AuthService extends Component {
     console.log(response);
   }
 
+  //GET all Users created today
+  async getUsersCreatedToday () {
+    let newEstatesList = [];
+    let returnList = [];
+    const response = await axios
+      .get(API_URL + 'user-list/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((response) => response.data.map((item) => newEstatesList.push(item)));
+    
+      newEstatesList.forEach((element) => {
+          if (element.date_joined.substring(0, 10) == formatDate()) {
+          returnList.push(element);
+        }
+        });
+      
+    return returnList
+  }
+
+
+
   // POST Estate to DB
   async addEstate(name, status) {
     const response = await axios.post(
@@ -86,6 +124,26 @@ class AuthService extends Component {
       .then((response) => response.data.map((item) => returnList.push(item)));
     //console.log(returnList);
     return returnList;
+  }
+
+  //GET all Estates created today
+  async getEstatesCreatedToday () {
+    let newEstatesList = [];
+    let returnList = [];
+    const response = await axios
+      .get(API_URL + 'estate-list/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((response) => response.data.map((item) => newEstatesList.push(item)));
+    
+      newEstatesList.forEach((element) => {
+          if (element.date_created == formatDate()) {
+            returnList.push(element);
+          }
+        });
+    return returnList
   }
 
     // GET estate by user
@@ -202,6 +260,20 @@ class AuthService extends Component {
     console.log(response);
   }
 
+  //GET all Users
+  async getUsers() {
+    let returnList = [];
+    const response = await axios
+      .get(API_URL + 'user-list/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((response) => response.data.map((item) => returnList.push(item)));
+    //console.log(returnList);
+    return returnList;
+  }
+
   // GET User by email
   async getUserIdByEmail(userEmail) {
     let returnList = [];
@@ -270,6 +342,26 @@ class AuthService extends Component {
       }
     })
     return userItemList;
+  }
+
+  //GET Votes created today across all Estates
+  async getVotesFromToday () {
+    let newEstatesList = [];
+    let returnList = [];
+    const response = await axios
+      .get(API_URL + 'user_item-list/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((response) => response.data.map((item) => newEstatesList.push(item)));
+    
+      newEstatesList.forEach((element) => {
+          if (element.date_created == formatDate()) {
+            returnList.push(element);
+          }
+        });
+    return returnList
   }
 
   // PUT User Vote in User_Item relation
