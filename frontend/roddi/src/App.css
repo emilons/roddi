@@ -314,11 +314,52 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
+.divButton {
+  color:#900C27;
+  background-color: #f8f0f2;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
+.divButtonE {
+  color:#900C27;
+  background-color: #f8f0f2;
+  margin: 40px 20px 40px 20px;
 
+}
 
+.Members {
+border: 1px solid #ddd;
+border-spacing: 10px;
+text-align: center;
+position: relative;
+}
 
+.Stuff {
+  border: 1px solid #ddd;
+  }
 
+.divButtonMembers{
+margin-bottom: 10px;
+margin-top: 10px;
+color:#900C27;
+background-color: #f8f0f2;
 
+}
+
+#notifyMembers {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+#Member{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#addMember {
+  margin-left: 20%;
+}
 
 

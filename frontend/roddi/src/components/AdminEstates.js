@@ -79,19 +79,19 @@ function AdminEstates() {
             
             <div className="estates">
                 <div className="estateList" style={{marginLeft: 100, marginRight: 100, marginTop: 20, marginBottom: 30, width: 650}}>
-                <p>ALLE DØDSBO:</p>
+                <p>Ale dødsbo:</p>
                     {estates.map((item, index) => (
                         <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
                             <h1 style={{margin:'20px 0 20px 0', fontSize: "3vw", color: "#454343", textAlign:"center"}}> {item.state.name}</h1>
                             <img id="tempImage" src={tempImage} alt="temporary pic"/>
                             {/* img med src=item.state.image */}
-                            <button onClick={() => localStorage.setItem('estateId', item.state.id)}>
+                            <button className= "divButton" onClick={() => localStorage.setItem('estateId', item.state.id)}>
                               <Link
                                 to={{
                                   pathname: '/AdminEstatePage',
                                 }}
                               >
-                                Go to Estate
+                                Gå til dødsbo
                               </Link>
                             </button>
                         </div>
