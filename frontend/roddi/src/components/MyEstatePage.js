@@ -66,7 +66,8 @@ function MyEstatePage() {
           <div className="membersList">
               <h2>Deltakere</h2>
               {members.map((element, index) => (
-                  <div key={"member"+index} id={"m"+index} style={{border: '1px solid'}}>
+                  <div className="Members"
+                  key={"member"+index} id={"m"+index} >
                       <h4>{element.state.name}</h4>
                   </div>
               ))}
@@ -80,13 +81,13 @@ function MyEstatePage() {
               <div key={"item"+index} id={"i"+index} style={{direction: "grid", border: '1px solid'}}>
                 <img style={{height: "180px", width: "200px"}} src={'http://localhost:8000'+ element.state.image} alt="temporary pic"/>
                 <h4>{element.state.name}</h4>
-                <button onClick={() => localStorage.setItem('itemId', element.state.id)}>
+                <button className="divButtonMEP" onClick={() => localStorage.setItem('itemId', element.state.id)}>
                               <Link
                                 to={{
                                   pathname: '/MyItem',
                                 }}
                               >
-                                Gå til eiendel
+                                Eiendel
                               </Link>
                             </button>
               </div>
