@@ -213,7 +213,7 @@ function AdminEstatePage() {
           <h2 style={{ color: '#900C27' }}>Familien {estateName}</h2>
         </div>
         <div className="membersList">
-          <h4>Deltakere</h4>
+          <h4 id ="title" >Deltakere</h4>
 
           <a href={mailTo} id='notifyMembers'>
             Varsle deltakere
@@ -275,7 +275,7 @@ function AdminEstatePage() {
         </div>
       </div>
       <div className="items">
-        <h2 style={{ color: '#900C27' }}>Eiendeler</h2>
+        <h2 id = "title">Eiendeler</h2>
         <div className="itemsList">
           <div className="itemRow">
             {items.map((element, index) => (

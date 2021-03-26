@@ -61,12 +61,14 @@ form:last-child {
 .AdminEstates {
   text-align: center;
   margin: 100px 200px;
+
 }
 
 .MyEstatePage {
   display: flex;
   justify-content: space-around;
   margin: 40px 0 0 0;
+
 }
 
 .MyEstates {
@@ -130,6 +132,13 @@ form:last-child {
   margin-bottom: 20px;
   margin-top: 35px;
 }
+
+.membersList h4{
+  padding-bottom: 20px;
+  margin-top: 100px;
+
+}
+
 
 .btn-danger {
   position: relative;
@@ -196,6 +205,7 @@ form:last-child {
 
 .items {
   margin-top: 35px;
+
 }
 
 .items > h2 {
@@ -337,10 +347,23 @@ th, td {
 .Members {
 border: 1px solid #ddd;
 border-spacing: 10px;
+margin: 20px;
+padding: 10px ;
+
+}
+
+.Members h4{
+  margin: 0 auto;
+  display: block;
+  left: 70px;
+
+  position: relative;
 }
 
 .Stuff {
   border: 1px solid #ddd;
+  padding: 10px 40px;
+
   }
 
 .divButtonMembers{
@@ -348,13 +371,28 @@ margin-bottom: 10px;
 margin-top: 10px;
 color:#900C27;
 background-color: #f8f0f2;
+margin: 0 auto;
+display: block;
 
 }
 
 #notifyMembers {
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   padding: 5px;
+  color:#900C27;
+  background-color: #f8f0f2;
+
+
+  
 }
+#notifyMembers:hover{
+  background-color: #E9E9E9;
+}
+
+.divButtonMembers:hover{
+  background-color: #E9E9E9;
+}
+
 
 #Member{
   margin-left: 40px;
@@ -365,4 +403,24 @@ background-color: #f8f0f2;
   margin-left: 20%;
 }
 
+.estateName h2{
+  font-size: 40px;
+  font-weight: 50;
+  line-height: 72px;
+}
 
+
+#title{
+  font-size: 30px;
+
+}
+
+.items h2{
+  margin-bottom: 30px;
+  top: 10px;
+
+}
+.Stuff h4{
+  top: 20px;
+  position: relative;
+}

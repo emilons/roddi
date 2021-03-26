@@ -83,13 +83,13 @@ function RegisterUser(props) {
             />
           </div>
           <div className="form-group text-left">
-            <label htmlFor="exampleInputEmail1">Email-Adresse</label>
+            <label htmlFor="exampleInputEmail1">E-post</label>
             <input
               type="email"
               className="form-control"
               id="email"
               required
-              placeholder="Skriv inn din Email"
+              placeholder="Skriv inn din e-post"
               value={state.email}
               onChange={handleChange}
             />
@@ -112,7 +112,7 @@ function RegisterUser(props) {
             </small>
           </div>
           <div className="form-group text-left">
-            <label htmlFor="exampleInputPassword1">Bekreft Passord</label>
+            <label htmlFor="exampleInputPassword1">Bekreft passord</label>
             <input
               type="password"
               className="form-control"
