@@ -44,6 +44,11 @@ function Header() {
                     <NavLink to="/MyEstates">Hjem</NavLink>
                 </button>
                 )}
+                {localStorage.getItem('token') && localStorage.getItem('isAdmin') == "true" && (
+                    <button className="btn btn-outline-danger">
+                    <NavLink to="/Statistics">Statistikk</NavLink>
+                </button>
+                )}
                 {localStorage.getItem('token') && ( 
                     <button className="btn btn-outline-danger" onClick={logOut}>
                         Logg Ut
