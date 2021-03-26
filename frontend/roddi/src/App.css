@@ -187,7 +187,15 @@ form:last-child {
   justify-content: center;
 }
 
-.starVote {
+.userStarVotes {
+  grid-column-start: 4;
+  grid-column-end: span 5;
+  grid-row-start: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.myStarVote {
   grid-column-start: 4;
   grid-column-end: span 5;
   grid-row-start: 1;
@@ -201,12 +209,11 @@ form:last-child {
   width: 28px;
   margin: 0px 1px 0px 1px;
   justify-content: center;
-  background-image: url(./images/star.png);
-  background-size: contain;
-  
+/*   background-image: url(./images/star.png);
+  background-size: contain; */
 }
 .star:hover {
-  background-image: url(./images/star_filled.png);
+  background-color: yellow
 }
 
 .starFilled {
@@ -215,12 +222,21 @@ form:last-child {
   width: 28px;
   margin: 0px 1px 0px 1px;
   justify-content: center;
-  background-image: url(./images/star_filled.png);
-  background-size: contain;
+/*   background-image: url(./images/star_filled.png);
+  background-size: contain; */
 }
-/* .starFilled:hover {
-  background-image: url(./images/star.png);
-} */
+.starFilled:hover {
+  background-color: yellow
+}
+
+.starRender {
+  display: block;
+  height: 28px;
+  width: 28px;
+  margin: 0px 1px 0px 1px;
+  justify-content: center;
+}
+
 
 
 .membersList div {

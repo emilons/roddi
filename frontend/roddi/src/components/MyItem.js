@@ -5,6 +5,7 @@ import Item from './Item';
 import MemberVotes from './MemberVotes';
 import authService from '../services/auth.service';
 import StarVote from './StarVote';
+import StarVoteRender from './StarVoteRender';
 
 import '../App.css';
 
@@ -18,7 +19,7 @@ function MyItem() {
         id: localStorage.getItem('userId'),
         name: localStorage.getItem('userName'),
         email: localStorage.getItem('userEmail')
-    }); // current logged in 
+    });
     const [userItemChoice, setUserItemChoice] = useState() // what current user voted on this item (update item.state.userChoice for this user based on this)
     const [members, setMembers] = useState([]); // all family members except current user
     const [memberChoiceMap, setMemberChoiceMap] = useState(new Map())
@@ -91,8 +92,6 @@ function MyItem() {
     function onChangeVote(event) {
         let itemId = localStorage.getItem('itemId');
         let userId = user.id;
-        /* itemId = parseInt(itemId);
-        userId = parseInt(userId); */
         let vote = null
         if (event.target.value == "divide") {
             vote = 1;
@@ -104,6 +103,12 @@ function MyItem() {
             vote = -1;
         }
         setUserItemChoice(vote);
+        authService.putVote(itemId, userId, vote);
+    }
+
+    function setWantedLevelAPI(vote) {
+        let itemId = localStorage.getItem('itemId');
+        let userId = user.id;
         authService.putVote(itemId, userId, vote);
     }
 
@@ -147,20 +152,26 @@ function MyItem() {
                             <MemberVotes value={userItemChoice}/>
                         </div>
                     </div>
-                    <div className="starVote">
-                        <StarVote value={3}/>
+                    {userItemChoice > 0 ? 
+                    <div className="myStarVote">
+                        <StarVote value={userItemChoice} onClick={setWantedLevelAPI}/>
                     </div>
-                </div>
-                
+                    : <p></p>
+                    }
+                </div>            
                 {members.map((element, index) => (
                     <div className="userInteractions" key={"user"+index} id={"u"+index} style={{border: '1px solid', margin: '20px'}}>
                         <div className="userNameAndComment">
                             <h4>{element.state.name}</h4>
-                            <p>Comment...</p> 
                         </div>
                         <div className="userVotes">
                         {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.id)}/> : <p>Loading...</p>}
                         </div>
+                        { memberChoiceMap.get(element.state.id) > 0 ? 
+                        <div className="userStarVotes">
+                            <StarVoteRender value={memberChoiceMap.get(element.state.id)}/>
+                        </div> : <p></p>
+                        }
                     </div>
                 ))}
             </div>
