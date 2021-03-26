@@ -9,7 +9,13 @@ afterEach(cleanup);
 it("renders item", () => {
     const div = document.createElement("div");
     ReactDOM.render(<Item></Item>, div)
-})
+});
+
+/*
+ * CASER Å TESTE I DENNE KOMPONENTEN: 
+ * 1) opprett et item. Sjekk at ting rendrer riktig 
+ */
+
 /*
 //test that sofa is rendered to te paragraph.
 it("Renders with correct text", () => {

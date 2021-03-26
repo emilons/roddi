@@ -18,6 +18,14 @@ it("Login renders correctly", () => {
     expect(screen.getByText("Logg inn")).toBeInTheDocument();
     expect(RenderResult.container.getElementsByTagName("form")[0]).toBeDefined();
 })
+
+/*
+ * CASER Å TESTE I DENNE KOMPONENTEN
+ * 1) prøv å logg inn med ugyldig bruker, sjekk at felmelding/ingen redirect
+ * 2) logg inn med gyldig bruker, sjekk at redirect 
+ * (Vet ikke helt hvordan vi får testet dette uten backend/med mock)
+ */
+
 /*
 it("test clickOn", () => {
     const RenderResult = render(<Login />);

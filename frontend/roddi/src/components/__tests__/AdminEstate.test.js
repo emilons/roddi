@@ -4,6 +4,10 @@ import AdminEstates from '../AdminEstates';
 import {render, cleanup, screen, fireEvent} from '@testing-library/react'; 
 import '@testing-library/jest-dom';
 
+
+const inputMock = jest.fn();
+
+
 afterEach(cleanup);
 
 it("Renders Admins estate page", () => {
@@ -22,3 +26,21 @@ it("Renders correctly", () => {
     expect(RenderResult.container.getElementsByClassName("btn btn-outline-danger")).toBeDefined();
     expect(screen.getByPlaceholderText("Skriv inn navn på dødsbo")).toBeInTheDocument();
 });
+
+/*
+ * CASER Å TESTE I DENNE KOMPONENTEN: 
+ * 1) fyll inn et navn, trykk "opprett dødsbo", verifiser at det dukker på på skjermen
+ * 2) Trykk på "go to estate", verifiser at du sendes videre til ny path.
+ */
+
+
+/*
+test('Input', () => {
+    const container = render(<AdminEstatePage />);
+  
+    const input = container.getByPlaceholderText('Skriv inn navn på dødsbo') as HTMLInputElement;
+  
+    fireEvent.change(input, { target: { value: 'Hansen' } });
+    expect(input.value).toBe('Hansen');
+    expect(inputMock.mock.calls).toHaveLength(1);
+});*/

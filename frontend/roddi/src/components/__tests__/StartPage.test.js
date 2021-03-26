@@ -16,3 +16,4 @@ it("StartPage renders correctly", () => {
     expect(screen.getByText('Velkommen til Røddi')).toBeInTheDocument();
     expect(screen.getByText('Nettsiden som gjør oppgjør av dødsbo enkelt og sømløst')).toBeInTheDocument();
 })
+
