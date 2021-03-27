@@ -9,6 +9,7 @@ afterEach(cleanup);
 it("renders item", () => {
     const div = document.createElement("div");
     ReactDOM.render(<Item></Item>, div)
+    expect(div.getElementsByTagName('p')).toBeInTheDocument;
 });
 
 /*

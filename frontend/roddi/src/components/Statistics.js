@@ -74,20 +74,20 @@ function Statistics() {
                 <h1>Statistikk for Røddi</h1>
             </div>
             <div>
-                <h8>Dødsbo opprettet i dag:</h8> <h8 style = {{color: 'red'}}>{numberOfNewEstates}</h8>
+                <h6>Dødsbo opprettet i dag:</h6> <h6 style = {{color: 'red'}}>{numberOfNewEstates}</h6>
                 <br></br>
-                <h8>Brukere registrert i dag:</h8> <h8 style = {{color: 'red'}}>{numberOfNewUsers}</h8>
+                <h6>Brukere registrert i dag:</h6> <h6 style = {{color: 'red'}}>{numberOfNewUsers}</h6>
                 <br></br>
-                <h8>Antall stemmer på eiendeler i dag: </h8> 
-                <h8 style = {{color: 'red'}}>{numberOfNewVotes}</h8>
+                <h6>Antall stemmer på eiendeler i dag:</h6> 
+                <h6 style = {{color: 'red'}}>{numberOfNewVotes}</h6>
             </div>
 
                 
           <div>
               <br></br> <br></br>
-              <h8>Totalt antall dødsbo:</h8> <h8 style = {{color: 'red'}}>{totalNumberOfEstates}</h8>
+              <h6>Totalt antall dødsbo:</h6> <h6 style = {{color: 'red'}}>{totalNumberOfEstates}</h6>
               <br></br>
-              <h8>Totalt antall brukere:</h8> <h8 style = {{color: 'red'}}>{totalNumberOfUsers}</h8>
+              <h6>Totalt antall brukere:</h6> <h6 style = {{color: 'red'}}>{totalNumberOfUsers}</h6>
             </div>
         </div>);
   }

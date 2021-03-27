@@ -1,4 +1,4 @@
-/*import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import AdminEstatePage from '../AdminEstatePage';
 import {render, cleanup, screen, fireEvent} from '@testing-library/react'; 
@@ -19,6 +19,11 @@ afterEach(cleanup);
 
 it("Renders Admins estate page", () => {
     const div = document.createElement("div");
+    ReactDOM.render(<AdminEstatePage></AdminEstatePage>, div)
+});
+
+ReactModal.setAppElement(document.createElement('div'));
+describe("test component that uses modal", () => {
     ReactDOM.render(<AdminEstatePage></AdminEstatePage>, div)
 });
 
