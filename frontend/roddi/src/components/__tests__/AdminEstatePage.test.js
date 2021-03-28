@@ -4,6 +4,7 @@ import AdminEstatePage from '../AdminEstatePage';
 import {render, cleanup, screen, fireEvent} from '@testing-library/react'; 
 import '@testing-library/jest-dom';
 
+
 //TEST SUITE FAILES TO RUN BCO: Modal.setAppElement('#root) in adminEP.js 
 
 /*
@@ -13,8 +14,6 @@ import '@testing-library/jest-dom';
  * 3) slett eiendel og medlem, sjekk at de er fjernet 
  */
 
-
-/*
 afterEach(cleanup);
 
 it("Renders Admins estate page", () => {
@@ -22,16 +21,26 @@ it("Renders Admins estate page", () => {
     ReactDOM.render(<AdminEstatePage></AdminEstatePage>, div)
 });
 
-ReactModal.setAppElement(document.createElement('div'));
-describe("test component that uses modal", () => {
-    ReactDOM.render(<AdminEstatePage></AdminEstatePage>, div)
-});
+/*
+it("tests component that uses modal", () => {
+    const div = document.createDocumentFragment("div");
+    ReactDOM.render(<Modal></Modal>, div);
+});*/
 
-it("Renders page correctly", () => {
-    const RenderResult = render(<AdminEstatePage />);
+
+it("Renders page correctly", () => {  
+    const RenderResult = render(<AdminEstatePage></AdminEstatePage>);
     expect(screen.getByText('Legg til medlem')).toBeInTheDocument();
-    screen.findByText("Legg til medlem").simulate('click');
+    expect(screen.getByText('Legg til eiendel')).toBeInTheDocument();
+    const button = screen.getByText('Legg til medlem');
+    button.click();
     expect(screen.getByText('Brukere')).toBeInTheDocument();
-    expect(screen.getByText('Slett')).toBeInTheDocument();
-    expect(screen.getByText('Fyll inn bruker email:')).toBeInTheDocument();
-})*/
+    expect(screen.getByLabelText('Fyll inn bruker email:'))
+    expect(screen.getByRole('textbox'));
+    const button2 = screen.getByText('Legg til eiendel');
+    button2.click();
+    expect(screen.getByText('Legg til en eiendel')).toBeInTheDocument();
+    expect(screen.getByLabelText('Legg til en beskrivelse'));
+    expect(screen.getByText('Legg til et bilde'));
+    expect(screen.getByTestId('Velg fil'))
+})

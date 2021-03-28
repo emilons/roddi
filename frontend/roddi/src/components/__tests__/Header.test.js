@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom';
 import Header from '../Header.js';
 import {render, cleanup, screen} from '@testing-library/react'; 
 import '@testing-library/jest-dom';
-import { shallow } from 'enzyme';
+
 
 afterEach(cleanup);
 
