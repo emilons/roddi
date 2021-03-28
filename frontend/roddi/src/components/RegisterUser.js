@@ -15,6 +15,10 @@ function RegisterUser(props) {
     estates: [],
   });
 
+  /**
+   * Constant for storing the values the user writes into the fields on the login-page, which is used in the call we make to
+   * the backend.
+   */
   const history = useHistory();
   function routeChange() {
     let path = '/Login';
@@ -29,10 +33,19 @@ function RegisterUser(props) {
     }));
   };
 
+
+  /**
+   *  This function validates the different data from the inputfields.
+   *  Checks if all the fields are filled out. 
+   *  Checks if the password and repeated passwords are equal.
+   *  Checks if the email includes an @.
+   *  If all fiels are valid, we execute the register-function in auth-service.js with 
+   *  the name, password, and email from the input fields. 
+   */ 
   const validateSubmit = (e) => {
     if (
       document.getElementById('password').value ==
-        document.getElementById('confirmPassword').value &&
+      document.getElementById('confirmPassword').value &&
       document.getElementById('email').value != '' &&
       document.getElementById('email').value.includes('@') &&
       document.getElementById('password').value != '' &&
@@ -40,7 +53,7 @@ function RegisterUser(props) {
     ) {
       AuthService.register(state.name, state.password, state.email);
       routeChange();
-      AuthService.logout();
+      AuthService.logout(); //SJEKK DENNE
       
     } else {
       document.getElementById('confirmPasswordHelp').innerHTML =

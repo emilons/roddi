@@ -6,6 +6,10 @@ import Header from './Header';
 import logo from '../images/logo_transparent.jpg'
 
 function Login() {
+
+  /**
+   *  Helperfunction for changing the url.
+   */
   const history = useHistory();
   const routeChange = () => {
     let path = '/StartPage'
@@ -17,11 +21,19 @@ function Login() {
   }
 
 
+  /**
+   * Constant for storing the values the user writes into the fields on the login-page, which is used in the call we make to
+   * the backend.
+   */
   const [state, setState] = useState({
     username: '',
     password: '',
   });
 
+
+  /**
+   * Keeps track of the state, which is the data we send in our functions.
+   */
   const handleChange = (e) => {
     const { id, value } = e.target;
     setState((prevState) => ({
@@ -30,6 +42,13 @@ function Login() {
     }));
   };
 
+
+  /**
+   * Checks is the data which is written in is valid, and not null.
+   * If it is valid, it executes the login function in auth-service.js with the data provided. If the data
+   * corresponds with a user in the database, the routechange method takes the user to the start page. If the login is 
+   * invalid, it redirects to the login page again. 
+   */
   const handleSubmit = () => {
     if (
       document.getElementById('username').value == '' ||

@@ -5,6 +5,12 @@ import User from './User';
 import AuthService from '../services/auth.service';
 import logo_header from '../images/logo_header.png'
 
+    /**
+    * The Header component will always be present on the page, but the type of buttons showing will vary.
+    * We have used JSX to render what should be available depending on what user is using the page, and what kind of "acces" they have. 
+    */
+    
+
 function Header() {
   const history = useHistory();
   const routeChange = () => {
@@ -12,6 +18,9 @@ function Header() {
     history.push(path);
   };
 
+    /**
+    * Helperfunction that excecutes the logout-function in auth-service.js
+    */
   function logOut() {
     AuthService.logout();
     routeChange();
@@ -19,6 +28,12 @@ function Header() {
   }
 
     return (
+
+    /**
+     * When a person registers or logs in, the backend sends information that is then stored locally on the page.
+     * Depending on what the data is, the different divs underneath this comment is rendered.
+    */
+
         User.name, 
         <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
             <div  id="header_pic">

@@ -19,7 +19,9 @@ function formatDate() {
   return [year, month, day].join('-');
 }
 
-
+/**
+ * This class has all the functions which communicate with the database and is used in different parts of the program.
+ */
 class AuthService extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,18 @@ class AuthService extends Component {
     };
   }
 
+
+  /**
+   * 
+   * @param {*} username 
+   * @param {*} password
+   * 
+   *  The login-function takes in two params, username and password. It then uses these to "log in" to the token-auth page
+   *  where(if correct params are provided) a token and further information on the user is returned. 
+   *  The information is stored in the localstorage so that we can use this data in other parts of the application. 
+   *  Each time a user logs in, it get a unique token which is only valid for the time this user is logged in. 
+   *  
+   */
   async login(username, password) {
     const response = await axios
       .post('http://localhost:8000/token-auth/', {
@@ -49,10 +63,25 @@ class AuthService extends Component {
       });
   }
 
+  /**
+   * Removes all of the information in the local storage.
+   */
+
   logout() {
     localStorage.removeItem('token');
     window.location.reload(false);
   }
+
+
+  /**
+   * 
+   * @param {*} username 
+   * @param {*} password 
+   * @param {*} email 
+   * 
+   *  Takes the params username, password and email, and sends this along to the /users/ api_url,
+   *  where a user with these credentials is created. When a user is created, a token is also generated.
+   */
 
   async register(username, password, email) {
     const response = await axios
