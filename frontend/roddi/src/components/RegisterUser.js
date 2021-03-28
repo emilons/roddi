@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, HashRouter } from 'react-router-dom';
 import API from '../services/api';
 import AuthService from '../services/auth.service';
 import Login from './Login';
@@ -53,6 +53,7 @@ function RegisterUser(props) {
     */
 
   return (
+    <HashRouter>
     <div className="form">
       {/* <div id="left">
         <img
@@ -131,6 +132,7 @@ function RegisterUser(props) {
           >
             Registrer deg
           </button>
+
           <button
             type="submit"
             className="btn btn-outline-danger"
@@ -141,6 +143,7 @@ function RegisterUser(props) {
         </form>
       </div>
     </div>
+    </HashRouter>
   );
 }
 
