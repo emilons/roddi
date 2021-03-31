@@ -11,6 +11,7 @@ import Header from '../Header.js';
 import App from '../../App';
 import { render, cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import sinon from 'sinon';
 
 afterEach(cleanup);
 
@@ -81,57 +82,49 @@ it('Renders correct buttons when logged out', () => {
   ).toEqual('Logg Inn');
 });
 
-it('tests that buttons work properly for admin', () => {
+it('Tests that buttons work properly for admin', () => {
   localStorage.setItem('token', 'test');
   localStorage.setItem('isAdmin', 'true');
-  const header = render(<App />);
-  expect(header.findByText('Hjem'));
+  const adminHeader = render(<Header />);
+  expect(adminHeader.getByText('Hjem'));
+  const buttonAdminHome = adminHeader.container.getElementsByClassName(
+    'btn btn-outline-danger'
+  )[0].firstElementChild;
+  buttonAdminHome.click();
+  expect(adminHeader.findByText('Opprett dødsbo'));
+  const buttonStats = adminHeader.container.getElementsByClassName(
+    'btn btn-outline-danger'
+  )[1].firstElementChild;
+  buttonStats.click();
+  expect(adminHeader.findByText('Statistikk for Røddi'));
+});
+
+it('tests that buttons work properly for user', async () => {
+  localStorage.setItem('isAdmin', 'false');
+  localStorage.setItem('token', 'test');
+  const userHeader = render(<Header />);
+  expect(userHeader.findByText('Hjem'));
+  const buttonHome = userHeader.container.getElementsByClassName(
+    'btn btn-outline-danger'
+  )[0].firstElementChild;
+  buttonHome.click();
+  expect(userHeader.container.getElementsByClassName('estateList'));
+});
+
+it('tests that buttons work properly when logged out', () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('isAdmin');
+  const header = render(<Header />);
+  expect(header.getByText('Registrer deg'));
+  expect(header.getByText('Logg Inn'));
+  const buttonLogIn = header.container.getElementsByClassName(
+    'btn btn-outline-danger'
+  )[0];
+  buttonLogIn.click();
+  expect(header.findByText('Velkommen'));
   const buttonHome = header.container.getElementsByClassName(
     'btn btn-outline-danger'
   )[0].firstElementChild;
   buttonHome.click();
-  expect(header.findByText('Opprett dødsbo'));
-  const buttonStats = header.container.getElementsByClassName(
-    'btn btn-outline-danger'
-  )[1].firstElementChild;
-  buttonStats.click();
-  expect(header.findByText('Statistikk for Røddi'));
-  const buttonLogOut = header.container.getElementsByClassName(
-    'btn btn-outline-danger'
-  )[2];
-  buttonLogOut.click();
-  expect(!localStorage.getItem('token'));
+  expect(header.findByText('Brukernavn'));
 });
-/*
-it('tests that buttons work properly for user', () => {
-    localStorage.setItem('token', 'test');
-    localStorage.setItem('isAdmin', 'false');
-    const header = render(<App />);
-    expect(header.findByText('Hjem'));
-    const buttonHome = header.container.getElementsByClassName(
-      'btn btn-outline-danger'
-    )[0].firstElementChild;
-    buttonHome.click();
-    expect(header.findByText('Dine dødsbo'));
-    const buttonLogOut = header.container.getElementsByClassName(
-      'btn btn-outline-danger'
-    )[1];
-    buttonLogOut.click();
-    expect(!localStorage.getItem('token'));
-  });
-
-  it('tests that buttons work properly when logged out',() => {
-    const header = render(<App />);
-    expect(header.findByText('Registrer deg'));
-    const buttonHome = header.container.getElementsByClassName(
-      'btn btn-outline-danger'
-    )[0].firstElementChild;
-    buttonHome.click();
-    expect(header.findByText('Brukernavn'));
-    const buttonLogOut = header.container.getElementsByClassName(
-      'btn btn-outline-danger'
-    )[1].firstElementChild;
-    buttonLogOut.click();
-    expect(header.findByText('Velkommen'));
-  });
-*/

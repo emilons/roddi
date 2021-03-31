@@ -51,7 +51,6 @@ class AuthService extends Component {
 
   logout() {
     localStorage.removeItem('token');
-    window.location.reload(false);
   }
 
   async register(username, password, email) {

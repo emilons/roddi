@@ -22,8 +22,3 @@ it("Renders correctly", () => {
     expect(RenderResult.container.getElementsByClassName("item")).toBeDefined();
     RenderResult.container.get
 });
-
-/* 
- * CASER Å TESTE I DENNE KOMPONENTEN: 
- * Sjekk at pil tilbake funker
- */
