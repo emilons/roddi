@@ -73,5 +73,3 @@ class ItemModelTestCase(TestCase):
         except Item.DoesNotExist:
             pass
 
-
-#TODO: Flere tester av model User_in_estate og User_Item, skriv tester som sender POST og GETs
