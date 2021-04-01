@@ -1,4 +1,4 @@
-# roddi
+# Roddi
 
 ## Virtual Environment (Første gang man skal kjøre)
 Åpne terminalvindu (gjerne i VS Code Terminal -> New Terminal)
