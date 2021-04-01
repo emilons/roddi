@@ -1,7 +1,11 @@
 # Røddi
-Røddi er en nettside som skal gjøre fordeling av dødsbo enkelt. For en komplett beskrivele av nettsiden og hvordan den brukes, se: 
+Røddi er en nettside som skal gjøre fordeling av dødsbo enkelt. For en **komplett beskrivele** av nettsiden og hvordan den brukes, se:
 
-[Beskrivelse av Røddi](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/blob/MDdocumentation/RODDI.md)
+[Beskrivelse av Røddi](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/blob/MDdocumentation/RODDI.md) 
+
+For oversikt over nettsidens **arkitektur**, se:
+
+[Arkitektur](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/wikis/Arkitekturdiagram-for-R%C3%B8ddi)
 
 ## Virtual Environment (Første gang man skal kjøre)
 Åpne terminalvindu (gjerne i VS Code Terminal -> New Terminal)
