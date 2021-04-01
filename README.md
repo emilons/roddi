@@ -7,6 +7,8 @@ For oversikt over nettsidens **arkitektur**, se:
 
 [Arkitektur](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/wikis/Arkitekturdiagram-for-R%C3%B8ddi)
 
+# Oppsett og kjøring: #
+
 ## Virtual Environment (Første gang man skal kjøre)
 Åpne terminalvindu (gjerne i VS Code Terminal -> New Terminal)
 Pass på at du er i riktig directory (hoveddirectory, det øverste nivået i prosjektstrukturen. Tilsvarer det som ligger her på GitLab)
