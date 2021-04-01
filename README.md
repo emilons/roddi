@@ -17,7 +17,7 @@ Pass på at du er i riktig directory (hoveddirectory, det øverste nivået i pro
 Kjør så:
 - `pip install virtualenv`
 - `virtualenv venv`
-- `source venv/bin/activate`
+- `source venv/bin/activate` (Windows: `.\venv\Scripts\activate`)
 
 Nå skal det stå (venv) foran det du skriver i terminalen, da vet du at virituelt environment er aktivert
 - `pip install -r requirements.txt`
@@ -35,6 +35,7 @@ Fyll inn NAME, USER og PASSWORD for å samsvare med databasen du lagde i MySQLWo
 
 Gå så tilbake til terminalen som kjører virtual environmentet.
 - `cd backend/roddi`
+- `python3 manage.py makemigrations`
 - `python3 manage.py migrate`
 
 Da er databasen konfigurert go klar til å brukes av applikasjonen.
@@ -60,7 +61,7 @@ Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i pros
 
 ## Backend (I egen terminal)
 
-- `source venv/bin/activate`
+- `source venv/bin/activate` (Windows: `.\venv\Scripts\activate`)
 - `cd backend/roddi`
 - `python3 manage.py runserver`
 - API kjører nå på http://localhost:8000/api
