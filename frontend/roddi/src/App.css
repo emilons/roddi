@@ -412,25 +412,44 @@ display: block;
 
 #title{
   font-size: 30px;
-
 }
 
 .items h2{
-  margin-bottom: 30px;
-  top: 10px;
+margin-bottom: 30px;
+top: 10px;
 
 }
 .Stuff h4{
-  top: 20px;
-  position: relative;
+top: 20px;
+position: relative;
 }
 
-#headline{
-  text-align: center;
+.Stuff{
+  margin: 20px;
+}
+
+#headlineAI{
+  position: absolute;
+  left: 20%;
+  top: 20%;
+}
+
+.itemAI{
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+
+#headlineItem{
+  position: absolute;
+  left: 20%;
+  top: 30%;
 }
 
 #description {
-  text-align: center;
+position: absolute;
+left: 20%;
+top: 35%;
 }
 
 .previous{
@@ -439,6 +458,43 @@ display: block;
   color: #900C27;
 }
 
+.previousMI{
+  position: absolute;
+  left: 30px;
+  color: #900C27; 
+}
+
 #headline1{
   margin: 0 0 10px 20px;
 }
+
+.userNameAndComment {
+  margin-left: 10px;
+}
+
+#headlineMI{
+position: absolute;
+left: 20%;
+}
+
+.itemMI {
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+
+.userInteractionsList{
+  position: absolute;
+  right: 20%;
+}
+
+.userInteractions{
+border: 1px solid;
+margin: 20px;
+}
+
+.myVote{
+border: 1px solid;
+margin: 5px;
+}
+

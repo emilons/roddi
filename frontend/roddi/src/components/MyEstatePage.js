@@ -61,10 +61,10 @@ function MyEstatePage() {
     <div className="MyEstatePage">
       <div className="nameAndMembers">
           <div className="estateName">
-              <h1>{estateName}</h1>
+              <h2 style={{ color: '#900C27' }}>Familien {estateName}</h2>
           </div>
           <div className="membersList">
-              <h2>Deltakere</h2>
+              <h4 id = "title">Deltakere</h4>
               {members.map((element, index) => (
                   <div className="Members"
                   key={"member"+index} id={"m"+index} >
@@ -78,8 +78,8 @@ function MyEstatePage() {
         <div className="itemsList">
           <div className="itemRow">
             {items.map((element, index) => (
-              <div key={"item"+index} id={"i"+index} style={{direction: "grid", border: '1px solid'}}>
-                <img style={{height: "180px", width: "200px"}} src={'http://localhost:8000'+ element.state.image} alt="temporary pic"/>
+              <div key={"item"+index} id={"i"+index} style={{direction: "grid", border: '1px solid', margin: "20px"}}>
+                <img style={{height: "180px", width: "200px", margin: "20px"}} src={'http://localhost:8000'+ element.state.image} alt="temporary pic"/>
                 <h4>{element.state.name}</h4>
                 <button className="divButtonMEP" onClick={() => localStorage.setItem('itemId', element.state.id)}>
                               <Link

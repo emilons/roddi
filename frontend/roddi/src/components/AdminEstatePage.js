@@ -286,7 +286,7 @@ function AdminEstatePage() {
               
               >
                 <img
-                  style={{ height: '180px', width: '200px' }}
+                  style={{ height: '180px', width: '200px', margin: "20px" }}
                   src={'http://localhost:8000' + element.state.image}
                   alt="temporary pic"
                 />
