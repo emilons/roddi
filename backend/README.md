@@ -1,4 +1,4 @@
-##Description of backend##:
+## Description of backend:
 
 Using the DJANGO framework, DJANGO REST framework, and a connection to a localhost instance of MySQL, the backend folder is responsible for defining all tables with necessary constraints and the required URLs for altering and accessing these tables using REST API.
 
