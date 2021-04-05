@@ -41,7 +41,7 @@ function MyEstates() {
                                   pathname: '/MyEstatePage',
                                 }}
                               >
-                                Go to Estate
+                                Gå til dødsbo
                               </Link>
                             </button>
                         </div>

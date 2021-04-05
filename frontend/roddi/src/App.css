@@ -79,6 +79,9 @@ form:last-child {
 #AdminEstatesButtons{
  margin:50px 300px 50px 300px; 
  place-items: center;
+ position: relative;
+
+
 }
 
 .btn-outline-danger{
@@ -121,6 +124,7 @@ form:last-child {
   grid-column-start: 3;
   display: flex;
   flex-direction: column;
+
 }
 
 .membersList div {
@@ -336,6 +340,10 @@ th, td {
   color:#900C27;
   background-color: #f8f0f2;
   margin: 40px 20px 40px 20px;
+  position: relative;
+
+
+
 }
 
 .divButtonMEP{
@@ -355,9 +363,9 @@ padding: 10px ;
 .Members h4{
   margin: 0 auto;
   display: block;
-  left: 70px;
-
+  left: 20%;
   position: relative;
+  color: #900C27;
 }
 
 .Stuff {
@@ -407,6 +415,8 @@ display: block;
   font-size: 40px;
   font-weight: 50;
   line-height: 72px;
+  color: #900C27;
+
 }
 
 
@@ -430,20 +440,27 @@ position: relative;
 
 #headlineAI{
   position: absolute;
-  left: 20%;
+  left: 10%;
   top: 20%;
+
 }
 
 .itemAI{
   position: absolute;
   left: 20%;
-  top: 30%;
+  top: 35%;
+
+}
+
+.itemAI h4{
+  font-size: 30px;
 }
 
 #headlineItem{
   position: absolute;
   left: 20%;
   top: 30%;
+
 }
 
 #description {
@@ -466,15 +483,23 @@ top: 35%;
 
 #headline1{
   margin: 0 0 10px 20px;
+  font-weight: bold;
 }
 
 .userNameAndComment {
   margin-left: 10px;
+
+}
+.userNameAndComment h5{
+  color: #900C27;
+
 }
 
 #headlineMI{
 position: absolute;
 left: 20%;
+top: 20%;
+color: #900C27;
 }
 
 .itemMI {
@@ -485,7 +510,9 @@ left: 20%;
 
 .userInteractionsList{
   position: absolute;
-  right: 20%;
+  right: 10%;
+  top: 30%;
+  font-weight: bold;
 }
 
 .userInteractions{

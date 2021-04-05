@@ -79,7 +79,7 @@ function AdminEstates() {
             
             <div className="estates">
                 <div className="estateList" style={{marginLeft: 100, marginRight: 100, marginTop: 20, marginBottom: 30, width: 650}}>
-                <p>Ale dødsbo:</p>
+                <p>Alle dødsbo:</p>
                     {estates.map((item, index) => (
                         <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
                             <h1 style={{margin:'20px 0 20px 0', fontSize: "3vw", color: "#454343", textAlign:"center"}}> {item.state.name}</h1>
