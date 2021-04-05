@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import API from '../services/api';
 import AuthService from '../services/auth.service';
-import Login from './Login';
-import logo from '../images/logo_transparent.jpg';
 
 function RegisterUser(props) {
   const [state, setState] = useState({
@@ -19,12 +16,16 @@ function RegisterUser(props) {
    * Constant for storing the values the user writes into the fields on the login-page, which is used in the call we make to
    * the backend.
    */
+
   const history = useHistory();
   function routeChange() {
     let path = '/Login';
     history.push(path);
   }
 
+  /**
+    * Keeps track of the state, which is the data we send in our functions.
+    */
   const handleChange = (e) => {
     const { id, value } = e.target;
     setState((prevState) => ({
@@ -53,7 +54,7 @@ function RegisterUser(props) {
     ) {
       AuthService.register(state.name, state.password, state.email);
       routeChange();
-      AuthService.logout(); //SJEKK DENNE
+      AuthService.logout();
       
     } else {
       document.getElementById('confirmPasswordHelp').innerHTML =
@@ -61,26 +62,9 @@ function RegisterUser(props) {
       document.getElementById('confirmPasswordHelp').style.color = 'red';
     }
   };
-  /* Funksjonen som sender dette til databasen: 
-        - Kjører et kall hvor man sjekker om verdier er tatt av andre brukere fra før.
-    */
 
   return (
     <div className="form">
-      {/* <div id="left">
-        <img
-          style={{ height: '400px', width: '500px', margin: '0 0 0 8%' }}
-          src={logo}
-          alt="logoen"
-        />
-
-        <div className="description">
-          <p>
-            Røddi er en nettside som hjelper deg å gjøre opp{' '}
-            <strong>dødsbo</strong>
-          </p>
-        </div>
-      </div> */}
       <div id="right">
         <form>
           <div className="form-group text-left">

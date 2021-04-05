@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import '../App.css';
 import User from './User';
@@ -67,7 +66,7 @@ function Header() {
                 {localStorage.getItem('token') && ( 
                     <button className="btn btn-outline-danger" onClick={logOut}>
                         Logg Ut
-                    </button> //Legger inn en NavLink etterhvert som vi lager sidene og finner path.
+                    </button>
                 )}
             </div>
         </nav>

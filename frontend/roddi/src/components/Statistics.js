@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Estate from './Estate';
 import authService from '../services/auth.service';
 
 
@@ -13,7 +12,10 @@ function Statistics() {
     const [totalNumberOfUsers, setTotalNumberOfUsers] = useState(undefined);
     
     
-    //Teller opp alle nye Estates
+
+    /**
+     * Counts up all new Estates and sets the state
+     */
     useEffect(() => {
         var count = 0
         authService.getEstatesCreatedToday().then((res) => {
@@ -24,7 +26,10 @@ function Statistics() {
         });
     });
 
-    //Teller opp alle nye Users
+
+    /**
+     *  Counts up all new users and sets the state
+     */
     useEffect(() => {
         var count = 0
         authService.getUsersCreatedToday().then((res) => {
@@ -35,7 +40,10 @@ function Statistics() {
         });
     });
 
-    //Teller opp alle nye Votes
+
+    /**
+     *  Counts up all new votes and sets the state
+     */
     useEffect(() => {
         var count = 0
         authService.getVotesFromToday().then((res) => {
@@ -46,7 +54,10 @@ function Statistics() {
         });
     });
 
-    //Teller opp totalt antall estates i systemet
+
+    /**
+     *  Counts up all Estates currently on the server
+     */
     useEffect(() => {
       var count = 0
       authService.getEstates().then((res) => {
@@ -57,7 +68,10 @@ function Statistics() {
       });
   });
 
-    //Teller opp totalt antall brukere i systemet
+    /**
+     *  Counts up all users currently on the server
+     */
+
     useEffect(() => {
       var count = 0
       authService.getUsers().then((res) => {

@@ -1,14 +1,11 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import API from '../services/api';
 import AuthService from '../services/auth.service';
-import Header from './Header';
-import logo from '../images/logo_transparent.jpg'
 
 function Login() {
 
   /**
-   *  Helperfunction for changing the url.
+   *  Helperfunction for rerouting the url-path.
    */
   const history = useHistory();
   const routeChange = () => {
@@ -70,16 +67,6 @@ function Login() {
     
     return(
         <div className="form">
-            {/* <div id="left">
-            <img style={{height: "400px", width: "500px", margin: "0 0 0 8%"}} src={logo} alt="logoen"/>
-
-                <div className="description">
-                    <p>
-                        Røddi er en nettside som hjelper deg å gjøre opp <strong>dødsbo</strong>
-                    </p>
-                </div>
-            </div>
- */}
             <div id="right">
             <form>
                 <div className ="welcome">

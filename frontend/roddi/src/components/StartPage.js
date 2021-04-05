@@ -1,6 +1,11 @@
 import "../App.css"
 
 
+/*
+ * This is the page the user arrives at when the page loads, as well as the landing page after you log in.
+ * Only regular HTML on this page. 
+ */
+
 function StartPage(){
 
     return (
