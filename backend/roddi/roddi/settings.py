@@ -128,6 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+### Configuration for user-authentication, using Json Web Tokens.
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'roddi.utils.my_jwt_response_handler',
 #    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300),

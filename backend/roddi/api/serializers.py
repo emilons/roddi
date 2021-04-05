@@ -12,11 +12,14 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
-
+    """Custom User-serialiser to include "token"-field in meta internal class.
+    Handles signups. Server responds with users data and token."""
     token = serializers.SerializerMethodField()
     password = serializers.CharField(write_only=True)
 
     def get_token(self, obj):
+        """Manually creates a new token. Uses the default settings
+        for payload and encoding handling provided by the JWT package"""
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
         jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
@@ -25,6 +28,8 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         return token
 
     def create(self, validated_data):
+        """ Overrides serializers.ModelSerializer create()-method.
+        Determines how the Json-object will be saved. Also hashes password"""
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
         if password is not None:
