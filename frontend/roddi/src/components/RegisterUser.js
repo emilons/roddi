@@ -24,8 +24,8 @@ function RegisterUser(props) {
   }
 
   /**
-    * Keeps track of the state, which is the data we send in our functions.
-    */
+   * Keeps track of the state, which is the data we send in our functions.
+   */
   const handleChange = (e) => {
     const { id, value } = e.target;
     setState((prevState) => ({
@@ -34,19 +34,18 @@ function RegisterUser(props) {
     }));
   };
 
-
   /**
    *  This function validates the different data from the inputfields.
-   *  Checks if all the fields are filled out. 
+   *  Checks if all the fields are filled out.
    *  Checks if the password and repeated passwords are equal.
    *  Checks if the email includes an @.
-   *  If all fiels are valid, we execute the register-function in auth-service.js with 
-   *  the name, password, and email from the input fields. 
-   */ 
+   *  If all fiels are valid, we execute the register-function in auth-service.js with
+   *  the name, password, and email from the input fields.
+   */
   const validateSubmit = (e) => {
     if (
       document.getElementById('password').value ==
-      document.getElementById('confirmPassword').value &&
+        document.getElementById('confirmPassword').value &&
       document.getElementById('email').value != '' &&
       document.getElementById('email').value.includes('@') &&
       document.getElementById('password').value != '' &&
@@ -55,7 +54,6 @@ function RegisterUser(props) {
       AuthService.register(state.name, state.password, state.email);
       routeChange();
       AuthService.logout();
-      
     } else {
       document.getElementById('confirmPasswordHelp').innerHTML =
         'Passordene må være like!';
