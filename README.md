@@ -24,9 +24,9 @@ Nå skal det stå (venv) foran det du skriver i terminalen, da vet du at viritue
 
 Da er virtuelt environment satt opp og alt er installert.
 Det er viktig at virtual environment er aktivert når det er snakk om å kjøre python-kode i prosjektet.
-Det betyr at for hver gang du vil starte opp backend trenger du nå å navigere til den øverste mappen i prosjektet som heter roddi for så å kjøre kommandoen "source venv/bin/activate" i terminalen.
+Det betyr at for hver gang du vil starte opp backend trenger du nå å navigere til den øverste mappen i prosjektet som heter roddi for så å kjøre kommandoen "source venv/bin/activate" (".\venv\Scripts\activate") i terminalen.
 
-## Oppsett av database (Første gang man skal starte opp backend, og dersom vi endrer struktur på databasen)
+## Oppsett av database (Første gang man skal starte opp backend)
 
 Bruk for eksempel MySQLWorkbench for å lage en database for prosjektet. Kall den gjerne "roddi".
 Gå tilbake til prosjektet ditt i VS Code.
@@ -47,7 +47,7 @@ Man trenger én terminal hver som kjører for å bruke både frontend og backend
 ## Frontend (I egen terminal)
 
 ### Første gang (installering av nødvendige dependencies):
-Installer først "node.js" på PC'en, bare google node js download.
+Installer først "node.js" på PC'en. Google node js download.
 Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i prosjektet.
 - `cd frontend/roddi`
 - `npm install`
@@ -57,7 +57,6 @@ Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i pros
 - `npm start`
 - Nettsiden kjører nå på http://localhost:3000
 
-(Går det ikke kjør `npm install` først, kanskje vi har lagt til noe nytt som må installeres)
 
 ## Backend (I egen terminal)
 
