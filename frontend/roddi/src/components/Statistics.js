@@ -1,73 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import Estate from './Estate';
 import authService from '../services/auth.service';
 
-
 function Statistics() {
+  const [numberOfNewEstates, setNumberOfNewEstates] = useState(undefined);
+  const [numberOfNewUsers, setNumberOfNewUsers] = useState(undefined);
+  const [numberOfNewVotes, setNumberOfNewVotes] = useState(undefined);
 
-    const [numberOfNewEstates, setNumberOfNewEstates] = useState(undefined);
-    const [numberOfNewUsers, setNumberOfNewUsers] = useState(undefined);
-    const [numberOfNewVotes, setNumberOfNewVotes] = useState(undefined);
+  const [totalNumberOfEstates, setTotalNumberOfEstates] = useState(undefined);
+  const [totalNumberOfUsers, setTotalNumberOfUsers] = useState(undefined);
 
-    const [totalNumberOfEstates, setTotalNumberOfEstates] = useState(undefined);
-    const [totalNumberOfUsers, setTotalNumberOfUsers] = useState(undefined);
-    
-    
-    //Teller opp alle nye Estates
-    useEffect(() => {
-        var count = 0
-        authService.getEstatesCreatedToday().then((res) => {
-          for (let i = 0; i < res.length; i++) {
-            count += 1
-          }
-          setNumberOfNewEstates(count)
-        });
+  /**
+   * Counts up all new Estates and sets the state
+   */
+  useEffect(() => {
+    var count = 0;
+    authService.getEstatesCreatedToday().then((res) => {
+      for (let i = 0; i < res.length; i++) {
+        count += 1;
+      }
+      setNumberOfNewEstates(count);
     });
-
-    //Teller opp alle nye Users
-    useEffect(() => {
-        var count = 0
-        authService.getUsersCreatedToday().then((res) => {
-          for (let i = 0; i < res.length; i++) {
-            count += 1
-            };
-          setNumberOfNewUsers(count)
-        });
-    });
-
-    //Teller opp alle nye Votes
-    useEffect(() => {
-        var count = 0
-        authService.getVotesFromToday().then((res) => {
-          for (let i = 0; i < res.length; i++) {
-            count += 1
-            };
-          setNumberOfNewVotes(count)
-        });
-    });
-
-    //Teller opp totalt antall estates i systemet
-    useEffect(() => {
-      var count = 0
-      authService.getEstates().then((res) => {
-        for (let i = 0; i < res.length; i++) {
-          count += 1
-          };
-        setTotalNumberOfEstates(count)
-      });
   });
 
-    //Teller opp totalt antall brukere i systemet
-    useEffect(() => {
-      var count = 0
-      authService.getUsers().then((res) => {
-        for (let i = 0; i < res.length; i++) {
-          count += 1
-          };
-        setTotalNumberOfUsers(count)
-      });
+  /**
+   *  Counts up all new users and sets the state
+   */
+  useEffect(() => {
+    var count = 0;
+    authService.getUsersCreatedToday().then((res) => {
+      for (let i = 0; i < res.length; i++) {
+        count += 1;
+      }
+      setNumberOfNewUsers(count);
+    });
   });
 
+  /**
+   *  Counts up all new votes and sets the state
+   */
+  useEffect(() => {
+    var count = 0;
+    authService.getVotesFromToday().then((res) => {
+      for (let i = 0; i < res.length; i++) {
+        count += 1;
+      }
+      setNumberOfNewVotes(count);
+    });
+  });
+
+  /**
+   *  Counts up all Estates currently on the server
+   */
+  useEffect(() => {
+    var count = 0;
+    authService.getEstates().then((res) => {
+      for (let i = 0; i < res.length; i++) {
+        count += 1;
+      }
+      setTotalNumberOfEstates(count);
+    });
+  });
+
+  /**
+   *  Counts up all users currently on the server
+   */
+
+  useEffect(() => {
+    var count = 0;
+    authService.getUsers().then((res) => {
+      for (let i = 0; i < res.length; i++) {
+        count += 1;
+      }
+      setTotalNumberOfUsers(count);
+    });
+  });
 
     return(<div>
             <div>
