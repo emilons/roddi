@@ -13,26 +13,10 @@ from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
 
 
-
-
-
-# Create your views here.
-
-
-class ItemCreate(APIView):
-    #permission_classes = [permissions.IsAuthenticated]
-    parser_classes = [MultiPartParser, FormParser]
-
-    def post(self, request, format=None):
-        serializer = ItemSerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
+### Every view for this project, required for REST API. ###
+### Every view either requires input as a JSON-object, or gives out a JSON-object ###
+### For almsot every function requiring a pk (primary-key), the pk is the auto-generated integer pk ###
+### The only exception being the User-Item PUT function ###
 
 @api_view(['GET'])
 def api_overview(request):
@@ -61,21 +45,37 @@ def api_overview(request):
     }
     return Response(api_urls)
 
+
+#Defines the POST request to create Item.
+class ItemCreate(APIView):
+    #permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
+
+    def post(self, request, format=None):
+        serializer = ItemSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+#Determine the current user by their token, and return their data.
 @api_view(['GET'])
 def current_user(request):
-    """
-    Determine the current user by their token, and return their data
-    """
+
 #    permission_classes = (IsAuthenticated,)
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
 
 
+
+#Create a new user. It's called 'UserList' because normally we'd have a get
+#method here too, for retrieving a list of all User objects.
 class UserList(APIView):
-    """
-    Create a new user. It's called 'UserList' because normally we'd have a get
-    method here too, for retrieving a list of all User objects.
-    """
 
     permission_classes = (permissions.AllowAny,)
 
@@ -86,7 +86,8 @@ class UserList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-#API User
+
+#Gives a list for all Users in the system.
 @api_view(['GET'])
 def user_list(request):
     users = User.objects.all()
@@ -94,6 +95,8 @@ def user_list(request):
     return Response(serializer.data)
 
 
+
+#Gives a User determined by pk (primary-key) argument.
 @api_view(['GET'])
 def user_detail(request, pk):
     #permission_classes = (IsAuthenticated,)
@@ -104,6 +107,7 @@ def user_detail(request, pk):
 
 
 
+#Create a User.
 @api_view(['POST'])
 def user_create(request):
     #permission_classes = (IsAuthenticated,)
@@ -114,7 +118,7 @@ def user_create(request):
     return Response(serializer.data)
 
 
-
+#Update a User's information, determined by pk (primary-key).
 @api_view(['PUT'])
 def user_update(request, pk):
     #permission_classes = (IsAuthenticated,)
@@ -127,6 +131,8 @@ def user_update(request, pk):
     return Response(serializer.data)
 
 
+
+#Deletes a User, determined by pk (primary-key).
 @api_view(['DELETE'])
 def user_delete(request, pk):
     #permission_classes = (IsAuthenticated,)
@@ -137,8 +143,7 @@ def user_delete(request, pk):
 
 
 
-
-#API Estate
+#Gives a list of every Estate in the system.
 @api_view(['GET'])
 def estate_list(request):
     estates = Estate.objects.all()
@@ -146,6 +151,7 @@ def estate_list(request):
     return Response(serializer.data)
 
 
+#Gives an Estate, determined by pk (primary-key).
 @api_view(['GET'])
 def estate_detail(request, pk):
     estates = Estate.objects.get(id=pk)
@@ -153,7 +159,7 @@ def estate_detail(request, pk):
     return Response(serializer.data)
 
 
-
+#Create Estate, determined by pk (primary-key).
 @api_view(['POST'])
 def estate_create(request):
     serializer = EstateSerializer(data=request.data)
@@ -163,7 +169,7 @@ def estate_create(request):
     return Response(serializer.data)
 
 
-
+#Update an estate, determined by pk (primary-key).
 @api_view(['PUT'])
 def estate_update(request, pk):
     estate = Estate.objects.get(id=pk)
@@ -175,6 +181,7 @@ def estate_update(request, pk):
     return Response(serializer.data)
 
 
+#Delete an estate, determined by pk (primary-key)
 @api_view(['DELETE'])
 def estate_delete(request, pk):
     estate = Estate.objects.get(id=pk)
@@ -184,7 +191,7 @@ def estate_delete(request, pk):
 
 
 
-#API Item
+#Gives a list of all Items, across all Estates, in the system.
 @api_view(['GET'])
 def item_list(request):
     items = Item.objects.all()
@@ -192,6 +199,7 @@ def item_list(request):
     return Response(serializer.data)
 
 
+#Gives an Item, determined by pk (primary-key).
 @api_view(['GET'])
 def item_detail(request, pk):
     items = Item.objects.get(id=pk)
@@ -199,6 +207,7 @@ def item_detail(request, pk):
     return Response(serializer.data)
 
 
+#Create an Item.
 @api_view(['POST'])
 def item_create(request):
     serializer = ItemSerializer(data=request.data)
@@ -208,6 +217,7 @@ def item_create(request):
     return Response(serializer.data)
 
 
+#Gives an Item, determined by pk (primary-key).
 @api_view(['PUT'])
 def item_update(request, pk):
     item = Item.objects.get(id=pk)
@@ -219,6 +229,7 @@ def item_update(request, pk):
     return Response(serializer.data)
 
 
+#Deletes an Item, determined by pk (primary-key).
 @api_view(['DELETE'])
 def item_delete(request, pk):
     item = Item.objects.get(id=pk)
@@ -228,7 +239,7 @@ def item_delete(request, pk):
 
 
 
-#API UserItem
+#Gives a list of all relations between a User and an Item (in other words: every vote in the system).
 @api_view(['GET'])
 def user_item_list(request):
     user_items = User_Item.objects.all()
@@ -236,6 +247,7 @@ def user_item_list(request):
     return Response(serializer.data)
 
 
+#Gives a particular User-Item relation (vote), determined by pk (primary-key).
 @api_view(['GET'])
 def user_item_detail(request, pk):
     user_item = Item.objects.get(id=pk)
@@ -243,7 +255,7 @@ def user_item_detail(request, pk):
     return Response(serializer.data)
 
 
-
+#Creates a new User-Item relation (vote).
 @api_view(['POST'])
 def user_item_create(request):
     serializer = User_ItemSerializer(data=request.data)
@@ -253,9 +265,13 @@ def user_item_create(request):
     return Response(serializer.data)
 
 
+#Updates an existing User-Item relation or creates a new row if an existing one is not found.
+#For this particular function, the pk (primary-key) is the ID of the User and ID of the Item in question.
+#In simple terms: if a User has never voted for an Item before, a new row gets inserted into the 
+#User-Item table in MySQL. If the User has already voted on this Item, the existing row is simply updated.
 @api_view(['PUT'])
 def user_item_put(request, pk):
-    x = pk.split("-")
+    x = pk.split("-") #since pk is on the form userID-itemID, they are separated here
     fk1 = x[0]
     fk2 = x[1]
     data = request.data
@@ -284,7 +300,7 @@ def user_item_put(request, pk):
         return Response(serializer.data)
 
 
-
+#Deletes a User-Item relation, using the generated integer pk (primary-key).
 @api_view(['DELETE'])
 def user_item_delete(request, pk):
     user_item = User_Item.objects.get(id=pk)
@@ -294,9 +310,7 @@ def user_item_delete(request, pk):
 
 
 
-
-##User_In_Estate APIs
-
+#Creates a User-Estate relation (making a User a member of an Estate).
 @api_view(['POST'])
 def user_in_estate_create(request):
     serializer = User_In_EstateSerializer(data=request.data)
@@ -307,6 +321,7 @@ def user_in_estate_create(request):
 
 
 
+#Gives a list of every User-Estate relation (every member in every estate).
 @api_view(['GET'])
 def user_in_estate_list(request):
     user_estates = User_In_Estate.objects.all()
@@ -314,6 +329,8 @@ def user_in_estate_list(request):
     return Response(serializer.data)
 
 
+
+#Deletes a User-Estate relation (deletes a member from estate), determined by pk (primary-key).
 @api_view(['DELETE'])
 def user_in_estate_delete(request, pk):
     user_in_estate = User_In_Estate.objects.get(id=pk)
