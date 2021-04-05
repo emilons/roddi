@@ -69,19 +69,3 @@ Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i pros
 (Hvis det ikke går, prøv å gå tilbake til øverste mappe `cd ../..`, kjør `pip install -r requirements.txt`, kanskje vi har lagt til noe nytt som må installeres)
 - `cd backend/roddi` igjen og prøv `python3 manage.py runserver` nå.
 
-
-## Database (IGNORER DENNE FORELØPIG, hele "database"-mappen i prosjektet brukes ikke per nå)
-
-Først pass på at MySQL på enheten din har en database med navn som korresponderer til navnet satt
-i DbConnector ("roddi" er default men kan hete hva som helst). Deretter pass på at bruker og passord i DbConnector tilsvarer ditt eget når du logger på en MySQL instans ("root" og intet passord er satt som default).
-
-Dersom du ikke benytter requirements.txt må følgende lastes ned fra terminalen (WINDOWS):
-- `pip install mysql-connector-python`
-- `pip install tabulate`
-
-Deretter, for å sette opp alle tables, kjører man de 5 "create table" funksjonene som er kommentert ut i
-main() under DbQueries.
-
-Ved å benytte program.fetch_data(table_name) vil tabellen fra MySQL bli printet pent ut i terminalen. Bruker man alle vedlagte funksjoner behøver man aldri gå inn på MySQL etter å ha opprettet databasen!
-
-
