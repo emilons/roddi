@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, HashRouter, useHistory } from 'react-router-dom';
 import '../App.css';
 import User from './User';
+
 import AuthService from '../services/auth.service';
 import logo_header from '../images/logo_header.png'
 
@@ -20,6 +21,7 @@ function Header() {
 
     return (
         User.name, 
+        <HashRouter>
         <nav className = "navbar navbar-dark" style={{fontSize:"18px"}}>
             <div  id="header_pic">
             <img src={logo_header} alt="logoen"/>
@@ -56,6 +58,7 @@ function Header() {
                 )}
             </div>
         </nav>
+        </HashRouter>
     );
 }
 export default Header;

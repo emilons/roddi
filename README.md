@@ -49,6 +49,11 @@ Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i pros
 
 (Går det ikke kjør `npm install` først, kanskje vi har lagt til noe nytt som må installeres)
 
+### Kjøring av tester
+- For å kjøre alle tester: `npm test`
+- Testdekningsgrad for hver test-fil: `npm run test -- --coverage --watchAll=false`
+- Testdekningsgrad totalt: `npm run test -- --coverage`
+
 ## Backend (I egen terminal)
 
 - `source venv/bin/activate`
