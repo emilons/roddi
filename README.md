@@ -5,7 +5,7 @@ Røddi is a website that aims to make the settlement of estates easier. For a **
 
 For an overview of the sites **architecture**, see:
 
-- [Architecture](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/wikis/Arkitekturdiagram-for-R%C3%B8ddi)
+- [Architecture](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/wikis/Architecture-of-R%C3%98DDI)
 
 
  
