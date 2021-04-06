@@ -104,9 +104,6 @@ form:last-child {
   margin: 40px 0 0 0;
 }
 
-.estateNameAndItem {
-
-}
 
 .userInteractions {
   display: grid;
@@ -363,7 +360,6 @@ padding: 10px ;
 .Stuff {
   border: 1px solid #ddd;
   padding: 10px 40px;
-
   }
 
 .divButtonMembers{
@@ -381,6 +377,7 @@ display: block;
   padding: 5px;
   color:#900C27;
   background-color: #f8f0f2;
+  margin-left: 20px;
 
 
   
@@ -409,16 +406,33 @@ display: block;
   line-height: 72px;
 }
 
+#headlineEstateName{
+  margin-top: 10px;
+  color: #900C27;
+  margin-left: 20px;
+}
 
 #title{
   font-size: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+#titleItemsAEP{
+  margin-top: 70px;
+  margin-left: 20px;
+}
+
+#titleItemsMEP{
+  margin-top: 70px;
+  margin-left: 20px;
 }
 
 .items h2{
 margin-bottom: 30px;
 top: 10px;
-
 }
+
 .Stuff h4{
 top: 20px;
 position: relative;
@@ -452,24 +466,24 @@ left: 20%;
 top: 35%;
 }
 
-.previous{
-  margin-left: 30px;
-  margin-top: 30px;
-  color: #900C27;
+.previousAI{
+margin-left: 30px;
+color: #900C27;
 }
 
 .previousMI{
-  position: absolute;
-  left: 30px;
-  color: #900C27; 
+position: absolute;
+left: 30px;
+color: #900C27; 
+
 }
 
 #headline1{
-  margin: 0 0 10px 20px;
+margin: 0 0 10px 20px;
 }
 
 .userNameAndComment {
-  margin-left: 10px;
+margin-left: 10px;
 }
 
 #headlineMI{

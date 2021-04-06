@@ -96,7 +96,7 @@ function AdminItem() {
         <div className="AdminItem">
             <div className="estateNameAndItem">
                 <div className="estateName">
-                    <a href="#/AdminEstatePage" class="previous">&laquo; Tilbake</a>
+                    <a href="#/AdminEstatePage" class="previousAI">&laquo; Tilbake</a>
                     <h2 id="headlineAI" >Familien {estateName}</h2>
                 </div>
                 <div className="itemAI">

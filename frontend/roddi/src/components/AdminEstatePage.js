@@ -210,7 +210,7 @@ function AdminEstatePage() {
     <div className="AdminEstatePage">
       <div className="nameAndMembers">
         <div className="estateName">
-          <h2 style={{ color: '#900C27' }}>Familien {estateName}</h2>
+          <h2  id="headlineEstateName">Familien {estateName}</h2>
         </div>
         <div className="membersList">
           <h4 id ="title" >Deltakere</h4>
@@ -275,7 +275,7 @@ function AdminEstatePage() {
         </div>
       </div>
       <div className="items">
-        <h2 id = "title">Eiendeler</h2>
+        <h2 id = "titleItemsAEP">Eiendeler</h2>
         <div className="itemsList">
           <div className="itemRow">
             {items.map((element, index) => (
