@@ -241,6 +241,7 @@ function AdminEstatePage() {
 
   return (
     <div className="AdminEstatePage">
+      <a href="#/AdminEstates" class="previousMI">&laquo; Tilbake</a>
       <div className="nameAndMembers">
         <div className="estateName">
           <h2  id="headlineEstateName">Familien {estateName}</h2>
