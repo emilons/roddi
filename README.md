@@ -62,7 +62,7 @@ After successfully setting up the program, the following commands are used for r
 - `npm start`
 - The webpage is now running on http://localhost:3000
 
-##### Running tests for frontend 
+##### Running tests for backend 
 - To run all test: `python3 manage.py test`
 
 ##### Running tests for frontend 
