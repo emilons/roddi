@@ -79,9 +79,6 @@ form:last-child {
 #AdminEstatesButtons{
  margin:50px 300px 50px 300px; 
  place-items: center;
- position: relative;
-
-
 }
 
 .btn-outline-danger{
@@ -107,9 +104,6 @@ form:last-child {
   margin: 40px 0 0 0;
 }
 
-.estateNameAndItem {
-
-}
 
 .userInteractions {
   display: grid;
@@ -119,7 +113,6 @@ form:last-child {
 
 .userNameAndComment {
   grid-column-start: 1;
-  font-weight: bold;
 }
 .userVotes {
   grid-column-start: 3;
@@ -128,7 +121,10 @@ form:last-child {
   text-indent: 10%;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1dfc775582670066cd2d585aea0829b80163a981
 .membersList div {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -343,10 +339,6 @@ th, td {
   color:#900C27;
   background-color: #f8f0f2;
   margin: 40px 20px 40px 20px;
-  position: relative;
-
-
-
 }
 
 .divButtonMEP{
@@ -366,15 +358,14 @@ padding: 10px ;
 .Members h4{
   margin: 0 auto;
   display: block;
-  left: 20%;
+  left: 70px;
+
   position: relative;
-  color: #900C27;
 }
 
 .Stuff {
   border: 1px solid #ddd;
   padding: 10px 40px;
-
   }
 
 .divButtonMembers{
@@ -392,6 +383,7 @@ display: block;
   padding: 5px;
   color:#900C27;
   background-color: #f8f0f2;
+  margin-left: 20px;
 
 
   
@@ -418,19 +410,38 @@ display: block;
   font-size: 40px;
   font-weight: 50;
   line-height: 72px;
-  color: #900C27;
-
 }
 
+<<<<<<< HEAD
+=======
+#headlineEstateName{
+  margin-top: 10px;
+  color: #900C27;
+  margin-left: 20px;
+}
+
+>>>>>>> 1dfc775582670066cd2d585aea0829b80163a981
 #title{
   font-size: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+#titleItemsAEP{
+  margin-top: 70px;
+  margin-left: 20px;
+}
+
+#titleItemsMEP{
+  margin-top: 70px;
+  margin-left: 20px;
 }
 
 .items h2{
 margin-bottom: 30px;
 top: 10px;
-
 }
+
 .Stuff h4{
 top: 20px;
 position: relative;
@@ -442,27 +453,20 @@ position: relative;
 
 #headlineAI{
   position: absolute;
-  left: 10%;
+  left: 20%;
   top: 20%;
-
 }
 
 .itemAI{
   position: absolute;
   left: 20%;
-  top: 35%;
-
-}
-
-.itemAI h4{
-  font-size: 30px;
+  top: 30%;
 }
 
 #headlineItem{
   position: absolute;
   left: 20%;
   top: 30%;
-
 }
 
 #description {
@@ -471,37 +475,35 @@ left: 20%;
 top: 35%;
 }
 
-.previous{
-  margin-left: 30px;
-  margin-top: 30px;
-  color: #900C27;
+.previousAI{
+margin-left: 30px;
+color: #900C27;
 }
 
 .previousMI{
-  position: absolute;
-  left: 30px;
-  color: #900C27; 
+position: absolute;
+left: 30px;
+color: #900C27; 
+
 }
 
 #headline1{
-  margin: 0 0 10px 20px;
-  font-weight: bold;
+margin: 0 0 10px 20px;
 }
 
 .userNameAndComment {
-  margin-left: 10px;
-
-}
-.userNameAndComment h5{
-  color: #900C27;
-
+margin-left: 10px;
 }
 
 #headlineMI{
 position: absolute;
+<<<<<<< HEAD
 left: 15%;
 top: 20%;
 color: #900C27;
+=======
+left: 20%;
+>>>>>>> 1dfc775582670066cd2d585aea0829b80163a981
 }
 
 .itemMI {
@@ -512,9 +514,13 @@ color: #900C27;
 
 .userInteractionsList{
   position: absolute;
+<<<<<<< HEAD
   right: 15%;
   top: 30%;
 
+=======
+  right: 20%;
+>>>>>>> 1dfc775582670066cd2d585aea0829b80163a981
 }
 
 .userInteractions{
