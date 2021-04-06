@@ -1,6 +1,12 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment} from "react";
 import Star from "./Star";
 
+/**
+ * A non-interactive version of StarVote component: 
+ * A row of 5 Star components. Displays the priority level of a member's vote
+ * @param {int} props value - Value of a member's vote
+ * @returns render of StarVoteRender
+ */
 function StarVoteRender(props) {
     const value = props.value;
 

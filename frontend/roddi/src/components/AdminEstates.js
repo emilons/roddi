@@ -4,11 +4,17 @@ import tempImage from '../images/house.jpg'
 import authService from '../services/auth.service';
 import { Link } from 'react-router-dom';
 
+/**
+ * Admin page with overview of all estates. Admin can add/remove estates
+ * @returns render of AdminEstates
+ */
 function AdminEstates() {
   const [nameInput, setNameInput] = useState('');
   const [estates, setEstates] = useState([]);
 
-  // get Estates from Backend and initialize list of estates with these
+  /**
+   * get estates from backend and initialize list of estates with these
+   */
   useEffect(() => {
     authService.getEstates().then((res) => {
       let initEstates = [];
@@ -30,6 +36,9 @@ function AdminEstates() {
     setNameInput(e.target.value);
   };
 
+  /**
+   * helper function to add estate to list of all estates
+   */
   function addToEstateList() {
     const x = new Estate();
     x.state = {
@@ -41,6 +50,9 @@ function AdminEstates() {
     setEstates(newEstates);
   }
 
+  /**
+   * Submit estate to the application
+   */
   function submitEstate() {
     document.getElementById('confirmName').innerHTML = '';
     if (document.getElementById('nameInput').value != '') {
@@ -84,7 +96,6 @@ function AdminEstates() {
                         <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
                             <h1 style={{margin:'20px 0 20px 0', fontSize: "3vw", color: "#454343", textAlign:"center"}}> {item.state.name}</h1>
                             <img id="tempImage" src={tempImage} alt="temporary pic"/>
-                            {/* img med src=item.state.image */}
                             <button onClick={() => localStorage.setItem('estateId', item.state.id)}>
                               <Link
                                 to={{
@@ -99,7 +110,6 @@ function AdminEstates() {
                     ))}
                 </div>
               </div>
-        {/*<ul className="estateList" style={{margin: '50 50 50 50'}}></ul>*/}
       </div>
   );
 }

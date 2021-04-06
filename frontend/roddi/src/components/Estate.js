@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
-import Item from './Item';
-import User from './User';
+import React from 'react';
 
 class Estate extends React.Component {
-  /* inneholder en array med familiemedlemmer, og en array med items */
 
   constructor(props) {
     super(props);
@@ -12,13 +9,9 @@ class Estate extends React.Component {
       name: '',
       items: [],
       members: [],
-      status: true, // Boolean for if the estate is finished.
+      status: true, // whether estate is open or closed
     };
   }
-
-  /* handleNameChange = event => {
-        this.props.setEstateName(this.state.name);
-    } */
 }
 
 export default Estate;

@@ -6,9 +6,13 @@ import MemberVotes from './MemberVotes';
 import authService from '../services/auth.service';
 import StarVote from './StarVote';
 import StarVoteRender from './StarVoteRender';
-
 import '../App.css';
 
+/**
+ * User page of a specific item. User can vote on an item and see other member's votes.
+ * If user's vote is to divide, they can prioritize vote by an amount of stars 1-5.
+ * @returns render of MyItem
+ */
 function MyItem() {
     const [isLoading, setIsLoading] = useState(true);
     const [estateID] = useState(localStorage.getItem('estateId'));
@@ -20,10 +24,13 @@ function MyItem() {
         name: localStorage.getItem('userName'),
         email: localStorage.getItem('userEmail')
     });
-    const [userItemChoice, setUserItemChoice] = useState() // what current user voted on this item (update item.state.userChoice for this user based on this)
+    const [userItemChoice, setUserItemChoice] = useState(); // what current user voted on this item
     const [members, setMembers] = useState([]); // all family members except current user
-    const [memberChoiceMap, setMemberChoiceMap] = useState(new Map())
+    const [memberChoiceMap, setMemberChoiceMap] = useState(new Map());
 
+    /**
+     * initialize estate and member states
+     */
     function initializeEstateAndMembers() {
         authService.getEstateFromID(estateID).then(res => {
             let tempEstate = new Estate();
@@ -54,6 +61,9 @@ function MyItem() {
         })
     }
 
+    /**
+     * initialize the item
+     */
     function initializeItem() {
         authService.getItemByID(itemID).then(res => {
             let tempItem = new Item();
@@ -82,13 +92,18 @@ function MyItem() {
         })
     }
 
-
+    /**
+     * initialize page
+     */
     useEffect(() => {
         initializeEstateAndMembers();
         initializeItem();
     }, []);
 
-    
+    /**
+     * handler for user's vote selection
+     * @param {GUI-Object} event - event.target identifies the GUI element that was clicked
+     */
     function onChangeVote(event) {
         let itemId = localStorage.getItem('itemId');
         let userId = user.id;
@@ -106,6 +121,10 @@ function MyItem() {
         authService.putVote(itemId, userId, vote);
     }
 
+    /**
+     * submits vote level by which star was clicked
+     * @param {*} vote - the star that was clicked, from 1-5
+     */
     function setWantedLevelAPI(vote) {
         let itemId = localStorage.getItem('itemId');
         let userId = user.id;

@@ -5,9 +5,12 @@ import Item from './Item';
 import MemberVotes from './MemberVotes';
 import StarVoteRender from './StarVoteRender';
 import authService from '../services/auth.service';
-
 import '../App.css';
 
+/**
+ * Admin page of a specific item. Admin can only view member votes but not interact with them.
+ * @returns render of AdminItem
+ */
 function AdminItem() {
     const [isLoading, setIsLoading] = useState(true);
     const [estateID] = useState(localStorage.getItem('estateId'));
@@ -18,11 +21,18 @@ function AdminItem() {
         id: localStorage.getItem('userId'),
         name: localStorage.getItem('userName'),
         email: localStorage.getItem('userEmail')
-    }); // current logged in 
+    });
     const [members, setMembers] = useState([]); // all family members except current user
-    const [memberChoiceMap, setMemberChoiceMap] = useState(new Map())
+    const [memberChoiceMap, setMemberChoiceMap] = useState(new Map());
 
+    /**
+     * initialize estate and members
+     */
     function initializeEstateAndMembers() {
+        /**
+         * initialize correct estate
+         * @param {int} estateID - Id of current estate
+         */
         authService.getEstateFromID(estateID).then(res => {
             let tempEstate = new Estate();
             tempEstate.state = {
@@ -52,7 +62,14 @@ function AdminItem() {
         })
     }
 
+    /**
+     * initialize item
+     */
     function initializeItem() {
+        /**
+         * get the item
+         * @param {int} itemID - Id of current item
+         */
         authService.getItemByID(itemID).then(res => {
             let tempItem = new Item();
             tempItem.state = {
@@ -67,6 +84,10 @@ function AdminItem() {
             setIsLoading(false);
         })
         
+        /**
+         * get member votes on item from User-Item relation
+         * @param {int} itemID - Id of current item
+         */
         authService.getUserItemRelationByItemId(itemID).then(res => {
             let choiceMap = new Map();
             res.forEach(element => {
@@ -77,7 +98,9 @@ function AdminItem() {
         })
     }
 
-
+    /**
+     * initialize page
+     */
     useEffect(() => {
         initializeEstateAndMembers();
         initializeItem();

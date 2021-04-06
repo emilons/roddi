@@ -4,10 +4,16 @@ import tempImage from '../images/house.jpg'
 import authService from '../services/auth.service';
 import { Link } from 'react-router-dom';
 
+/**
+ * User page with overview of all estates user is in.
+ * @returns render of MyEstates
+ */
 function MyEstates() {
   const [estates, setEstates] = useState([]);
 
-  // get Estates from Backend and initialize list of estates with these
+  /**
+   * get estates from backend and initialize list of estates with these
+   */
   useEffect(() => {
     authService.getEstatesByUser().then((res) => {
       let initEstates = [];
@@ -34,7 +40,6 @@ function MyEstates() {
                         <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
                             <h1 style={{margin:'20px 0 20px 0', fontSize: "3vw", color: "#454343", textAlign:"center"}}> {item.state.name}</h1>
                             <img id="tempImage" src={tempImage} alt="temporary pic"/>
-                            <p>Enkel dødsbo description</p>
                             <button onClick={() => localStorage.setItem('estateId', item.state.id)}>
                               <Link
                                 to={{

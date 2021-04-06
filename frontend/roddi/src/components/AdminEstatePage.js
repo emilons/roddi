@@ -7,8 +7,11 @@ import authService from '../services/auth.service';
 import Modal from 'react-modal';
 import '../App.css';
 
+/**
+ * Admin page with overview of an estate. Admin can add/remove members and items
+ * @returns render of AdminEstatePage
+ */
 function AdminEstatePage() {
-  // EstateID based on props
   const [estateID] = useState(localStorage.getItem('estateId'));
   const [estateName, setEstateName] = useState('');
   const [items, setItems] = useState([]);
@@ -21,10 +24,10 @@ function AdminEstatePage() {
   // State for add Item Modal
   const [addNewItem, setAddNewItem] = useState({
     itemName: '',
-    itemDescription: '',
-    // state for item picture
+    itemDescription: ''
   });
   const [postImage, setPostImage] = useState(null);
+  
   const handleItemChange = (e) => {
     const { id, value } = e.target;
     setAddNewItem((prevState) => ({
@@ -37,11 +40,11 @@ function AdminEstatePage() {
     setPostImage({ image: e.target.files });
   };
 
+  // State for add Member Modal  
   const [addNewMember, setAddNewMember] = useState({
     memberEmail: '',
   });
 
-  // State for add Member Modal
   const handleMemberChange = (e) => {
     const { id, value } = e.target;
     setAddNewMember((prevState) => ({
@@ -50,8 +53,12 @@ function AdminEstatePage() {
     }));
   };
 
-  // get Estates from Backend and initialize list of estates with these
+  
   useEffect(() => {
+    /**
+     * get all estates from backend and initialize correct estate
+     * @param {int} estateID - Id of current estate
+     */
     authService.getEstateFromID(estateID).then((res) => {
       let tempEstate = new Estate();
       tempEstate.state = {
@@ -78,6 +85,10 @@ function AdminEstatePage() {
       setMailTo(memberEmails);
     });
 
+    /**
+     * get members in estate from User-Estate relation
+     * @param {int} estateID - Id of current estate
+     */
     authService.getUserInEstateId(estateID).then((res) => {
       let userInEstateList = [];
       for (let i = 0; i < res.length; i++) {
@@ -88,6 +99,10 @@ function AdminEstatePage() {
       setMembersInEstate(newIds);
     });
 
+    /**
+     * get items in an estate
+     * @param {int} estateID - Id of current estate
+     */
     authService.getItemsByEstateID(estateID).then((res) => {
       let initItems = [];
       let itemsLength = res.length;
@@ -109,7 +124,6 @@ function AdminEstatePage() {
   }, []);
 
   // Item functions
-  // Modal functions
   function openItemModal() {
     setItemModalIsOpen(true);
   }
@@ -129,8 +143,12 @@ function AdminEstatePage() {
       description: addNewItem.itemDescription,
       estate: estateID,
     };
+    // prevents item submit if image is not included
     if (postImage === null) {
-    } else {
+      
+    } 
+    // submits item if everything is provided
+    else {
       let newItems = items.concat([x]);
       authService.addItem(
         x.state.name,
@@ -142,13 +160,17 @@ function AdminEstatePage() {
       setAddNewItem({ itemName: '', itemDescription: '' });
       closeItemModal();
 
-      //Trenger en liten delay før reload her, eller så vil serveren til tider ikke henge med på bildelaging
       setTimeout(function () {
         window.location.reload(false);
       }, 200);
     }
   }
 
+  /**
+   * Delete item from estate. Remove Item object as well as GUI element
+   * @param {GUI-Object} guiId - Id of GUI element of the item
+   * @param {int} itemId - Item Id of the item
+   */
   function deleteItem(guiId, itemId) {
     let GUIItem = document.getElementById(guiId);
     GUIItem.remove();
@@ -168,11 +190,19 @@ function AdminEstatePage() {
     openMemberModal();
   }
 
+  /**
+   * Submit member to estate
+   */
   function submitMember() {
-    //validering av input og om input allerede eksisterer i estate og om input i det hele tatt eksisterer
     authService.getUserIdByEmail(addNewMember.memberEmail).then((res) => {
       let x = new User();
       if (res[0] != undefined) {
+        if (res[0].is_superuser == true) {
+          document.getElementById('confirmEmail').innerHTML =
+            'Admins kan ikke legges til i dødsbo!';
+          document.getElementById('confirmEmail').style.color = 'red';
+          return;
+        }
         x.state = {
           id: res[0].id,
           name: res[0].name,
@@ -180,11 +210,11 @@ function AdminEstatePage() {
         };
         let newMembers = members.concat([x]);
         authService.addMember(estateID, x.state.id);
-        console.log(x.state.id);
         setMembers(newMembers);
         closeMemberModal();
         window.location.reload(false);
-      } else {
+      } 
+      else {
         document.getElementById('confirmEmail').innerHTML =
           'Vennligst fyll inn en eksisterende email!';
         document.getElementById('confirmEmail').style.color = 'red';
@@ -192,6 +222,11 @@ function AdminEstatePage() {
     });
   }
 
+  /**
+   * Delete member from estate. Remove User object as well as GUI element
+   * @param {GUI-Object} guiId - Id of GUI element of the member
+   * @param {int} userId - User Id of the member
+   */
   function deleteMember(guiId, userId) {
     let GUIMember = document.getElementById(guiId);
     let userInEstateId;

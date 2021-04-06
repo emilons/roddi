@@ -1,5 +1,11 @@
 import React, {Fragment} from "react";
 
+
+/**
+ * A box which displays the vote possibilities and highlighst a member's vote
+ * @param {int} props value - Value of a member's vote
+ * @returns render of MemberVotes
+ */
 function MemberVotes(props) {
     if (props.value > 0 && props.value < 6) {
         return (
