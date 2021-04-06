@@ -38,9 +38,7 @@ Proceed to a terminal with an active virtual environment. Run the followin comma
 
 The database is now configured and ready to be used by the website. 
 
-(For å starte Django og backend er man nødt til å være i virtual environment.
 
-Man trenger én terminal hver som kjører for å bruke både frontend og backend samtidig. I VS Code kan man enkelt åpne flere terminaler ved å trykke på +-tegnet øverst til høyre i terminalvinduet.)
 
 ### Installing necessary dependencies for frontend
 ***Note that all commands regarding frontend must be kept seperate from the backend commands in its own terminal.***  
