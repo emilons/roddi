@@ -76,25 +76,42 @@ function Statistics() {
   });
 
     return(<div>
-            <div>
-                <h1>Statistikk for Røddi</h1>
-            </div>
-            <div>
-                <h6>Dødsbo opprettet i dag:</h6> <h6 style = {{color: 'red'}}>{numberOfNewEstates}</h6>
-                <br></br>
-                <h6>Brukere registrert i dag:</h6> <h6 style = {{color: 'red'}}>{numberOfNewUsers}</h6>
-                <br></br>
-                <h6>Antall stemmer på eiendeler i dag:</h6> 
-                <h6 style = {{color: 'red'}}>{numberOfNewVotes}</h6>
+          
+            <div className="Statistic">
+              <div id="headerStatistics">
+                <h4>Statistikk for Røddi</h4>
+              </div>
+                <table id="t01"> 
+                  <tr>
+                    <th> </th>
+                    <th>Antall</th>
+                  </tr>
+                  <tr>
+                    <td id="second">Dødsbo opprettet idag</td>
+                    <td id="numbers1">{numberOfNewEstates}</td>
+                  </tr>
+                  <tr>
+                  <td>Brukere registrert idag</td>
+                    <td id="numbers">{numberOfNewUsers}</td>
+                  </tr>
+                  <tr>
+                  <td id="second">Antall stemmer på eiendeler i dag</td>
+                    <td id="numbers1">{numberOfNewVotes}</td>
+                  </tr>
+                  <tr>
+                  <td>Totalt antall dødsbo</td>
+                    <td id="numbers">{totalNumberOfEstates}</td>
+                  </tr>
+                  <tr>
+                  <td id="second">Totalt antall brukere</td>
+                    <td id="numbers1">{totalNumberOfUsers}</td>
+                  </tr>
+
+                </table>
             </div>
 
                 
-          <div>
-              <br></br> <br></br>
-              <h6>Totalt antall dødsbo:</h6> <h6 style = {{color: 'red'}}>{totalNumberOfEstates}</h6>
-              <br></br>
-              <h6>Totalt antall brukere:</h6> <h6 style = {{color: 'red'}}>{totalNumberOfUsers}</h6>
-            </div>
+          
         </div>);
   }
 

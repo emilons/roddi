@@ -132,3 +132,4 @@ fabric.properties
 /backend/roddi/media
 .DS_Store
 __pycache__/
+.vscode/settings.json

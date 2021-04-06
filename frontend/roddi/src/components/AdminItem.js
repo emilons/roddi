@@ -120,21 +120,22 @@ function AdminItem() {
         <div className="AdminItem">
             <div className="estateNameAndItem">
                 <div className="estateName">
-                    <h1>PIL TILBAKE</h1>
-                    <h1>{estateName}</h1>
+                    <a href="#/AdminEstatePage" class="previousAI">&laquo; Tilbake</a>
+                    <h2 id="headlineAI" >Familien {estateName}</h2>
                 </div>
-                <div className="item">
-                    <h4>{item.state.name}</h4>
-                    <p>{item.state.description}</p>
+                <div className="itemAI">
+                    <h4 >{item.state.name}</h4>
+                    <p >{item.state.description}</p>
                     <img style={{height: "180px", width: "200px"}} src={loadImage()} alt="temporary pic"/>
                 </div>
             </div>
             <div className="userInteractionsList">
+                <h5 id ="headline1">Oversikt over avstemning:</h5>
                 {members.map((element, index) => (
                     <div className="userInteractions" key={"user"+index} id={"u"+index} style={{border: '1px solid', margin: '20px'}}>
                         <div className="userNameAndComment">
-                            <h4>{element.state.name}</h4>
-                            <p>Comment...</p> 
+                            <h5>{element.state.name}</h5>
+                            
                         </div>
                         <div className="userVotes">
                         {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.id)}/> : <p>Loading...</p>}

@@ -40,7 +40,8 @@ function MyEstates() {
                         <div key={"estate"+index} id={"e"+index} style={{border: '2px outset'}}>
                             <h1 style={{margin:'20px 0 20px 0', fontSize: "3vw", color: "#454343", textAlign:"center"}}> {item.state.name}</h1>
                             <img id="tempImage" src={tempImage} alt="temporary pic"/>
-                            <button onClick={() => localStorage.setItem('estateId', item.state.id)}>
+                            
+                            <button className= "divButton" onClick={() => localStorage.setItem('estateId', item.state.id)}>
                               <Link
                                 to={{
                                   pathname: '/MyEstatePage',

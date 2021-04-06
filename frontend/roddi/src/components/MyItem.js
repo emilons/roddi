@@ -147,19 +147,20 @@ function MyItem() {
         <div className="MyItem">
             <div className="estateNameAndItem">
                 <div className="estateName">
-                    <h1>PIL TILBAKE</h1>
-                    <h1>{estateName}</h1>
+                <a href="#/MyEstatePage" class="previousMI">&laquo; Tilbake</a>
+                <h1 id="headlineMI" >Familien {estateName}</h1>
                 </div>
-                <div className="item">
+                <div className="itemMI">
                     <h4>{item.state.name}</h4>
                     <p>{item.state.description}</p>
                     <img style={{height: "180px", width: "200px"}} src={loadImage()} alt="loading pic"/>
                 </div>
             </div>
-            <div className="userInteractionsList">
-                <div className="myVote">
-                    <div className="myUserNameAndComment">
-                        <h4>{user.name}</h4>
+            <div id = "votingBoxes" className="userInteractionsList">
+                <div className="myVote" >
+                    <div className="userNameAndComment">
+                        <h5>{user.name}</h5>
+                    
                     </div>
                     <div className="myUserPriority">
                         <div className="myUserVotes" onChange={onChangeVote}>
@@ -179,9 +180,10 @@ function MyItem() {
                     }
                 </div>            
                 {members.map((element, index) => (
-                    <div className="userInteractions" key={"user"+index} id={"u"+index} style={{border: '1px solid', margin: '20px'}}>
+                    <div className="userInteractions" key={"user"+index} id={"u"+index} >
                         <div className="userNameAndComment">
-                            <h4>{element.state.name}</h4>
+                            <h5>{element.state.name}</h5>
+                            
                         </div>
                         <div className="userVotes">
                         {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.id)}/> : <p>Loading...</p>}

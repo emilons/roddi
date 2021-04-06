@@ -73,32 +73,33 @@ function MyEstatePage() {
     <div className="MyEstatePage">
       <div className="nameAndMembers">
           <div className="estateName">
-              <h1>{estateName}</h1>
+              <h2 id="headlineEstateName">Familien {estateName}</h2>
           </div>
           <div className="membersList">
-              <h2>Deltakere</h2>
+              <h4 id = "title">Deltakere</h4>
               {members.map((element, index) => (
-                  <div key={"member"+index} id={"m"+index} style={{border: '1px solid'}}>
+                  <div className="Members"
+                  key={"member"+index} id={"m"+index} >
                       <h4>{element.state.name}</h4>
                   </div>
               ))}
           </div>
       </div>
       <div className="items">
-        <h2>Eiendeler</h2>
+        <h2 id ="titleItemsMEP">Eiendeler</h2>
         <div className="itemsList">
           <div className="itemRow">
             {items.map((element, index) => (
-              <div key={"item"+index} id={"i"+index} style={{direction: "grid", border: '1px solid'}}>
-                <img style={{height: "180px", width: "200px"}} src={'http://localhost:8000'+ element.state.image} alt="temporary pic"/>
+              <div key={"item"+index} id={"i"+index} style={{direction: "grid", border: '1px solid #ddd', margin: "20px"}}>
+                <img style={{height: "180px", width: "200px", margin: "20px"}} src={'http://localhost:8000'+ element.state.image} alt="temporary pic"/>
                 <h4>{element.state.name}</h4>
-                <button onClick={() => localStorage.setItem('itemId', element.state.id)}>
+                <button className="divButtonMEP" onClick={() => localStorage.setItem('itemId', element.state.id)}>
                               <Link
                                 to={{
                                   pathname: '/MyItem',
                                 }}
                               >
-                                Gå til eiendel
+                                Eiendel
                               </Link>
                             </button>
               </div>

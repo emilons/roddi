@@ -243,21 +243,23 @@ function AdminEstatePage() {
     <div className="AdminEstatePage">
       <div className="nameAndMembers">
         <div className="estateName">
-          <h1>{estateName}</h1>
+          <h2  id="headlineEstateName">Familien {estateName}</h2>
         </div>
         <div className="membersList">
-          <h2>Deltakere</h2>
-          <a href={mailTo}>Varsle deltakere</a>
+          <h4 id ="title" >Deltakere</h4>
+
+          <a href={mailTo} id='notifyMembers'>
+            Varsle deltakere
+            </a>
           {members.map((element, index) => (
-            <div
+            <div className="Members"
               key={'member' + index}
               id={'m' + index}
-              style={{ border: '1px solid' }}
             >
               <h4>{element.state.name}</h4>
               <button
                 type="button"
-                className="btn btn-outline-warning"
+                className="divButtonMembers"
                 onClick={() => deleteMember('m' + index, element.state.id)}
               >
                 Slett
@@ -266,6 +268,7 @@ function AdminEstatePage() {
           ))}
           <div className="addMember">
             <button
+              id = "addMember"
               type="submit"
               className="btn btn-outline-danger"
               onClick={addMember}
@@ -295,7 +298,7 @@ function AdminEstatePage() {
                 <small id="confirmEmail" className="form-text"></small>
               </form>
               <button
-                id="estateButton"
+                id="estateButton" 
                 className="btn btn-outline-danger"
                 onClick={submitMember}
               >
@@ -306,22 +309,23 @@ function AdminEstatePage() {
         </div>
       </div>
       <div className="items">
-        <h2>Eiendeler</h2>
+        <h2 id = "titleItemsAEP">Eiendeler</h2>
         <div className="itemsList">
           <div className="itemRow">
             {items.map((element, index) => (
               <div
+                className ="Stuff"
                 key={'item' + index}
                 id={'i' + index}
-                style={{ border: '1px solid' }}
+              
               >
                 <img
-                  style={{ height: '180px', width: '200px' }}
+                  style={{ height: '180px', width: '200px', margin: "20px" }}
                   src={'http://localhost:8000' + element.state.image}
                   alt="temporary pic"
                 />
                 <h4>{element.state.name}</h4>
-                <button
+                <button className="divButtonE"
                   onClick={() =>
                     localStorage.setItem('itemId', element.state.id)
                   }
@@ -331,12 +335,12 @@ function AdminEstatePage() {
                       pathname: '/AdminItem',
                     }}
                   >
-                    Gå til eiendel
+                    Eiendel
                   </Link>
                 </button>
                 <button
                   type="button"
-                  className="btn-danger"
+                  className="divButtonE"
                   onClick={() => deleteItem('i' + index, element.state.id)}
                 >
                   Slett

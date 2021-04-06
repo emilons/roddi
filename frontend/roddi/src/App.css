@@ -61,12 +61,14 @@ form:last-child {
 .AdminEstates {
   text-align: center;
   margin: 100px 200px;
+
 }
 
 .MyEstatePage {
   display: flex;
   justify-content: space-around;
   margin: 40px 0 0 0;
+
 }
 
 .MyEstates {
@@ -101,16 +103,6 @@ form:last-child {
   margin: 40px 0 0 0;
 }
 
-.AdminItem {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 40px 0 0 0;
-}
-
-.estateNameAndItem {
-
-}
 
 .userInteractions {
   display: grid;
@@ -125,6 +117,7 @@ form:last-child {
   grid-column-start: 3;
   display: flex;
   flex-direction: column;
+  text-indent: 10%;
 }
 .userVotes > div {
   padding: 1px;
@@ -209,9 +202,8 @@ form:last-child {
   width: 28px;
   margin: 0px 1px 0px 1px;
   justify-content: center;
-/*   background-image: url(./images/star.png);
-  background-size: contain; */
 }
+
 .star:hover {
   background-color: yellow
 }
@@ -222,9 +214,8 @@ form:last-child {
   width: 28px;
   margin: 0px 1px 0px 1px;
   justify-content: center;
-/*   background-image: url(./images/star_filled.png);
-  background-size: contain; */
 }
+
 .starFilled:hover {
   background-color: yellow
 }
@@ -248,6 +239,13 @@ form:last-child {
   margin-bottom: 20px;
   margin-top: 35px;
 }
+
+.membersList h4{
+  padding-bottom: 20px;
+  margin-top: 100px;
+
+}
+
 
 .btn-danger {
   position: relative;
@@ -276,7 +274,8 @@ form:last-child {
 }
 
 .addItem > button {
-  margin-left: 35px;
+  margin-left: 110px;
+
 }
 
 .estateList div > h1 {
@@ -314,6 +313,7 @@ form:last-child {
 
 .items {
   margin-top: 35px;
+
 }
 
 .items > h2 {
@@ -399,5 +399,231 @@ img{
 
 #myModal{
   text-align: center;
+}
+
+#t01 {
+  width: 50%;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 30px;
+}
+
+#headerStatistics {
+  size: 10px;
+  margin-top: 40px;
+  margin-left: 300px;
+  margin-right: 300px;
+  color: #900C27;
+}
+
+#numbers {
+  color: #900C27;
+}
+#numbers1 {
+  color: #900C27;
+  background-color: #f8f0f2;
+}
+
+#second {
+  background-color: #f8f0f2;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+}
+
+.divButton {
+  color:#900C27;
+  background-color: #f8f0f2;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.divButtonE {
+  color:#900C27;
+  background-color: #f8f0f2;
+  margin: 40px 20px 40px 20px;
+}
+
+.divButtonMEP{
+  color:#900C27;
+  background-color: #f8f0f2;
+  margin: 32%;
+}
+
+.Members {
+border: 1px solid #ddd;
+border-spacing: 10px;
+margin: 20px;
+padding: 10px ;
+
+}
+
+.Members h4{
+  margin: 0 auto;
+  display: block;
+  left: 70px;
+
+  position: relative;
+}
+
+.Stuff {
+  border: 1px solid #ddd;
+  padding: 10px 40px;
+  }
+
+.divButtonMembers{
+margin-bottom: 10px;
+margin-top: 10px;
+color:#900C27;
+background-color: #f8f0f2;
+margin: 0 auto;
+display: block;
+
+}
+
+#notifyMembers {
+  border: 2px solid #ddd;
+  padding: 5px;
+  color:#900C27;
+  background-color: #f8f0f2;
+  margin-left: 20px;
+
+
+  
+}
+#notifyMembers:hover{
+  background-color: #E9E9E9;
+}
+
+.divButtonMembers:hover{
+  background-color: #E9E9E9;
+}
+
+
+#Member{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#addMember {
+  margin-left: 30%;
+}
+
+.estateName h2{
+  font-size: 40px;
+  font-weight: 50;
+  line-height: 72px;
+}
+
+#headlineEstateName{
+  margin-top: 10px;
+  color: #900C27;
+  margin-left: 20px;
+}
+
+#title{
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+#titleItemsAEP{
+  margin-top: 70px;
+  margin-left: 20px;
+}
+
+#titleItemsMEP{
+  margin-top: 70px;
+  margin-left: 20px;
+}
+
+.items h2{
+margin-bottom: 30px;
+top: 10px;
+}
+
+.Stuff h4{
+top: 20px;
+position: relative;
+}
+
+.Stuff{
+  margin: 20px;
+}
+
+#headlineAI{
+  position: absolute;
+  left: 20%;
+  top: 20%;
+}
+
+.itemAI{
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+
+#headlineItem{
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+
+#description {
+position: absolute;
+left: 20%;
+top: 35%;
+}
+
+.previousAI{
+margin-left: 30px;
+color: #900C27;
+}
+
+.previousMI{
+position: absolute;
+left: 30px;
+color: #900C27; 
+
+}
+
+#headline1{
+margin: 0 0 10px 20px;
+}
+
+.userNameAndComment {
+margin-left: 10px;
+}
+
+#headlineMI{
+position: absolute;
+left: 15%;
+top: 20%;
+color: #900C27;
+}
+
+.itemMI {
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+
+.userInteractionsList{
+  position: absolute;
+  right: 15%;
+  top: 30%;
+
+}
+
+.userInteractions{
+border: 1px solid;
+margin: 20px;
+}
+
+.myVote{
+border: 1px solid;
+margin: 5px;
 }
 
