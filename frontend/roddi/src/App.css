@@ -229,7 +229,6 @@ form:last-child {
 }
 
 
-
 .membersList div {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -464,6 +463,7 @@ padding: 10px ;
   margin: 0 auto;
   display: block;
   left: 70px;
+  color: #900C27;
 
   position: relative;
 }
@@ -520,7 +520,8 @@ display: block;
 #headlineEstateName{
   margin-top: 10px;
   color: #900C27;
-  margin-left: 20px;
+  margin-left: 10px;
+
 }
 
 #title{
@@ -555,14 +556,15 @@ position: relative;
 
 #headlineAI{
   position: absolute;
-  left: 20%;
+  left: 15%;
   top: 20%;
+  color:#900C27;
 }
 
 .itemAI{
   position: absolute;
   left: 20%;
-  top: 30%;
+  top: 35%;
 }
 
 #headlineItem{
@@ -599,15 +601,16 @@ margin-left: 10px;
 
 #headlineMI{
 position: absolute;
-left: 15%;
 top: 20%;
 color: #900C27;
+left: 15%;
+
 }
 
 .itemMI {
   position: absolute;
   left: 20%;
-  top: 30%;
+  top: 35%;
 }
 
 .userInteractionsList{
