@@ -96,7 +96,6 @@ form:last-child {
   margin: 40px 0 0 0;
 }
 
-/* MyItem */
 .MyItem {
   display: flex;
   justify-content: center;
@@ -120,6 +119,116 @@ form:last-child {
   flex-direction: column;
   text-indent: 10%;
 }
+.userVotes > div {
+  padding: 1px;
+}
+
+.myVote {
+  border: 1px solid;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 70px 90px 10px 30px;
+  grid-template-rows: 28px 28px 28px;
+  padding: 10px;
+}
+
+
+.myUserPriority {
+  display: grid;
+  grid-template-columns: 20px auto;
+  grid-template-rows: 28px 28px 28px;
+}
+.myUserNameAndComment{
+  grid-row-start: 1;
+}
+
+.myUserVotes {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: span 3;
+  height: auto;
+}
+
+.myUserVotes > div {
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.myVoteHighlight {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.myVoteHighlight > .voteDivide {
+  margin: 0px;
+  padding: 1px;
+  grid-row-start: 1;
+  justify-content: center;
+} 
+.myVoteHighlight > .voteDonate {
+  margin: 0;
+  grid-row-start: 2;
+  justify-content: center;
+}
+.myVoteHighlight > .voteTrash {
+  margin: 0;
+  grid-row-start: 3;
+  justify-content: center;
+}
+
+.userStarVotes {
+  grid-column-start: 4;
+  grid-column-end: span 5;
+  grid-row-start: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.myStarVote {
+  grid-column-start: 4;
+  grid-column-end: span 5;
+  grid-row-start: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.star {
+  display: block;
+  height: 28px;
+  width: 28px;
+  margin: 0px 1px 0px 1px;
+  justify-content: center;
+}
+
+.star:hover {
+  background-color: yellow
+}
+
+.starFilled {
+  display: block;
+  height: 28px;
+  width: 28px;
+  margin: 0px 1px 0px 1px;
+  justify-content: center;
+}
+
+.starFilled:hover {
+  background-color: yellow
+}
+
+.starRender {
+  display: block;
+  height: 28px;
+  width: 28px;
+  margin: 0px 1px 0px 1px;
+  justify-content: center;
+}
+
+
 
 <<<<<<< HEAD
 
