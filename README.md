@@ -1,75 +1,70 @@
 # Røddi
-Røddi er en nettside som skal gjøre fordeling av dødsbo enkelt. For en **komplett beskrivele** av nettsiden og hvordan den brukes, se:
+Røddi is a website that aims to make the settlement of estates easier. For a **complete description** of the webpage and how it workse, see:
 
-- [Beskrivelse av Røddi](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/blob/master/RODDI.md) 
+- [Description of Røddi](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/blob/master/RODDI.md) 
 
-For oversikt over nettsidens **arkitektur**, se:
+For an overview of the sites **architecture**, see:
 
 - [Arkitektur](https://gitlab.stud.idi.ntnu.no/tdt4140/landsby-2/gruppe-33/roddi/-/wikis/Arkitekturdiagram-for-R%C3%B8ddi)
 
-# Oppsett og kjøring: #
 
-## Virtual Environment (Første gang man skal kjøre)
-Åpne terminalvindu (gjerne i VS Code Terminal -> New Terminal)
-Pass på at du er i riktig directory (hoveddirectory, det øverste nivået i prosjektstrukturen. Tilsvarer det som ligger her på GitLab)
-- `ls` (for å se at du er i roddi mappen). filene burde være:  README.md    backend     database    frontend    requirements.txt    venv
+ 
+# SETUP: 
+The following steps needs only be done **before the initial run** of the project. See *"Running the program"* for the procedure of running the project after a successful setup. 
 
-Kjør så:
+### Virtual Environment
+Open a terminal window. Make sure you are in the correct directory (main directory, top level in the project structure) 
+- Type `ls` in the terminal (To confirm you are in the roddi directory). The files should be: README.md, RODDI.md, backend, frontend, requirements.txt, venv
+
+Thereafter, run the following:
 - `pip install virtualenv`
 - `virtualenv venv`
 - `source venv/bin/activate` (Windows: `.\venv\Scripts\activate`)
 
-Nå skal det stå (venv) foran det du skriver i terminalen, da vet du at virituelt environment er aktivert
+You should now se (venv) in front of the comand line  in the terminal. This means that the virtual environment is active. Proceed with the following command:
 - `pip install -r requirements.txt`
 
-Da er virtuelt environment satt opp og alt er installert.
-Det er viktig at virtual environment er aktivert når det er snakk om å kjøre python-kode i prosjektet.
-Det betyr at for hver gang du vil starte opp backend trenger du nå å navigere til den øverste mappen i prosjektet som heter roddi for så å kjøre kommandoen "source venv/bin/activate" (".\venv\Scripts\activate") i terminalen.
+At this point, the virtual environment is activated and everything is installed. It is important that the virtual environment is active while running all python code in the project. This implies that everytime you want to run the backend, the virtual environment must first be activated in the above manner ("source venv/bin/activate" or ".\venv\Scripts\activate"). 
 
-## Oppsett av database (Første gang man skal starte opp backend)
 
-Bruk for eksempel MySQLWorkbench for å lage en database for prosjektet. Kall den gjerne "roddi".
-Gå tilbake til prosjektet ditt i VS Code.
-Åpne settings.py som ligger i backend/roddi/roddi/settings.py og finn objektet som heter "DATABASES".
-Fyll inn NAME, USER og PASSWORD for å samsvare med databasen du lagde i MySQLWorkbench (dersom du ikke lagde noen bruker sett USER til 'root' og la PASSWORD være tom '').
+### Setting up the database
 
-Gå så tilbake til terminalen som kjører virtual environmentet.
+Use for instance MySQLWorkbench to create a database for the project. Preferably call it "roddi". Proceed to the project in your coding environment. Open settings.py located in backend/roddi/roddi/settings.py and find the block named "DATABASES". Fill inn the fields "NAME, "USER" and "PASSWORD" to correspond to the information of the database you just created. In this context, "NAME" refers to the database name, while "USER" and "PASSWORD" refers to the user in wich the database was created. If you did not create a user, set the "USER" field to be "root" and "PASSWORD" to be empty (''). 
+
+Proceed to a terminal with an active virtual environment. Run the followin commands:
 - `cd backend/roddi`
 - `python3 manage.py makemigrations`
 - `python3 manage.py migrate`
 
-Da er databasen konfigurert go klar til å brukes av applikasjonen.
+The database is now configured and ready to be used by the website. 
 
-For å starte Django og backend er man nødt til å være i virtual environment.
+(For å starte Django og backend er man nødt til å være i virtual environment.
 
-Man trenger én terminal hver som kjører for å bruke både frontend og backend samtidig. I VS Code kan man enkelt åpne flere terminaler ved å trykke på +-tegnet øverst til høyre i terminalvinduet.
+Man trenger én terminal hver som kjører for å bruke både frontend og backend samtidig. I VS Code kan man enkelt åpne flere terminaler ved å trykke på +-tegnet øverst til høyre i terminalvinduet.)
 
-## Frontend (I egen terminal)
+### Installing necessary dependencies for frontend
+***Note that all commands regarding frontend must be kept seperate from the backend commands in its own terminal.***  
 
-### Første gang (installering av nødvendige dependencies):
-Installer først "node.js" på PC'en. Google node js download.
-Gå så til en ny terminal i VS Code, sørg for at du er i øverste mappe i prosjektet.
+Install "node.js" to your computer. This is easily done by googleing "js download". When the download is completed, go to e new terminal in your code-environment, and make sure to be in the top level directory of the project. Run the following commands:
 - `cd frontend/roddi`
 - `npm install`
 
-### For å starte nettsiden
-- `cd frontend/roddi`
-- `npm start`
-- Nettsiden kjører nå på http://localhost:3000
+ 
+# RUNNING THE PROGRAM: 
+After successfully setting up the program, the following commands are used for running the modules of the project. Keep in mind that all commands for frontend and backend must be done in seperate terminals, where the terminal dealing with the backend must have an active virtual environment running.
 
-
-### Kjøring av tester
-- For å kjøre alle tester: `npm test`
-- Testdekningsgrad for hver test-fil: `npm run test -- --coverage --watchAll=false`
-- Testdekningsgrad totalt: `npm run test -- --coverage`
-
-## Backend (I egen terminal)
-
+### Backend (running server)
 - `source venv/bin/activate` (Windows: `.\venv\Scripts\activate`)
 - `cd backend/roddi`
 - `python3 manage.py runserver`
-- API kjører nå på http://localhost:8000/api
+- API now runs on http://localhost:8000/api
 
-(Hvis det ikke går, prøv å gå tilbake til øverste mappe `cd ../..`, kjør `pip install -r requirements.txt`, kanskje vi har lagt til noe nytt som må installeres)
-- `cd backend/roddi` igjen og prøv `python3 manage.py runserver` nå.
+### Frontend (running webpage) 
+- `cd frontend/roddi`
+- `npm start`
+- The webpage is now running on http://localhost:3000
 
+### Running tests for frontend 
+- To run all tests: `npm test`
+- Code coverage for each individual test-file: `npm run test -- --coverage --watchAll=false`
+- Code coverage for the frontend in total: `npm run test -- --coverage`
