@@ -1,4 +1,3 @@
-import Estate from './Estate';
 import React from 'react';
 
 class User extends React.Component {
@@ -10,7 +9,6 @@ class User extends React.Component {
       email: '',
       password: '',
       estates: null,
-      // Estate eller motsatt med user-array i Estate entiteten
     };
   }
 }

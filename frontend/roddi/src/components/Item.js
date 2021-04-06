@@ -1,5 +1,4 @@
 import React from 'react';
-import User from './User';
 
 class Item extends React.Component {
   constructor(props) {
@@ -12,14 +11,6 @@ class Item extends React.Component {
       estate: null,
       userChoice: null
     };
-  }
-
-  render() {
-    return (
-      <div className="Item">
-        <p>{this.state.name}</p>
-      </div>
-    );
   }
 }
 

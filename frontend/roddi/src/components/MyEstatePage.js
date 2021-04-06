@@ -6,6 +6,10 @@ import Item from './Item';
 import authService from '../services/auth.service';
 import '../App.css';
 
+/**
+ * User page with overview of estate. Users can access items in the estate
+ * @returns render of MyEstatePage
+ */
 function MyEstatePage() {
   const [estateID] = useState(localStorage.getItem('estateId'));
   const [estateName, setEstateName] = useState("");
@@ -13,6 +17,10 @@ function MyEstatePage() {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
+    /**
+     * get all estates from backend and initialize correct estate
+     * @param {int} estateID - Id of current estate
+     */
     authService.getEstateFromID(estateID).then(res => {
       let tempEstate = new Estate();
       tempEstate.state = {
@@ -36,6 +44,10 @@ function MyEstatePage() {
       setEstateName(res.data.name);
   })
 
+  /**
+     * get items in an estate
+     * @param {int} estateID - Id of current estate
+     */
   authService.getItemsByEstateID(estateID).then(res => {
     let initItems = [];
     let itemsLength = res.length;
