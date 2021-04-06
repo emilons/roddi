@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, {Fragment} from "react";
 
 function MemberVotes(props) {
     if (props.value > 0 && props.value < 6) {

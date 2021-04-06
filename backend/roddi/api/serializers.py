@@ -4,6 +4,10 @@ from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
 
 
+### Defining serializers for every model is necessary for API usage ###
+
+
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:

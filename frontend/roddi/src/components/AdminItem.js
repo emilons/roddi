@@ -3,6 +3,7 @@ import Estate from './Estate';
 import User from './User';
 import Item from './Item';
 import MemberVotes from './MemberVotes';
+import StarVoteRender from './StarVoteRender';
 import authService from '../services/auth.service';
 
 import '../App.css';
@@ -111,11 +112,16 @@ function AdminItem() {
                     <div className="userInteractions" key={"user"+index} id={"u"+index} style={{border: '1px solid', margin: '20px'}}>
                         <div className="userNameAndComment">
                             <h5>{element.state.name}</h5>
-                            <p>Kommentar:</p> 
+                            
                         </div>
                         <div className="userVotes">
                         {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.id)}/> : <p>Loading...</p>}
                         </div>
+                        { memberChoiceMap.get(element.state.id) > 0 ? 
+                        <div className="userStarVotes">
+                            <StarVoteRender value={memberChoiceMap.get(element.state.id)}/>
+                        </div> : <p></p>
+                        }
                     </div>
                 ))}
             </div>

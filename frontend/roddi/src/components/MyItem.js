@@ -4,7 +4,8 @@ import User from './User';
 import Item from './Item';
 import MemberVotes from './MemberVotes';
 import authService from '../services/auth.service';
-import tempImage from '../images/WIP.jpg';
+import StarVote from './StarVote';
+import StarVoteRender from './StarVoteRender';
 
 import '../App.css';
 
@@ -18,7 +19,7 @@ function MyItem() {
         id: localStorage.getItem('userId'),
         name: localStorage.getItem('userName'),
         email: localStorage.getItem('userEmail')
-    }); // current logged in 
+    });
     const [userItemChoice, setUserItemChoice] = useState() // what current user voted on this item (update item.state.userChoice for this user based on this)
     const [members, setMembers] = useState([]); // all family members except current user
     const [memberChoiceMap, setMemberChoiceMap] = useState(new Map())
@@ -91,8 +92,6 @@ function MyItem() {
     function onChangeVote(event) {
         let itemId = localStorage.getItem('itemId');
         let userId = user.id;
-        /* itemId = parseInt(itemId);
-        userId = parseInt(userId); */
         let vote = null
         if (event.target.value == "divide") {
             vote = 1;
@@ -106,6 +105,14 @@ function MyItem() {
         setUserItemChoice(vote);
         authService.putVote(itemId, userId, vote);
     }
+
+    function setWantedLevelAPI(vote) {
+        let itemId = localStorage.getItem('itemId');
+        let userId = user.id;
+        authService.putVote(itemId, userId, vote);
+    }
+
+
 
     function loadImage() {
         if (item.state.image == "") {
@@ -134,24 +141,39 @@ function MyItem() {
                 <div className="myVote" >
                     <div className="userNameAndComment">
                         <h5>{user.name}</h5>
-                        <p>Kommentar: </p> 
+                    
                     </div>
-                    <div className="userVotes" onChange={onChangeVote}>
-                        <div className="voteDivide"><input type="radio" value="divide" name="vote"/> Fordel</div>
-                        <div className="voteDonate"><input type="radio" value="donate" name="vote"/> Doner</div>
-                        <div className="voteTrash"><input type="radio" value="discard" name="vote"/> Kast</div>
-                        <MemberVotes value={userItemChoice}/>
+                    <div className="myUserPriority">
+                        <div className="myUserVotes" onChange={onChangeVote}>
+                            <div className="voteDivide"><input type="radio" value="divide" name="vote"/></div>
+                            <div className="voteDonate"><input type="radio" value="donate" name="vote"/></div>
+                            <div className="voteTrash"><input type="radio" value="discard" name="vote"/></div>
+                        </div>
+                        <div className="myVoteHighlight">
+                            <MemberVotes value={userItemChoice}/>
+                        </div>
                     </div>
-                </div>
+                    {userItemChoice > 0 ? 
+                    <div className="myStarVote">
+                        <StarVote value={userItemChoice} onClick={setWantedLevelAPI}/>
+                    </div>
+                    : <p></p>
+                    }
+                </div>            
                 {members.map((element, index) => (
                     <div className="userInteractions" key={"user"+index} id={"u"+index} >
                         <div className="userNameAndComment">
                             <h5>{element.state.name}</h5>
-                            <p>Kommentar: </p> 
+                            
                         </div>
                         <div className="userVotes">
                         {(!isLoading) ? <MemberVotes value={memberChoiceMap.get(element.state.id)}/> : <p>Loading...</p>}
                         </div>
+                        { memberChoiceMap.get(element.state.id) > 0 ? 
+                        <div className="userStarVotes">
+                            <StarVoteRender value={memberChoiceMap.get(element.state.id)}/>
+                        </div> : <p></p>
+                        }
                     </div>
                 ))}
             </div>

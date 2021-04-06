@@ -7,8 +7,6 @@ import authService from '../services/auth.service';
 import Modal from 'react-modal';
 import '../App.css';
 
-Modal.setAppElement('#root');
-
 function AdminEstatePage() {
   // EstateID based on props
   const [estateID] = useState(localStorage.getItem('estateId'));
@@ -63,7 +61,7 @@ function AdminEstatePage() {
         members: res.data.users,
       };
       let initMembers = [];
-      let memberEmails ='mailto:';
+      let memberEmails = 'mailto:';
       for (let i = 0; i < tempEstate.state.members.length; i++) {
         let tempUser = new User();
         tempUser.state = {
@@ -72,7 +70,7 @@ function AdminEstatePage() {
           email: res.data.users[i].email,
         };
         initMembers.push(tempUser);
-        memberEmails += ","+ tempUser.state.email;
+        memberEmails += ',' + tempUser.state.email;
       }
       let newMembers = members.concat(initMembers);
       setMembers(newMembers);
@@ -247,6 +245,7 @@ function AdminEstatePage() {
               isOpen={memberModalIsOpen}
               onRequestClose={closeMemberModal}
               contentLabel="Example Modal"
+              ariaHideApp={false}
             >
               <h2>Brukere</h2>
               <form>
@@ -327,6 +326,7 @@ function AdminEstatePage() {
               isOpen={itemModalIsOpen}
               onRequestClose={closeItemModal}
               contentLabel="Example Modal"
+              ariaHideApp={false}
             >
               <h2>Oppgjør: {estateName}</h2>
               <form>
@@ -365,6 +365,7 @@ function AdminEstatePage() {
                     onChange={handleItemImageChange}
                     name="image"
                     type="file"
+                    data-testid="Velg fil"
                   />
                 </div>
               </form>

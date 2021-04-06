@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+### Every view defined in the views module must be defined here with a fitting URL ###
+### Otherwise, the views will be of no use to the REST API ###
 
 urlpatterns = [
     path('', views.api_overview, name="api-overview"),
