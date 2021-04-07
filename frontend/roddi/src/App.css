@@ -118,6 +118,9 @@ form:last-child {
   display: flex;
   flex-direction: column;
   text-indent: 10%;
+
+
+
 }
 .userVotes > div {
   padding: 1px;
@@ -148,7 +151,10 @@ form:last-child {
   grid-row-start: 1;
   grid-row-end: span 3;
   height: auto;
+  
 }
+
+
 
 .myUserVotes > div {
   height: 28px;
@@ -168,17 +174,24 @@ form:last-child {
   padding: 1px;
   grid-row-start: 1;
   justify-content: center;
+  text-align: center;
+  
 } 
 .myVoteHighlight > .voteDonate {
   margin: 0;
   grid-row-start: 2;
   justify-content: center;
+  text-align: center;
+
 }
 .myVoteHighlight > .voteTrash {
   margin: 0;
   grid-row-start: 3;
   justify-content: center;
+  text-align: center;
+  
 }
+
 
 .userStarVotes {
   grid-column-start: 4;
@@ -257,6 +270,7 @@ form:last-child {
 
 .itemRow div > h4 {
   margin: -10px 0 10px 80px;
+
 }
 
 .itemRow > div button.btn-primary {
@@ -264,13 +278,18 @@ form:last-child {
 }
 
 .itemRow > div button.btn-danger {
-  margin: 10px 0 0 40px;
+  margin: 10px 0 0 0px;
+ 
 }
 
 .itemRow {
-  margin-bottom: 20px;
   margin-bottom: 30px;
+
 }
+.itemRow div{
+  display: grid;
+}
+
 
 .addItem > button {
   margin-left: 110px;
@@ -442,13 +461,15 @@ th, td {
 .divButtonE {
   color:#900C27;
   background-color: #f8f0f2;
-  margin: 40px 20px 40px 20px;
+  margin: 20px 75px;
+  
 }
 
 .divButtonMEP{
   color:#900C27;
   background-color: #f8f0f2;
-  margin: 32%;
+  margin: 20px 80px ;
+
 }
 
 .Members {
@@ -471,6 +492,9 @@ padding: 10px ;
 .Stuff {
   border: 1px solid #ddd;
   padding: 10px 40px;
+  display: inline-block;
+  margin-right: 5px;
+
   }
 
 .divButtonMembers{
@@ -559,6 +583,8 @@ position: relative;
   left: 15%;
   top: 20%;
   color:#900C27;
+  margin-top: 10px;
+
 }
 
 .itemAI{
@@ -599,11 +625,17 @@ margin: 0 0 10px 20px;
 margin-left: 10px;
 }
 
+.userNameAndComment h5{
+  word-wrap:break-word;
+}
+
 #headlineMI{
 position: absolute;
 top: 20%;
 color: #900C27;
 left: 15%;
+margin-top: 10px;
+
 
 }
 
@@ -628,5 +660,9 @@ margin: 20px;
 .myVote{
 border: 1px solid;
 margin: 5px;
+display:inline-flex;
+
 }
+
+
 
