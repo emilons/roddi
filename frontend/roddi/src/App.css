@@ -106,8 +106,10 @@ form:last-child {
 
 .userInteractions {
   display: grid;
-  grid-template-columns: auto 50px auto;
+  grid-template-columns: 100px 10px 80px auto;
   padding: 10px;
+  border: 1px solid;
+  margin: 20px;
 }
 
 .userNameAndComment {
@@ -620,10 +622,7 @@ left: 15%;
 
 }
 
-.userInteractions{
-border: 1px solid;
-margin: 20px;
-}
+
 
 .myVote{
 border: 1px solid;
