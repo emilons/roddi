@@ -103,13 +103,6 @@ form:last-child {
   margin: 40px 0 0 0;
 }
 
-
-.userInteractions {
-  display: grid;
-  grid-template-columns: auto 50px auto;
-  padding: 10px;
-}
-
 .userNameAndComment {
   grid-column-start: 1;
 }
@@ -119,22 +112,18 @@ form:last-child {
   flex-direction: column;
   text-indent: 10%;
 
-
-
 }
 .userVotes > div {
   padding: 1px;
 }
 
 .myVote {
-  border: 1px solid;
-  margin: 20px;
-  display: grid;
-  grid-template-columns: 70px 90px 10px 30px;
-  grid-template-rows: 28px 28px 28px;
-  padding: 10px;
+    display: grid;
+    grid-template-columns: 100px 10px 80px auto;
+    padding: 25px;
+    border: 1px solid;
+    margin: 20px;
 }
-
 
 .myUserPriority {
   display: grid;
@@ -151,7 +140,6 @@ form:last-child {
   grid-row-start: 1;
   grid-row-end: span 3;
   height: auto;
-  
 }
 
 
@@ -175,21 +163,23 @@ form:last-child {
   grid-row-start: 1;
   justify-content: center;
   text-align: center;
-  
+  padding: 1px
 } 
+
 .myVoteHighlight > .voteDonate {
   margin: 0;
   grid-row-start: 2;
   justify-content: center;
   text-align: center;
-
+  padding: 1px;
 }
+
 .myVoteHighlight > .voteTrash {
   margin: 0;
   grid-row-start: 3;
   justify-content: center;
   text-align: center;
-  
+  padding: 1px;
 }
 
 
@@ -607,6 +597,7 @@ top: 35%;
 
 .previousAI{
 margin-left: 30px;
+margin-top: 20px;
 color: #900C27;
 }
 
@@ -635,8 +626,6 @@ top: 20%;
 color: #900C27;
 left: 15%;
 margin-top: 10px;
-
-
 }
 
 .itemMI {
@@ -653,16 +642,13 @@ margin-top: 10px;
 }
 
 .userInteractions{
+display: grid;
+grid-template-columns: 100px 10px 80px auto;
+padding: 10px;
 border: 1px solid;
 margin: 20px;
 }
 
-.myVote{
-border: 1px solid;
-margin: 5px;
-display:inline-flex;
-
-}
 
 
 
