@@ -75,45 +75,46 @@ function Statistics() {
     });
   });
 
-    return(<div>
-          
-            <div className="Statistic">
-            <a href="#/AdminEstates" className="previousMI">&laquo; Hjem</a>
-              <div id="headerStatistics">
-                <h4>Statistikk for Røddi</h4>
-              </div>
-                <table id="t01"> 
-                  <tr>
-                    <th> </th>
-                    <th>Antall</th>
-                  </tr>
-                  <tr>
-                    <td id="second">Dødsbo opprettet idag</td>
-                    <td id="numbers1">{numberOfNewEstates}</td>
-                  </tr>
-                  <tr>
-                  <td>Brukere registrert idag</td>
-                    <td id="numbers">{numberOfNewUsers}</td>
-                  </tr>
-                  <tr>
-                  <td id="second">Antall stemmer på eiendeler i dag</td>
-                    <td id="numbers1">{numberOfNewVotes}</td>
-                  </tr>
-                  <tr>
-                  <td>Totalt antall dødsbo</td>
-                    <td id="numbers">{totalNumberOfEstates}</td>
-                  </tr>
-                  <tr>
-                  <td id="second">Totalt antall brukere</td>
-                    <td id="numbers1">{totalNumberOfUsers}</td>
-                  </tr>
-
-                </table>
-            </div>
-
-                
-          
-        </div>);
-  }
+  return (
+    <div>
+      <div className="Statistic">
+        <a href="#/AdminEstates" className="previousMI">
+          &laquo; Hjem
+        </a>
+        <div id="headerStatistics">
+          <h4>Statistikk for Røddi</h4>
+        </div>
+        <table id="t01">
+          <tbody>
+            <tr>
+              <th> </th>
+              <th>Antall</th>
+            </tr>
+            <tr>
+              <td id="second">Dødsbo opprettet idag</td>
+              <td id="numbers1">{numberOfNewEstates}</td>
+            </tr>
+            <tr>
+              <td>Brukere registrert idag</td>
+              <td id="numbers">{numberOfNewUsers}</td>
+            </tr>
+            <tr>
+              <td id="second">Antall stemmer på eiendeler i dag</td>
+              <td id="numbers1">{numberOfNewVotes}</td>
+            </tr>
+            <tr>
+              <td>Totalt antall dødsbo</td>
+              <td id="numbers">{totalNumberOfEstates}</td>
+            </tr>
+            <tr>
+              <td id="second">Totalt antall brukere</td>
+              <td id="numbers1">{totalNumberOfUsers}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
 
 export default Statistics;

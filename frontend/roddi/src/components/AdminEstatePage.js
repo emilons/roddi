@@ -24,10 +24,10 @@ function AdminEstatePage() {
   // State for add Item Modal
   const [addNewItem, setAddNewItem] = useState({
     itemName: '',
-    itemDescription: ''
+    itemDescription: '',
   });
   const [postImage, setPostImage] = useState(null);
-  
+
   const handleItemChange = (e) => {
     const { id, value } = e.target;
     setAddNewItem((prevState) => ({
@@ -40,7 +40,7 @@ function AdminEstatePage() {
     setPostImage({ image: e.target.files });
   };
 
-  // State for add Member Modal  
+  // State for add Member Modal
   const [addNewMember, setAddNewMember] = useState({
     memberEmail: '',
   });
@@ -53,7 +53,6 @@ function AdminEstatePage() {
     }));
   };
 
-  
   useEffect(() => {
     /**
      * get all estates from backend and initialize correct estate
@@ -145,8 +144,7 @@ function AdminEstatePage() {
     };
     // prevents item submit if image is not included
     if (postImage === null) {
-      
-    } 
+    }
     // submits item if everything is provided
     else {
       let newItems = items.concat([x]);
@@ -213,8 +211,7 @@ function AdminEstatePage() {
         setMembers(newMembers);
         closeMemberModal();
         window.location.reload(false);
-      } 
-      else {
+      } else {
         document.getElementById('confirmEmail').innerHTML =
           'Vennligst fyll inn en eksisterende email!';
         document.getElementById('confirmEmail').style.color = 'red';
@@ -241,22 +238,21 @@ function AdminEstatePage() {
 
   return (
     <div className="AdminEstatePage">
-      <a href="#/AdminEstates" className="previousMI">&laquo; Tilbake</a>
+      <a href="#/AdminEstates" className="previousMI">
+        &laquo; Tilbake
+      </a>
       <div className="nameAndMembers">
         <div className="estateName">
-          <h2  id="headlineEstateName">Familien {estateName}</h2>
+          <h2 id="headlineEstateName">Familien {estateName}</h2>
         </div>
         <div className="membersList">
-          <h4 id ="title" >Deltakere</h4>
+          <h4 id="title">Deltakere</h4>
 
-          <a href={mailTo} id='notifyMembers'>
+          <a href={mailTo} id="notifyMembers">
             Varsle deltakere
-            </a>
+          </a>
           {members.map((element, index) => (
-            <div className="Members"
-              key={'member' + index}
-              id={'m' + index}
-            >
+            <div className="Members" key={'member' + index} id={'m' + index}>
               <h4>{element.state.name}</h4>
               <button
                 type="button"
@@ -269,7 +265,7 @@ function AdminEstatePage() {
           ))}
           <div className="addMember">
             <button
-              id = "addMember"
+              id="addMember"
               type="submit"
               className="btn btn-outline-danger"
               onClick={addMember}
@@ -299,7 +295,7 @@ function AdminEstatePage() {
                 <small id="confirmEmail" className="form-text"></small>
               </form>
               <button
-                id="estateButton" 
+                id="estateButton"
                 className="btn btn-outline-danger"
                 onClick={submitMember}
               >
@@ -310,23 +306,19 @@ function AdminEstatePage() {
         </div>
       </div>
       <div className="items">
-        <h2 id = "titleItemsAEP">Eiendeler</h2>
+        <h2 id="titleItemsAEP">Eiendeler</h2>
         <div className="itemsList">
           <div className="itemRow">
             {items.map((element, index) => (
-              <div
-                className ="Stuff"
-                key={'item' + index}
-                id={'i' + index}
-              
-              >
+              <div className="Stuff" key={'item' + index} id={'i' + index}>
                 <img
-                  style={{ height: '180px', width: '200px', margin: "20px" }}
+                  style={{ height: '180px', width: '200px', margin: '20px' }}
                   src={'http://localhost:8000' + element.state.image}
                   alt="temporary pic"
                 />
                 <h4>{element.state.name}</h4>
-                <button className="divButtonE"
+                <button
+                  className="divButtonE"
                   onClick={() =>
                     localStorage.setItem('itemId', element.state.id)
                   }

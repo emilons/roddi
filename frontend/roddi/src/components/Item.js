@@ -9,7 +9,7 @@ class Item extends React.Component {
       image: '',
       description: '',
       estate: null,
-      userChoice: null
+      userChoice: null,
     };
   }
 }

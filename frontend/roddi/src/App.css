@@ -18,23 +18,24 @@ body {
   text-align: center;
 }
 
-.startPage > h1{
+.startPage > h1 {
   margin-top: 60px;
   margin-bottom: 20px;
 }
 
-#introParagraph{
+#introParagraph {
   margin-top: 50px;
-  line-height: 1,6em;
+  line-height: 1, 6em;
   width: 50%;
-  margin-left:25%
+  margin-left: 25%;
 }
 
 .form {
   margin: 0px;
 }
 
-a, a:hover {
+a,
+a:hover {
   color: inherit;
   text-decoration: none;
 }
@@ -61,14 +62,12 @@ form:last-child {
 .AdminEstates {
   text-align: center;
   margin: 100px 200px;
-
 }
 
 .MyEstatePage {
   display: flex;
   justify-content: space-around;
   margin: 40px 0 0 0;
-
 }
 
 .MyEstates {
@@ -76,19 +75,18 @@ form:last-child {
   margin: 100px 200px;
 }
 
-#AdminEstatesButtons{
- margin:50px 300px 50px 300px; 
- place-items: center;
+#AdminEstatesButtons {
+  margin: 50px 300px 50px 300px;
+  place-items: center;
 }
 
-.btn-outline-danger{
+.btn-outline-danger {
   color: #f5f1f1;
   border-color: #f5f1f1;
-  background-color: #900C27;
+  background-color: #900c27;
   border: 0.5px outset;
   margin-top: 20px;
 }
-
 
 .MyEstate {
   display: flex;
@@ -111,28 +109,26 @@ form:last-child {
   display: flex;
   flex-direction: column;
   text-indent: 10%;
-
 }
 .userVotes > div {
   padding: 1px;
 }
 
 .myVote {
-    display: grid;
-    grid-template-columns: 100px 20px 100px auto;
-    padding: 10px;
-    border: 1px solid;
-    margin: 20px;
-    text-indent: 10%;
+  display: grid;
+  grid-template-columns: 100px 20px 100px auto;
+  padding: 10px;
+  border: 1px solid;
+  margin: 20px;
+  text-indent: 10%;
 }
-
 
 .myUserPriority {
   display: flex;
   grid-template-columns: 20px 100px;
   grid-template-rows: 114px;
 }
-.myUserNameAndComment{
+.myUserNameAndComment {
   grid-row-start: 1;
 }
 
@@ -173,7 +169,7 @@ form:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .myVoteHighlight {
   grid-column-start: 2;
@@ -186,14 +182,12 @@ form:last-child {
   flex-direction: column;
 }
 
-
-
 .myVoteHighlight > .voteDivide {
   grid-row-start: 1;
   justify-content: space-between;
   padding: 1px;
   width: 90px;
-} 
+}
 
 .myVoteHighlight > .voteDonate {
   grid-row-start: 2;
@@ -208,7 +202,6 @@ form:last-child {
   padding: 1px;
   width: 90px;
 }
-
 
 .userStarVotes {
   grid-column-start: 4;
@@ -235,7 +228,7 @@ form:last-child {
 }
 
 .star:hover {
-  background-color: yellow
+  background-color: yellow;
 }
 
 .starFilled {
@@ -247,7 +240,7 @@ form:last-child {
 }
 
 .starFilled:hover {
-  background-color: yellow
+  background-color: yellow;
 }
 
 .starRender {
@@ -257,7 +250,6 @@ form:last-child {
   margin: 0px 1px 0px 1px;
   justify-content: center;
 }
-
 
 .membersList > div {
   margin-top: 30px;
@@ -269,12 +261,10 @@ form:last-child {
   margin-top: 35px;
 }
 
-.membersList > h4{
+.membersList > h4 {
   padding-bottom: 20px;
   margin-top: 100px;
-
 }
-
 
 .btn-danger {
   position: relative;
@@ -282,12 +272,10 @@ form:last-child {
 }
 
 .membersList div > h4 {
-
 }
 
 .itemRow div > h4 {
   margin: -10px 0 10px 80px;
-
 }
 
 .itemRow > div button.btn-primary {
@@ -296,25 +284,21 @@ form:last-child {
 
 .itemRow > div button.btn-danger {
   margin: 10px 0 0 0px;
- 
 }
 
 .itemRow {
   margin-bottom: 30px;
-
 }
-.itemRow div{
+.itemRow div {
   display: grid;
 }
 
-
 .addItem > button {
   margin-left: 110px;
-
 }
 
 .estateList div > h1 {
-  margin-left: 30px; 
+  margin-left: 30px;
   color: #454343;
 }
 
@@ -323,7 +307,7 @@ form:last-child {
   margin-bottom: 2%;
   margin-right: 2%;
   margin-left: 2%;
-  background-color:#f9f9f9;
+  background-color: #f9f9f9;
   border-color: #bab5b5;
 }
 
@@ -341,14 +325,12 @@ form:last-child {
   margin-top: 20px;
 }
 
-
 .createEstate > button {
   margin-left: 100px;
 }
 
 .items {
   margin-top: 35px;
-
 }
 
 .items > h2 {
@@ -363,10 +345,11 @@ form:last-child {
 }
 
 .Overskrift {
-  color: #900C27;
+  color: #900c27;
 }
 
-.buttons > button, #Login {
+.buttons > button,
+#Login {
   color: #f5f1f1;
 }
 
@@ -374,57 +357,55 @@ form:last-child {
   background-color: #f8f0f2;
 }
 
-
 #right {
   text-align: center;
   margin: 20px 200px;
 }
 
-.description{
+.description {
   text-align: center;
   background-color: #f8f0f2;
-  transform: translate(0%,-50%);
+  transform: translate(0%, -50%);
   padding: 25px;
 }
 
-img{
+img {
   height: 120px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.form-group{
+.form-group {
   font-size: 20px;
   margin-left: 20px;
 }
 
-.welcome{
+.welcome {
   font-size: 40px;
   text-align: center;
   margin-bottom: 20px;
   margin-top: 70px;
 }
 
-#header_pic{
+#header_pic {
   height: 50px;
   width: 30%;
-  margin: "0 500px 0 500px";
+  margin: '0 500px 0 500px';
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.estates{
+.estates {
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 100%;
   position: relative;
 }
- 
 
-#tempImage{
+#tempImage {
   height: 100%;
   width: 60%;
   display: block;
@@ -432,7 +413,7 @@ img{
   margin-right: auto;
 }
 
-#myModal{
+#myModal {
   text-align: center;
 }
 
@@ -448,14 +429,14 @@ img{
   margin-top: 40px;
   margin-left: 300px;
   margin-right: 300px;
-  color: #900C27;
+  color: #900c27;
 }
 
 #numbers {
-  color: #900C27;
+  color: #900c27;
 }
 #numbers1 {
-  color: #900C27;
+  color: #900c27;
   background-color: #f8f0f2;
 }
 
@@ -463,12 +444,13 @@ img{
   background-color: #f8f0f2;
 }
 
-th, td {
+th,
+td {
   border-bottom: 1px solid #ddd;
 }
 
 .divButton {
-  color:#900C27;
+  color: #900c27;
   background-color: #f8f0f2;
   margin-bottom: 20px;
   margin-left: 10px;
@@ -476,31 +458,28 @@ th, td {
 }
 
 .divButtonE {
-  color:#900C27;
+  color: #900c27;
   background-color: #f8f0f2;
   margin: 20px 75px;
-  
 }
 
-.divButtonMEP{
-  color:#900C27;
+.divButtonMEP {
+  color: #900c27;
   background-color: #f8f0f2;
-  margin: 20px 80px ;
-
+  margin: 20px 80px;
 }
 
 .Members {
-border: 1px solid #ddd;
-border-spacing: 10px;
-margin: 20px;
-padding: 10px ;
-
+  border: 1px solid #ddd;
+  border-spacing: 10px;
+  margin: 20px;
+  padding: 10px;
 }
 
-.Members > h4{
+.Members > h4 {
   margin: 5px;
   display: block;
-  color: #900C27;
+  color: #900c27;
   text-align: center;
 }
 
@@ -509,39 +488,33 @@ padding: 10px ;
   padding: 10px 40px;
   display: inline-block;
   margin-right: 5px;
+}
 
-  }
-
-.divButtonMembers{
-margin-bottom: 10px;
-margin-top: 10px;
-color:#900C27;
-background-color: #f8f0f2;
-margin: 0 auto;
-display: block;
-
+.divButtonMembers {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #900c27;
+  background-color: #f8f0f2;
+  margin: 0 auto;
+  display: block;
 }
 
 #notifyMembers {
   border: 2px solid #ddd;
   padding: 5px;
-  color:#900C27;
+  color: #900c27;
   background-color: #f8f0f2;
   margin-left: 20px;
-
-
-  
 }
-#notifyMembers:hover{
-  background-color: #E9E9E9;
+#notifyMembers:hover {
+  background-color: #e9e9e9;
 }
 
-.divButtonMembers:hover{
-  background-color: #E9E9E9;
+.divButtonMembers:hover {
+  background-color: #e9e9e9;
 }
 
-
-#Member{
+#Member {
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -550,107 +523,104 @@ display: block;
   margin-left: 30%;
 }
 
-.estateName > h2{
+.estateName > h2 {
   font-size: 40px;
   font-weight: 50;
   line-height: 72px;
 }
 
-#headlineEstateName{
+#headlineEstateName {
   margin-top: 10px;
-  color: #900C27;
+  color: #900c27;
   margin-left: 10px;
-
 }
 
-#title{
+#title {
   font-size: 30px;
   margin-left: 20px;
   margin-top: 20px;
 }
 
-#titleItemsAEP{
+#titleItemsAEP {
   margin-top: 70px;
   margin-left: 20px;
 }
 
-#titleItemsMEP{
+#titleItemsMEP {
   margin-top: 70px;
   margin-left: 20px;
 }
 
-.items > h2{
-margin-bottom: 30px;
-top: 10px;
+.items > h2 {
+  margin-bottom: 30px;
+  top: 10px;
 }
 
-.Stuff > h4{
-top: 20px;
-position: relative;
+.Stuff > h4 {
+  top: 20px;
+  position: relative;
 }
 
-.Stuff{
+.Stuff {
   margin: 20px;
 }
 
-#headlineAI{
+#headlineAI {
   position: absolute;
   left: 15%;
   top: 20%;
-  color:#900C27;
+  color: #900c27;
   margin-top: 10px;
-
 }
 
-.itemAI{
+.itemAI {
   position: absolute;
   left: 20%;
   top: 35%;
 }
 
-#headlineItem{
+#headlineItem {
   position: absolute;
   left: 20%;
   top: 30%;
 }
 
 #description {
-position: absolute;
-left: 20%;
-top: 35%;
+  position: absolute;
+  left: 20%;
+  top: 35%;
 }
 
-.previousAI{
-margin-left: 30px;
-margin-top: 20px;
-color: #900C27;
+.previousAI {
+  margin-left: 30px;
+  margin-top: 20px;
+  color: #900c27;
 }
 
-.previousMI{
-position: absolute;
-left: 30px;
-color: #900C27; 
-
+.previousMI {
+  position: absolute;
+  left: 30px;
+  color: #900c27;
 }
 
-#headline1{
-margin: 0 0 10px 20px;
+#headline1 {
+  margin: 0 0 10px 20px;
 }
 
 .userNameAndComment {
-margin-left: 10px;
+  margin-left: 10px;
 }
 
-.userNameAndComment > h5{
-  word-wrap:break-word;
+.userNameAndComment > h5 {
+  word-wrap: break-word;
 }
 
-#headlineMI{
-position: absolute;
-top: 20%;
-color: #900C27;
-left: 15%;
-margin-top: 10px;
+#headlineMI {
+  position: absolute;
+  top: 20%;
+  color: #900c27;
+  left: 15%;
+  margin-top: 10px;
 }
 
 .itemMI {
@@ -659,22 +629,17 @@ margin-top: 10px;
   top: 35%;
 }
 
-.userInteractionsList{
+.userInteractionsList {
   position: absolute;
   right: 15%;
   top: 30%;
-
 }
 
-.userInteractions{
-display: grid;
-grid-template-columns: 100px 20px 100px auto;
-padding: 10px;
-border: 1px solid;
-margin: 20px;
-text-indent: 10%;
+.userInteractions {
+  display: grid;
+  grid-template-columns: 100px 20px 100px auto;
+  padding: 10px;
+  border: 1px solid;
+  margin: 20px;
+  text-indent: 10%;
 }
-
-
-
-

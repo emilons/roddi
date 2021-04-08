@@ -18,7 +18,6 @@ it('renders Admins estate page', () => {
   ReactDOM.render(<AdminEstatePage></AdminEstatePage>, div);
 });
 
-
 it('renders modals', () => {
   const RenderResult = render(<AdminEstatePage></AdminEstatePage>);
   expect(screen.getByText('Legg til medlem')).toBeInTheDocument();

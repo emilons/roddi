@@ -7,10 +7,10 @@ afterEach(cleanup);
 it('renders the app', () => {
   const div = document.createElement('div');
   ReactDOM.render(<App></App>, div);
-})
+});
 
-it('renders the header and startpage', () => {
+it('renders the header and startpage', () => {
   const app = render(<App></App>);
   expect(screen.getByRole('navigation'));
   expect(app.container.getElementsByClassName('startPage'));
-})
+});
