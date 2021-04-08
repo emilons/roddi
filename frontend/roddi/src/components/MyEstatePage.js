@@ -73,7 +73,7 @@ function MyEstatePage() {
     <div className="MyEstatePage">
       <div className="nameAndMembers">
           <div className="estateName">
-          <a href="#/MyEstates" class="previousMI">&laquo; Tilbake</a>
+          <a href="#/MyEstates" className="previousMI">&laquo; Tilbake</a>
               <h2 id="headlineEstateName">Familien {estateName}</h2>
           </div>
           <div className="membersList">

@@ -119,16 +119,18 @@ form:last-child {
 
 .myVote {
     display: grid;
-    grid-template-columns: 100px 10px 80px auto;
-    padding: 25px;
+    grid-template-columns: 100px 20px 100px auto;
+    padding: 10px;
     border: 1px solid;
     margin: 20px;
+    text-indent: 10%;
 }
 
+
 .myUserPriority {
-  display: grid;
-  grid-template-columns: 20px auto;
-  grid-template-rows: 28px 28px 28px;
+  display: flex;
+  grid-template-columns: 20px 100px;
+  grid-template-rows: 114px;
 }
 .myUserNameAndComment{
   grid-row-start: 1;
@@ -140,9 +142,31 @@ form:last-child {
   grid-row-start: 1;
   grid-row-end: span 3;
   height: auto;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
+.myUserVotes > .voteDivide {
+  margin: 5px;
+  padding: 1px;
+}
 
+.myUserVotes > .voteDonate {
+  margin: 5px;
+  padding: 1px;
+}
+
+.myUserVotes > .voteTrash {
+  margin: 5px;
+  padding: 1px;
+}
+
+.myVote > p {
+  height: 114px;
+  visibility: hidden;
+  margin: 0;
+}
 
 .myUserVotes > div {
   height: 28px;
@@ -156,30 +180,33 @@ form:last-child {
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 3;
+  height: 114px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
 }
+
+
+
 .myVoteHighlight > .voteDivide {
-  margin: 0px;
-  padding: 1px;
   grid-row-start: 1;
-  justify-content: center;
-  text-align: center;
-  padding: 1px
+  justify-content: space-between;
+  padding: 1px;
+  width: 90px;
 } 
 
 .myVoteHighlight > .voteDonate {
-  margin: 0;
   grid-row-start: 2;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
   padding: 1px;
+  width: 90px;
 }
 
 .myVoteHighlight > .voteTrash {
-  margin: 0;
   grid-row-start: 3;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
   padding: 1px;
+  width: 90px;
 }
 
 
@@ -232,7 +259,7 @@ form:last-child {
 }
 
 
-.membersList div {
+.membersList > div {
   margin-top: 30px;
   margin-bottom: 20px;
 }
@@ -242,7 +269,7 @@ form:last-child {
   margin-top: 35px;
 }
 
-.membersList h4{
+.membersList > h4{
   padding-bottom: 20px;
   margin-top: 100px;
 
@@ -255,7 +282,7 @@ form:last-child {
 }
 
 .membersList div > h4 {
-  margin: 5px 0 0 35px;
+
 }
 
 .itemRow div > h4 {
@@ -470,13 +497,11 @@ padding: 10px ;
 
 }
 
-.Members h4{
-  margin: 0 auto;
+.Members > h4{
+  margin: 5px;
   display: block;
-  left: 70px;
   color: #900C27;
-
-  position: relative;
+  text-align: center;
 }
 
 .Stuff {
@@ -525,7 +550,7 @@ display: block;
   margin-left: 30%;
 }
 
-.estateName h2{
+.estateName > h2{
   font-size: 40px;
   font-weight: 50;
   line-height: 72px;
@@ -554,12 +579,12 @@ display: block;
   margin-left: 20px;
 }
 
-.items h2{
+.items > h2{
 margin-bottom: 30px;
 top: 10px;
 }
 
-.Stuff h4{
+.Stuff > h4{
 top: 20px;
 position: relative;
 }
@@ -616,7 +641,7 @@ margin: 0 0 10px 20px;
 margin-left: 10px;
 }
 
-.userNameAndComment h5{
+.userNameAndComment > h5{
   word-wrap:break-word;
 }
 
@@ -643,10 +668,11 @@ margin-top: 10px;
 
 .userInteractions{
 display: grid;
-grid-template-columns: 100px 10px 80px auto;
+grid-template-columns: 100px 20px 100px auto;
 padding: 10px;
 border: 1px solid;
 margin: 20px;
+text-indent: 10%;
 }
 
 

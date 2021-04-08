@@ -147,7 +147,7 @@ function MyItem() {
         <div className="MyItem">
             <div className="estateNameAndItem">
                 <div className="estateName">
-                <a href="#/MyEstatePage" class="previousMI">&laquo; Tilbake</a>
+                <a href="#/MyEstatePage" className="previousMI">&laquo; Tilbake</a>
                 <h1 id="headlineMI" >Familien {estateName}</h1>
                 </div>
                 <div className="itemMI">
@@ -176,7 +176,7 @@ function MyItem() {
                     <div className="myStarVote">
                         <StarVote value={userItemChoice} onClick={setWantedLevelAPI}/>
                     </div>
-                    : <p></p>
+                    : <p>hidden text</p>
                     }
                 </div>            
                 {members.map((element, index) => (

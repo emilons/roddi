@@ -31,8 +31,15 @@ function MemberVotes(props) {
             <div className="voteTrash" style={{border: '1px solid', margin: "5px", color: '#900C27', backgroundColor: '#f8f0f2'}}>Kast</div>
             </Fragment>
         )}
+    else if (props.value == undefined) {
+        return (<Fragment>
+            <div className="voteDivide" style={{border: '1px solid', margin: "5px"}}>Fordel</div>
+            <div className="voteDonate" style={{border: '1px solid', margin: "5px"}}>Doner</div>
+            <div className="voteTrash" style={{border: '1px solid', margin: "5px"}}>Kast</div>
+        </Fragment>)
+    }
     else {
-        return (<Fragment></Fragment>)
+        <Fragment></Fragment>
     }
 }
 export default MemberVotes;
