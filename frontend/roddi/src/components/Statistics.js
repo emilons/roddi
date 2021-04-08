@@ -78,7 +78,7 @@ function Statistics() {
     return(<div>
           
             <div className="Statistic">
-            <a href="#/AdminEstates" class="previousMI">&laquo; Tilbake</a>
+            <a href="#/AdminEstates" class="previousMI">&laquo; Hjem</a>
               <div id="headerStatistics">
                 <h4>Statistikk for Røddi</h4>
               </div>
